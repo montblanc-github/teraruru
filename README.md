@@ -45,11 +45,7 @@
 - 種苗会社などが、新しい品種を育ててくれるモニターを探している時。
 
 ## 設計書
-- UIflow図(ユーザ)
-　<https://drive.google.com/file/d/1AmhJddlpNubXxTM0DNbwEa8p0hMHQKyh>
-
-- UIflow図(管理者)
-　<https://drive.google.com/file/d/1t45XeAEYbCLsQiDbHM2GZ8urgImtYvh3>
+　<https://docs.google.com/spreadsheets/d/15kjHKCy5HQHVWhJIQ6dywi-C2qZw0EWZH-0c6Ql2PUA>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1S2PjauAo_yO5lvPQQv5RV9nwq7ety_h-GPRGoc7J8kE>
