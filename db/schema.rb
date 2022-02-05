@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_02_05_120913) do
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :string, force: :cascade do |t|
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
