@@ -62,3 +62,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # ユーザ管理、管理者機能導入のgem
 gem 'devise'
+
+# 画像投稿用gem
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'
