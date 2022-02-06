@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attachment :profile_image
+
   #idを生成する前にset_uuidを呼び出す。
   before_create :set_uuid
 
