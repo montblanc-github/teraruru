@@ -1,29 +1,80 @@
-<h2>Sign up</h2>
+<h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
+  <!--氏名-->
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :氏名 %>
+    <%= f.label :last_name, "(姓)" %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "name" %>
+    <%= f.label :first_name, "(名)" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <!--フリガナ-->
+  <div class="field">
+    <%= f.label :フリガナ %>
+    <%= f.label :last_name_kana, "(セイ)" %>
+    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "name" %>
+    <%= f.label :first_name_kana, "(メイ)" %>
+    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <!--メールアドレス-->
+  <div class="field">
+    <%= f.label :email, "メールアドレス" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <!--郵便番号-->
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
+    <%= f.text_field :post_code, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <!--住所-->
+  <div class="field">
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <!--パスワード-->
+  <div class="field">
+    <%= f.label :password, "パスワード" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <em>(<%= @minimum_password_length %>文字以上)</em>
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
+  <!--パスワード(確認用)-->
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "パスワード(確認用)" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <!--アカウント名-->
+  <div class="field">
+    <%= f.label :account_name, "アカウント名" %>
+    <%= f.text_field :account_name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <!--プロフィール画像-->
+  <div class="field">
+    <%= f.label :profile_image_id, "プロフィール画像" %>
+    <%= f.text_field :profile_image_id, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <!--紹介文-->
+  <div class="field">
+    <%= f.label :introduction, "紹介文" %>
+    <%= f.text_area :introduction, autofocus: true, autocomplete: "name" %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<p>※ 会員登録がお済みの方は、<%= render "public/shared/links" %> からログインしてください。</p>
