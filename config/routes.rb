@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+  end
   # ユーザ側ルーティング
   devise_for :users, controllers: {
     registrations: "public/registrations",

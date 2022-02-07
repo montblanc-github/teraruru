@@ -1,0 +1,36 @@
+<div class="content">
+  <div class="title">
+    <h2><i class="fas fa-users"></i> 会員一覧</h2>
+  </div>
+  <div class="item-style">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>アカウント名</th>
+          <th>ステータス</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <% @users.each do |user| %>
+      <tbody>
+        <tr>
+          <td><%= attachment_image_tag user, :profile_image, fallback: "no_image.png", class: "profile_small_icon" %></td>
+          <td><%= user.account_name %></td>
+          <td><%= user.is_active %></td>
+          <td>
+            <%= link_to edit_admin_user_path(user.id) do%>
+              <i class="fas fa-edit"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to admin_user_path(user.id) do%>
+              <i class="fas fa-list-alt"></i>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

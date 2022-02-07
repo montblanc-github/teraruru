@@ -43,6 +43,14 @@
   }
 }
 
+// アイテムスタイル
+.item-style {
+  max-width: 650px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 // フォーム
 .form-style {
   max-width: 650px;
@@ -130,3 +138,69 @@
   background-color: #696969;
 }
 
+// プロフィール画像
+.profile_small_icon{
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+}
+
+// 表
+.table{
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-collapse: collapse;
+
+  th{
+    height: 50px;
+    border-top: 1px solid green;
+    border-bottom: 1px solid green;
+
+    &:first-child{
+      width: 12%;
+    }
+
+    &:nth-of-type(2){
+      width: 46%;
+      text-align: left;
+    }
+
+    &:nth-of-type(3){
+      width: 14%;
+      text-align: left;
+    }
+
+    &:nth-of-type(n+4){
+      width: 14%;
+      text-align: center;
+    }
+  }
+
+  td{
+    height: 70px;
+    border-bottom: 1px solid green;
+
+    &:first-child{
+      padding-left: 20px;
+    }
+
+    &:nth-child(2){
+      padding-left: 0.8em;
+    }
+
+    &:nth-child(n+2){
+      line-height: 70px;
+    }
+
+    img{
+      vertical-align: middle;
+    }
+  }
+
+  i{
+    font-size: 1.8em;
+    color: green;
+  }
+
+}
