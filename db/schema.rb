@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2022_02_05_120913) do
     t.string "address", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "account_name", null: false
-    t.string "profile_image_id", null: false
-    t.string "introduction", null: false
+    t.string "profile_image_id"
+    t.string "introduction"
     t.boolean "is_active", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
