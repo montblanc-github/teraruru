@@ -13,8 +13,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :address,            null: false
       t.string :encrypted_password, null: false, default: ""
       t.string :account_name,       null: false
-      t.string :profile_image_id,   null: false
-      t.string :introduction,       null: false
+      t.string :profile_image_id
+      t.string :introduction
       t.boolean :is_active,         null: false, default: true
 
       ## Recoverable
