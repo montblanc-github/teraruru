@@ -63,5 +63,10 @@
         <%= f.submit "変更を保存する", class: "btn btn-green" %>
       </div>
     <% end %>
+
+      <div class="actios">
+        <%= link_to "キャンセル", user_path(current_user), class: "btn btn-red" %>
+      </div>
   </div>
+    <p>※ 退会をご希望の場合は、<%= link_to "こちら", unsubscribe_user_path(current_user) %> から退会手続きを行ってください。</p>
 </div>
