@@ -73,3 +73,6 @@ gem 'font-awesome-sass', '~> 5.15.1'
 # 環境変数用gem
 gem 'dotenv-rails'
 
+# ページネーション用gem
+gem 'kaminari'
+

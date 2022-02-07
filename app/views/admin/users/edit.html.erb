@@ -1,0 +1,76 @@
+<div class="content">
+  <div class="title">
+    <h2><i class="fas fa-user-cog"></i> 会員情報編集</h2>
+  </div>
+  <div class="form-style">
+    <%= form_with model: @user, url: admin_user_path, local: true do |f| %>
+
+      <!--氏名-->
+      <div class="field">
+        <%= f.label :氏名 %>
+        <%= f.label :last_name, "(姓)", class: "small-label" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "item half-item" %>
+        <%= f.label :first_name, "(名)", class: "small-label" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "item half-item" %>
+      </div>
+
+      <!--フリガナ-->
+      <div class="field">
+        <%= f.label :フリガナ %>
+        <%= f.label :last_name_kana, "(セイ)", class: "small-label" %>
+        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kananame", class: "item half-item" %>
+        <%= f.label :first_name_kana, "(メイ)", class: "small-label" %>
+        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kananame", class: "item half-item" %>
+      </div>
+
+      <!--メールアドレス-->
+      <div class="field">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "item" %>
+      </div>
+
+      <!--郵便番号-->
+      <div class="field">
+        <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
+        <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", class: "item half-item" %>
+      </div>
+
+      <!--住所-->
+      <div class="field">
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "item" %>
+      </div>
+
+      <!--アカウント名-->
+      <div class="field">
+        <%= f.label :account_name, "アカウント名" %>
+        <%= f.text_field :account_name, autofocus: true, autocomplete: "account_name", class: "item" %>
+      </div>
+
+      <!--プロフィール画像-->
+      <div class="field">
+        <%= f.label :profile_image, "プロフィール画像" %>
+        <%= f.attachment_field :profile_image, autofocus: true, autocomplete: "profile_image" %>
+      </div>
+
+      <!--紹介文-->
+      <div class="field">
+        <%= f.label :introduction, "紹介文" %>
+        <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "item area" %>
+      </div>
+
+      <!--ステータス-->
+      <div class="field">
+        <%= f.label :is_active, "ステータス" %>
+        <%= f.radio_button :is_active, true %>
+        <%= f.label "利用中" %>
+        <%= f.radio_button :is_active, false %>
+        <%= f.label "一時停止中" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "変更を保存する", class: "btn btn-green" %>
+      </div>
+    <% end %>
+  </div>
+</div>
