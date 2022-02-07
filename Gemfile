@@ -69,3 +69,6 @@ gem 'refile-mini_magick'
 
 # アイコン用gem
 gem 'font-awesome-sass', '~> 5.15.1'
+
+# レイアウト用gem
+gem 'bootstrap', '~> 5.1.3'
