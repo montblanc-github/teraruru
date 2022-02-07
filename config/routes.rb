@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :users, only: [:edit, :show]
+
+    # homes
+    root "homes#top"
   end
 
 end
