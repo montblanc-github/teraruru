@@ -66,3 +66,6 @@ gem 'devise'
 # 画像投稿用gem
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
+
+# アイコン用gem
+gem 'font-awesome-sass', '~> 5.15.1'
