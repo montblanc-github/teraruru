@@ -121,7 +121,7 @@
   color: #fff;
   font-weight: bold;
   font-size: 15px;
-  text-decoration:none;
+  text-decoration: none;
   // inputタグCSSリセット
   border: none;
   outline: none;
@@ -178,7 +178,7 @@
   }
 
   td{
-    height: 70px;
+    height: 80px;
     border-bottom: 1px solid green;
 
     &:first-child{
@@ -190,7 +190,7 @@
     }
 
     &:nth-child(n+2){
-      line-height: 70px;
+      line-height: 80px;
     }
 
     img{
@@ -203,4 +203,55 @@
     color: green;
   }
 
+}
+
+// ページネーション
+.page-item{
+  margin-top: 20px;
+
+  nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagination {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .pagination span {
+    margin: 0 1px;
+    background-color: green;
+    border: 2px solid green;
+    border-radius: 4px;
+  }
+
+  .page, .first, .last, .prev, .next, .trancate{
+    line-height: 35px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .page, .prev, .next, .trancate{
+    width: 35px;
+    height: 35px;
+  }
+
+  .first, .last{
+    width: 60px;
+    height: 35px;
+  }
+
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .current{
+    background-color: #fff!important;
+    color: green!important;
+  }
 }
