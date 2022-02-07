@@ -24,7 +24,6 @@
   box-sizing: border-box;
 }
 
-
 // フッター
 footer{
   margin-top: 30px;
@@ -262,4 +261,13 @@ footer{
     background-color: #fff!important;
     color: green!important;
   }
+}
+
+// ステータス
+.text-green{
+  color: green;
+}
+
+.text-red{
+  color: red;
 }
