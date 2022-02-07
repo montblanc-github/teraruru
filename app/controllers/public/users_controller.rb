@@ -1,11 +1,11 @@
 class Public::UsersController < ApplicationController
 
   def show
-
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
   def update
@@ -17,6 +17,20 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "ユーザ情報の変更に失敗しました。"
       render :edit
     end
+  end
+
+  def destroy
+      @user = User.find(params[:id])
+      if @user.destroy
+        flash[:notice] = "ユーザを削除しました。"
+        redirect_to root_path
+      else
+        flash[:notice] = "ユーザの削除に失敗しました。"
+        render :unsubscribe
+      end
+  end
+
+  def unsubscribe
   end
 
   private
