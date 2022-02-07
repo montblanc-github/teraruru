@@ -1,5 +1,5 @@
 <h2>新規登録</h2>
-
+<p>※ 会員登録がお済みの方は、<%= link_to "こちら", new_session_path(resource_name) %> からログインしてください。</p>
 <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
@@ -76,5 +76,3 @@
     <%= f.submit "新規登録" %>
   </div>
 <% end %>
-
-<p>※ 会員登録がお済みの方は、<%= render "public/shared/links" %> からログインしてください。</p>
