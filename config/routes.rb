@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
   # ユーザ側ルーティング
   devise_for :users, controllers: {
     registrations: "public/registrations",
@@ -13,5 +12,10 @@ Rails.application.routes.draw do
     # homes
     root "homes#top"
   end
+
+  # 管理者側ルーティング
+  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
 
 end
