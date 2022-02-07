@@ -24,6 +24,13 @@
   box-sizing: border-box;
 }
 
+// フッター
+footer{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
 // コンテナ
 .content{
   width: 100%;
@@ -41,6 +48,14 @@
     padding-left: 20px;
     padding-bottom: 5px;
   }
+}
+
+// アイテムスタイル
+.item-style {
+  max-width: 650px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // フォーム
@@ -66,7 +81,7 @@
 
   label {
     width: 100%;
-    max-width: 220px;
+    max-width: 185px;
     margin-bottom: 0;
     letter-spacing: 0.05em;
   }
@@ -113,7 +128,7 @@
   color: #fff;
   font-weight: bold;
   font-size: 15px;
-  text-decoration:none;
+  text-decoration: none;
   // inputタグCSSリセット
   border: none;
   outline: none;
@@ -126,7 +141,142 @@
   background-color: green;
 }
 
+.btn-red{
+  background-color: red;
+}
+
 .btn-gray{
   background-color: #696969;
 }
 
+// プロフィール画像
+.profile_small_icon{
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+}
+
+// 表
+.table{
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-collapse: collapse;
+
+  th{
+    height: 50px;
+    border-top: 1px solid green;
+    border-bottom: 1px solid green;
+
+    &:first-child{
+      width: 12%;
+    }
+
+    &:nth-of-type(2){
+      width: 46%;
+      text-align: left;
+    }
+
+    &:nth-of-type(3){
+      width: 14%;
+      text-align: left;
+    }
+
+    &:nth-of-type(n+4){
+      width: 14%;
+      text-align: center;
+    }
+  }
+
+  td{
+    height: 80px;
+    border-bottom: 1px solid green;
+
+    &:first-child{
+      padding-left: 20px;
+    }
+
+    &:nth-child(2){
+      padding-left: 0.8em;
+    }
+
+    &:nth-child(n+2){
+      line-height: 80px;
+    }
+
+    img{
+      vertical-align: middle;
+    }
+  }
+
+  i{
+    font-size: 1.8em;
+    color: green;
+  }
+
+}
+
+// ページネーション
+.page-item{
+  margin-top: 20px;
+
+  nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagination {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .pagination span {
+    margin: 0 1px;
+    background-color: green;
+    border: 2px solid green;
+    border-radius: 4px;
+  }
+
+  .page, .first, .last, .prev, .next, .trancate{
+    line-height: 35px;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .page, .prev, .next, .trancate{
+    width: 35px;
+    height: 35px;
+  }
+
+  .first, .last{
+    width: 60px;
+    height: 35px;
+  }
+
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .current{
+    background-color: #fff!important;
+    color: green!important;
+  }
+}
+
+// ステータス
+.text-green{
+  color: green;
+}
+
+.text-red{
+  color: red;
+}
+
+// 退会確認画面
+.unsubscribe-style{
+  text-align: center;
+}

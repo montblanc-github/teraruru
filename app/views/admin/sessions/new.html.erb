@@ -1,11 +1,10 @@
 <div class="content">
   <div class="title">
-    <h2><i class="fas fa-sign-in-alt"></i> ログイン</h2>
-    <p>※ 会員登録がお済みでない方は、 <%= link_to "こちら", new_registration_path(resource_name) %> から会員登録してください。</p>
-    <%= render "public/shared/error_messages", resource: resource %>
+    <h2><i class="fas fa-sign-in-alt"></i> 管理者ログイン</h2>
+    <%= render "admin/shared/error_messages", resource: resource %>
   </div>
   <div class="form-style">
-    <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+    <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
 
       <!--メールアドレス-->
       <div class="field">
@@ -24,13 +23,10 @@
       </div>
     <% end %>
 
-    <div class="actions">
-      <%= link_to "パスワードをお忘れの方はこちら", new_password_path(resource_name), class: "btn btn-gray" %>
-    </div>
-
     <p>
-      ※ ポートフォリオ閲覧用のアカウント情報を下記に記載しております。</br>
+      ※ ポートフォリオ閲覧用の管理者アカウント情報を下記に記載しております。</br>
       &emsp;&nbsp;コピー＆ペーストした後、上の入力欄に入力してください。
     </p>
   </div>
 </div>
+
