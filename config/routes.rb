@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
   # ユーザ側ルーティング
   devise_for :users, controllers: {
     registrations: "public/registrations",
