@@ -1,78 +1,80 @@
-<h2><i class="fas fa-user-plus"></i> 新規登録</h2>
-<p>※ 会員登録がお済みの方は、<%= link_to "こちら", new_session_path(resource_name) %> からログインしてください。</p>
-<%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+<div class="container">
+  <h2><i class="fas fa-user-plus"></i> 新規登録</h2>
+  <p>※ 会員登録がお済みの方は、<%= link_to "こちら", new_session_path(resource_name) %> からログインしてください。</p>
+  <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
 
-  <!--氏名-->
-  <div class="field">
-    <%= f.label :氏名 %>
-    <%= f.label :last_name, "(姓)" %>
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "name" %>
-    <%= f.label :first_name, "(名)" %>
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "name" %>
-  </div>
+    <!--氏名-->
+    <div class="field">
+      <%= f.label :氏名 %>
+      <%= f.label :last_name, "(姓)" %>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "name" %>
+      <%= f.label :first_name, "(名)" %>
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "name" %>
+    </div>
 
-  <!--フリガナ-->
-  <div class="field">
-    <%= f.label :フリガナ %>
-    <%= f.label :last_name_kana, "(セイ)" %>
-    <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "name" %>
-    <%= f.label :first_name_kana, "(メイ)" %>
-    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "name" %>
-  </div>
+    <!--フリガナ-->
+    <div class="field">
+      <%= f.label :フリガナ %>
+      <%= f.label :last_name_kana, "(セイ)" %>
+      <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "name" %>
+      <%= f.label :first_name_kana, "(メイ)" %>
+      <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "name" %>
+    </div>
 
-  <!--メールアドレス-->
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <!--メールアドレス-->
+    <div class="field">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <!--郵便番号-->
-  <div class="field">
-    <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :post_code, autofocus: true, autocomplete: "name" %>
-  </div>
+    <!--郵便番号-->
+    <div class="field">
+      <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
+      <%= f.text_field :post_code, autofocus: true, autocomplete: "name" %>
+    </div>
 
-  <!--住所-->
-  <div class="field">
-    <%= f.label :address, "住所" %>
-    <%= f.text_field :address, autofocus: true, autocomplete: "name" %>
-  </div>
+    <!--住所-->
+    <div class="field">
+      <%= f.label :address, "住所" %>
+      <%= f.text_field :address, autofocus: true, autocomplete: "name" %>
+    </div>
 
-  <!--パスワード-->
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <!--パスワード-->
+    <div class="field">
+      <%= f.label :password, "パスワード" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
+      <% end %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
 
-  <!--パスワード(確認用)-->
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード(確認用)" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <!--パスワード(確認用)-->
+    <div class="field">
+      <%= f.label :password_confirmation, "パスワード(確認用)" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <!--アカウント名-->
-  <div class="field">
-    <%= f.label :account_name, "アカウント名" %>
-    <%= f.text_field :account_name, autofocus: true, autocomplete: "name" %>
-  </div>
+    <!--アカウント名-->
+    <div class="field">
+      <%= f.label :account_name, "アカウント名" %>
+      <%= f.text_field :account_name, autofocus: true, autocomplete: "name" %>
+    </div>
 
-  <!--プロフィール画像-->
-  <div class="field">
-    <%= f.label :profile_image, "プロフィール画像" %>
-    <%= f.attachment_field :profile_image, autofocus: true, autocomplete: "name" %>
-  </div>
+    <!--プロフィール画像-->
+    <div class="field">
+      <%= f.label :profile_image, "プロフィール画像" %>
+      <%= f.attachment_field :profile_image, autofocus: true, autocomplete: "name" %>
+    </div>
 
-  <!--紹介文-->
-  <div class="field">
-    <%= f.label :introduction, "紹介文" %>
-    <%= f.text_area :introduction, autofocus: true, autocomplete: "name" %>
-  </div>
+    <!--紹介文-->
+    <div class="field">
+      <%= f.label :introduction, "紹介文" %>
+      <%= f.text_area :introduction, autofocus: true, autocomplete: "name" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
