@@ -1,26 +1,31 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="content">
+  <div class="title">
+    <h2><i class="fas fa-sign-in-alt"></i> 管理者ログイン</h2>
   </div>
+  <div class="form-style">
+    <%= form_with model: @user, url: user_session_path, local: true do |f| %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+      <!--メールアドレス-->
+      <div class="field">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "item" %>
+      </div>
+
+    　<!--パスワード-->
+      <div class="field">
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "item" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "ログイン", class: "btn btn-green" %>
+      </div>
+    <% end %>
+
+    <p>
+      ※ ポートフォリオ閲覧用の管理者アカウント情報を下記に記載しております。</br>
+      &emsp;&nbsp;コピー＆ペーストした後、上の入力欄に入力してください。
+    </p>
   </div>
+</div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
