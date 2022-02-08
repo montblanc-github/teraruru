@@ -76,3 +76,6 @@ gem 'dotenv-rails'
 # ページネーション用gem
 gem 'kaminari'
 
+# 非同期通信用gem
+gem 'jquery-rails'
+

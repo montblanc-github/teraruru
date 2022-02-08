@@ -36,5 +36,5 @@
   end
 
   CSV.foreach('lib/市区町村リスト.csv') do |row|
-    Municipality.create!(prefecture_id: row[0], name: row[1])
+    Municipality.create!(prefecture_id: row[0], municipality_name: row[1])
   end

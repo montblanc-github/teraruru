@@ -4,6 +4,6 @@ class Municipality < ApplicationRecord
   belongs_to :prefecture
 
   # バリデーション
-  validates :name, presence: true
+  validates :municipality_name, presence: true
 
 end

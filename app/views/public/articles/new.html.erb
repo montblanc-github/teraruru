@@ -7,8 +7,8 @@
 
       <!--画像-->
       <div class="field">
-        <%= f.label :artical_image, "画像" %>
-        <%= f.attachment_field article, :artical_image, autofocus: true, autocomplete: "artical_image" %>
+        <%= f.label :article_image, "画像" %>
+        <%= f.attachment_field :article_image, autofocus: true, autocomplete: "artical_image" %>
       </div>
 
       <!--品種名-->
@@ -20,10 +20,14 @@
       <!--都道府県-->
       <div class="field">
         <%= f.label :prefecture, "都道府県" %>
-        <%= f.collection_select :prefecture, Prefecture.all, :id, :name %>
+        <%= f.collection_select :prefecture, Prefecture.all, :id, :name, prompt: "選択してください" %>
       </div>
 
       <!--市区町村-->
+      <div class="field artical_municipality_area">
+        <%= render "public/articles/municipality-select", f: f, prefecture_id: Prefecture.first.id %>
+      </div>
+
       <!--難易度-->
       <!--時期-->
       <!--肥料-->
@@ -40,3 +44,17 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $(document).on('change', '#article_prefecture', function() {
+    return $.ajax({
+      type: 'GET',
+      url: '/articles/get_municipalities',
+      data: {
+        prefecture_id: $(this).val()
+      }
+    }).done(function(data) {
+      return $('.artical_municipality_area').html(data);
+    });
+  });
+</script>

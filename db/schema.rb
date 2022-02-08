@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_034609) do
   end
 
   create_table "municipalities", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "municipality_name", null: false
     t.integer "prefecture_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
