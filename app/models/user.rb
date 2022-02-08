@@ -4,7 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # refile読み込み
   attachment :profile_image
+
+  #アソシエーション
+  has_many :articles, dependent: :destroy
 
   #idを生成する前にset_uuidを呼び出す。
   before_create :set_uuid
