@@ -7,18 +7,18 @@ class Public::ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-    @municipalities = Municipality.all
   end
 
   def create
-    # @article = Article.new(article_params)
-    # if @article.create
-    #   flash[:notice] = "投稿を作成しました。"
-    #   redirect_to article_path
-    # else
-    #   flash[:notice] = "投稿の作成に失敗しました。"
-    #   render :new
-    # end
+    article = Article.new(article_params)
+    article.user_id = current_user.id
+    if article.save
+      flash[:notice] = "投稿を作成しました。"
+      redirect_to article_path(article.id)
+    else
+      flash[:notice] = "投稿の作成に失敗しました。"
+      render :new
+    end
   end
 
   def edit
@@ -31,7 +31,7 @@ class Public::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:artical_image_id, :cultivar_name, :prefecture, :municipality_name, :level, :season, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :message)
+    params.require(:article).permit(:user_id, :artical_image_id, :cultivar_name, :prefecture_id, :municipality_id, :level, :season, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :message)
   end
 
 end
