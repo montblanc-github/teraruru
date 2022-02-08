@@ -1,11 +1,11 @@
 class CreateArticles < ActiveRecord::Migration[5.2]
   def change
     create_table :articles do |t|
-      t.integer :user_id,              index: true
+      t.integer :user_id,              null: false, index: true
       t.string :article_image_id
       t.string :cultivar_name,         null: false
-      t.string :prefecture,            null: false
-      t.string :municipality,          null: false
+      t.integer :prefecture_id,        null: false, index: true
+      t.integer :municipality_id,      null: false, index: true
       t.string :level,                 null: false
       t.string :season,                null: false
       t.boolean :fertilizer_existence, null: false
