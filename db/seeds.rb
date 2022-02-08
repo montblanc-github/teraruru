@@ -28,4 +28,13 @@
     password: "123456"
     )
 
-# 
+# 都道府県・市区町村CSV読み込み
+  require "csv"
+
+  CSV.foreach('lib/都道府県リスト.csv') do |row|
+    Prefecture.create!(name: row[0])
+  end
+
+  CSV.foreach('lib/市区町村リスト.csv') do |row|
+    Municipality.create!(prefecture_id: row[0], name: row[1])
+  end
