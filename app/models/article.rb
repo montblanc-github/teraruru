@@ -5,4 +5,6 @@ class Article < ApplicationRecord
 
   # アソシエーション
   belongs_to :user
+  belongs_to :prefecture
+  belongs_to :municipality
 end

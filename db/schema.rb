@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 2022_02_08_034609) do
   end
 
   create_table "articles", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.string "article_image_id"
     t.string "cultivar_name", null: false
-    t.string "prefecture", null: false
-    t.string "municipality", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "municipality_id", null: false
     t.string "level", null: false
     t.string "season", null: false
     t.boolean "fertilizer_existence", null: false
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2022_02_08_034609) do
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["municipality_id"], name: "index_articles_on_municipality_id"
+    t.index ["prefecture_id"], name: "index_articles_on_prefecture_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 

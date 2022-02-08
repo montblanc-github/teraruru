@@ -7,6 +7,7 @@ class Public::ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @municipalities = Municipality.all
   end
 
   def create
@@ -24,7 +25,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   def get_municipalities
-    render "public/articles/municipality-select", prefecture_id: params[:prefecture_id]
+    @municipalities = Municipality.where(prefecture_id: params[:prefecture_id])
   end
 
   private

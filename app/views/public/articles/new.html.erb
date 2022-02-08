@@ -19,13 +19,14 @@
 
       <!--都道府県-->
       <div class="field">
-        <%= f.label :prefecture, "都道府県" %>
-        <%= f.collection_select :prefecture, Prefecture.all, :id, :name, prompt: "選択してください" %>
+        <%= f.label :prefecture_id, "都道府県" %>
+        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください" %>
       </div>
 
       <!--市区町村-->
-      <div class="field artical_municipality_area">
-        <%= render "public/articles/municipality-select", f: f, prefecture_id: Prefecture.first.id %>
+      <div class="field">
+        <%= f.label :municipality_id, "市区町村" %>
+        <%= f.collection_select :municipality_id, @municipalities, :id, :municipality_name, prompt: "選択してください" %>
       </div>
 
       <!--難易度-->
@@ -46,15 +47,14 @@
 </div>
 
 <script>
-  $(document).on('change', '#article_prefecture', function() {
+  $(document).on('change', '#article_prefecture_id', function() {
     return $.ajax({
       type: 'GET',
       url: '/articles/get_municipalities',
+      dataType: 'script',
       data: {
         prefecture_id: $(this).val()
       }
-    }).done(function(data) {
-      return $('.artical_municipality_area').html(data);
-    });
+    }).done();
   });
 </script>
