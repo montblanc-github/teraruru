@@ -1,2 +1,42 @@
-<h1>Public::Articles#new</h1>
-<p>Find me in app/views/public/articles/new.html.erb</p>
+<div class="content">
+  <div class="title">
+    <h2><i class="fas fa-feather-alt"></i> 投稿する</h2>
+  </div>
+  <div class="form-style">
+    <%= form_with model: @article, local: true do |f| %>
+
+      <!--画像-->
+      <div class="field">
+        <%= f.label :artical_image, "画像" %>
+        <%= f.attachment_field article, :artical_image, autofocus: true, autocomplete: "artical_image" %>
+      </div>
+
+      <!--品種名-->
+      <div class="field">
+        <%= f.label :cultivar_name, "品種名" %>
+        <%= f.text_field :cultivar_name, autofocus: true, autocomplete: "cultivar_name", class: "item" %>
+      </div>
+
+      <!--都道府県-->
+      <div class="field">
+        <%= f.label :prefecture, "都道府県" %>
+        <%= f.collection_select :prefecture, Prefecture.all, :id, :name %>
+      </div>
+
+      <!--市区町村-->
+      <!--難易度-->
+      <!--時期-->
+      <!--肥料-->
+      <!--場所-->
+      <!--条件-->
+      <!--開始時-->
+      <!--タグ-->
+      <!--メッセージ-->
+
+      <div class="actions">
+        <%= f.submit "投稿する", class: "btn btn-green" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
