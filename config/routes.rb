@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get "users/index"
-    get "users/show"
-    get "users/edit"
-  end
   # ユーザ側ルーティング
   devise_for :users, skip: [:registrations], controllers: {
     sessions: "public/sessions",
@@ -18,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+    # users
     resources :users, only: [:show, :edit, :update, :destroy] do
       member do
         get "unsubscribe"
@@ -26,6 +22,14 @@ Rails.application.routes.draw do
 
     # homes
     root "homes#top"
+
+    # articles
+    resources :articles do
+      collection do
+        get "get_municipalities"
+     end
+    end
+
   end
 
   # 管理者側ルーティング
