@@ -4,6 +4,6 @@ class Prefecture < ApplicationRecord
   has_many :municipalities
 
   # バリデーション
-  validates :name, presence: true, uniquness: true
+  validates :name, presence: true
 
 end
