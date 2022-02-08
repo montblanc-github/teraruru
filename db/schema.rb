@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_034609) do
   end
 
   create_table "articles", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.string "user_id", null: false
     t.string "article_image_id"
     t.string "cultivar_name", null: false
     t.integer "prefecture_id", null: false
