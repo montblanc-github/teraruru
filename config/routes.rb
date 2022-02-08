@@ -24,7 +24,12 @@ Rails.application.routes.draw do
     root "homes#top"
 
     # articles
-    resources :articles
+    resources :articles do
+      collection do
+        get "get_municipalities"
+     end
+    end
+
   end
 
   # 管理者側ルーティング
