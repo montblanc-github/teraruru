@@ -4,6 +4,7 @@ class Public::ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @tags = Article.tags_on(:tags)
   end
 
   def new
@@ -55,7 +56,7 @@ class Public::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:user_id, :artical_image_id, :cultivar_name, :prefecture_id, :municipality_id, :level, :season, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :message)
+    params.require(:article).permit(:user_id, :artical_image_id, :cultivar_name, :prefecture_id, :municipality_id, :level, :season, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :tag_list, :message)
   end
 
 end

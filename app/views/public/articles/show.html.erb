@@ -28,11 +28,11 @@
               <td><%= @article.cultivar_name %></td>
             </tr>
             <tr>
-              <th>都道府県名</th>
+              <th>都道府県</th>
               <td><%= @article.prefecture.name %></td>
             </tr>
             <tr>
-              <th>市区町村名</th>
+              <th>市区町村</th>
               <td><%= @article.municipality.municipality_name %></td>
             </tr>
             <tr>
@@ -61,6 +61,18 @@
             <tr>
               <th>開始時</th>
               <td><%= @article.state_at_start %></td>
+            </tr>
+            <tr>
+              <th>タグ</th>
+              <td>
+                <% if @tags.present? %>
+                  <% @tags.each do |tag| %>
+                    <%= tag.name %>(<%= tag.taggings_count %>)
+                  <% end %>
+                <% else %>
+                  登録されているタグはありません。
+                <% end %>
+              </td>
             </tr>
           </tbody>
         </table>

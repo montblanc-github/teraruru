@@ -80,3 +80,5 @@ gem 'kaminari'
 # 非同期通信用gem
 gem 'jquery-rails'
 
+# タグ付け用gem
+gem 'acts-as-taggable-on', '~> 8.1'
