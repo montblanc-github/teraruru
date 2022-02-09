@@ -24,27 +24,6 @@ ActiveRecord::Schema.define(version: 2022_02_09_060050) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "articles", force: :cascade do |t|
-    t.string "user_id", null: false
-    t.string "article_image_id"
-    t.string "cultivar_name", null: false
-    t.integer "prefecture_id", null: false
-    t.integer "municipality_id", null: false
-    t.string "level", null: false
-    t.string "season", null: false
-    t.boolean "fertilizer_existence", null: false
-    t.string "fertilizer_info"
-    t.string "place", null: false
-    t.string "condition", null: false
-    t.string "state_at_start", null: false
-    t.text "message", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["municipality_id"], name: "index_articles_on_municipality_id"
-    t.index ["prefecture_id"], name: "index_articles_on_prefecture_id"
-    t.index ["user_id"], name: "index_articles_on_user_id"
-  end
-
   create_table "municipalities", force: :cascade do |t|
     t.string "municipality_name", null: false
     t.integer "prefecture_id", null: false
