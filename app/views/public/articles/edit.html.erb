@@ -97,7 +97,10 @@
       </div>
 
       <!--タグ-->
-
+      <div class="field">
+        <%= f.label :tag_list, "タグ" %>
+        <%= f.text_field :tag_list, value: @article.tag_list.join(","), class: "item" %>
+      </div>
 
       <!--メッセージ-->
       <div class="field">
