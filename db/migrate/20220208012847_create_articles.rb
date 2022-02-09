@@ -14,7 +14,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.string :place,                 null: false
       t.string :condition,             null: false
       t.string :state_at_start,        null: false
-      t.text :message,                 null: false
+      t.text :message
 
       t.timestamps
     end

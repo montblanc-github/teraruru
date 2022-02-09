@@ -6,7 +6,8 @@
     <div class="article_index_left">
     </div>
     <div class="article_index_right">
-      <% @articles.each do |article| %>
+      <% if @articles.present? %>
+        <% @articles.each do |article| %>
           <div class="card-wrapper">
             <%= link_to article_path(article) do %>
               <div class="card-img">
@@ -31,6 +32,9 @@
               </div>
             </div>
           </div>
+        <% end %>
+      <% else %>
+        <h3>投稿がありません。ヘッダーの投稿するリンクから投稿しよう！</h3>
       <% end %>
     </div>
   </div>
