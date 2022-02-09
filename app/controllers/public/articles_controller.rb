@@ -23,6 +23,18 @@ class Public::ArticlesController < ApplicationController
   end
 
   def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    article = Article.find(params[:id])
+    if article.update(article_params)
+      flash[:notice] = "投稿を編集しました。"
+      redirect_to article_path(article.id)
+    else
+      flash[:notice] = "投稿の編集に失敗しました。"
+      render :edit
+    end
   end
 
   def get_municipalities
