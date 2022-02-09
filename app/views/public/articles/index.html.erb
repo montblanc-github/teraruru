@@ -1,2 +1,24 @@
-<h1>Public::Articles#index</h1>
-<p>Find me in app/views/public/articles/index.html.erb</p>
+<div class="content">
+  <div class="title">
+    <h2><i class="fas fa-feather-alt"></i> みんなの投稿</h2>
+  </div>
+  <div class="item-style article_index_flex">
+    <div class="article_index_left">
+    </div>
+    <div class="article_index_right">
+      <% @articles.each do |article| %>
+        <div class="card-wrapper">
+          <div class="card-img">
+            <%= attachment_image_tag article, :article_image, fallback: "no_image.png", class: "card-index-img" %>
+          </div>
+          <div class="card-title">
+            <%= article.cultivar_name %>
+          </div>
+          <div class="card-footer">
+            <%= article.user.account_name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
