@@ -37,6 +37,17 @@ class Public::ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    article = Article.find(params[:id])
+    if article.destroy
+      flash[:notice] = "投稿を削除しました。"
+      redirect_to root_path
+    else
+      flash[:notice] = "投稿の削除に失敗しました。"
+      redirect_to article_path(article.id)
+    end
+  end
+
   def get_municipalities
     @municipalities = Municipality.where(prefecture_id: params[:prefecture_id])
   end

@@ -2,7 +2,7 @@
   <div class="item-style">
     <div class="article-link">
       <%= link_to "投稿内容を編集する", edit_article_path, class: "btn btn-green" %>
-      <%= link_to "投稿を削除する", article_path, class: "btn btn-red" %>
+      <%= link_to "投稿を削除する", article_path, method: :delete, class: "btn btn-red" %>
     </div>
     <div class="article-show-flex">
       <div class="article-left">
