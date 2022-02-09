@@ -82,3 +82,4 @@ gem 'jquery-rails'
 
 # タグ付け用gem
 gem 'acts-as-taggable-on', '~> 8.1'
+gem 'jquery-ui-rails'

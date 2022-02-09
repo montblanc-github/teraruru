@@ -4,7 +4,7 @@ class Public::ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @tags = Article.tags_on(:tags)
+    @tags = @article.tags_on(:tags)
   end
 
   def new
