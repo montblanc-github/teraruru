@@ -98,8 +98,8 @@
 
       <!--タグ-->
       <div class="field">
-        <%= f.label :tag_list, "タグ" %>
-        <%= f.text_field :tag_list, value: @article.tag_list.join(","), class: "item" %>
+        <%= f.label :tag_list, "タグ"%>
+        <%= f.text_field :tag_list, value: @article.tag_list.join(","), class: "tag_form tagit-hidden-field", name: "article[tag_list]", id: "article_tag_list" %>
       </div>
 
       <!--メッセージ-->
@@ -128,4 +128,10 @@
       }
     }).done();
   });
+
+  $(document).ready(function() {
+    $(".tag_form").tagit({
+      singleField: true,
+    });
+  })
 </script>
