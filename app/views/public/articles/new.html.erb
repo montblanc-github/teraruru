@@ -35,6 +35,19 @@
         <%= f.select :level, [["とても難しい",1],["難しい",2],["普通",3],["簡単",4],["とても簡単",5]], prompt: "選択してください", selected: 3 %>
       </div>
 
+      <!--カテゴリ-->
+      <div class="field">
+        <%= f.label :category, "カテゴリ" %>
+        <%= f.radio_button :category, :vegetable, checked: true %>
+        <%= f.label :category, "野菜", value: :vegetable %>
+        <%= f.radio_button :category, :fruit %>
+        <%= f.label :category, "果物", value: :fruit %>
+        <%= f.radio_button :category, :plant %>
+        <%= f.label :category, "草木", value: :plant %>
+        <%= f.radio_button :category, :flower %>
+        <%= f.label :category, "花", value: :flower %>
+      </div>
+
       <!--時期-->
       <div class="field">
         <%= f.label :season, "時期" %>
