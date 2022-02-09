@@ -54,7 +54,7 @@ footer{
 
 // アイテムスタイル
 .item-style {
-  max-width: 650px;
+  max-width: 755px;
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -291,7 +291,7 @@ footer{
     width: 50%;
 
     .article_show_img{
-      width: 270px;
+      width: 315px;
       height: 210px;
       margin-top: 1em;
       object-fit: cover;
@@ -322,5 +322,43 @@ footer{
     td{
       padding-left: 2em;
     }
+  }
+}
+
+// カードスタイル
+.card-wrapper{
+  width: 170px;
+  height: 190px;
+  margin: 10px 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  .card-img{
+    text-align: center;
+
+    .card-index-img{
+    width: 162px;
+    height: 108px;
+    margin-top: 5px;
+    border-radius: 5px;
+    object-fit: cover;
+    }
+  }
+}
+
+.card-wrapper:nth-child(3n){
+  margin-right: 0;
+}
+
+.article_index_flex{
+  display: flex;
+  .article_index_left{
+    width: 29%;
+  }
+
+  .article_index_right{
+    width: 71%;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
