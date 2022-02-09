@@ -149,13 +149,6 @@ footer{
   background-color: #696969;
 }
 
-// プロフィール画像
-.profile_small_icon{
-  width: 55px;
-  height: 55px;
-  border-radius: 100%;
-}
-
 // 表
 .table{
   width: 100%;
@@ -279,4 +272,53 @@ footer{
 // 退会確認画面
 .unsubscribe-style{
   text-align: center;
+}
+
+// プロフィール画像
+.profile_small_icon{
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+}
+
+// 投稿詳細画面
+.article-show-flex{
+ display: flex;
+
+   .article-left{
+    width: 50%;
+
+    .article_show_img{
+      width: 270px;
+      height: 210px;
+      margin-top: 1em;
+      object-fit: cover;
+    }
+
+    h3{
+      margin-top: 1.5em;
+      font-size: 20px;
+    }
+
+    p{
+      padding-left: 1.5em;
+    }
+  }
+
+
+  .article-right{
+    width: 50%;
+
+    tr{
+      height: 50px;
+    }
+
+    th{
+      text-align: left;
+    }
+
+    td{
+      padding-left: 2em;
+    }
+  }
 }
