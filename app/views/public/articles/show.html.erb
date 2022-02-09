@@ -1,48 +1,82 @@
 <div class="content">
-  <%= attachment_image_tag @article, :article_image, fallback: "no_image.png"%>
-  <%= @article.message %>
-  <table class="table">
-    <tbody>
-      <tr>
-        <th>品種名</th>
-        <td><%= @article.cultivar_name %></td>
-      </tr>
-      <tr>
-        <th>都道府県名</th>
-        <td><%= @article.prefecture.name %></td>
-      </tr>
-      <tr>
-        <th>市区町村名</th>
-        <td><%= @article.municipality.municipality_name %></td>
-      </tr>
-      <tr>
-        <th>難易度</th>
-        <td><%= @article.level %></td>
-      </tr>
-      <tr>
-        <th>時期</th>
-        <td><%= @article.season %></td>
-      </tr>
-      <tr>
-        <th>肥料の有無</th>
-        <td><%= @article.fertilizer_existence %></td>
-      </tr>      <tr>
-        <th>肥料</th>
-        <td><%= @article.fertilizer_info %></td>
-      </tr>
-      <tr>
-        <th>場所</th>
-        <td><%= @article.place %></td>
-      </tr>
-      <tr>
-        <th>条件</th>
-        <td><%= @article.condition %></td>
-      </tr>
-      <tr>
-        <th>開始時</th>
-        <td><%= @article.state_at_start %></td>
-      </tr>
-    </tbody>
-  </table>
-
+  <div class="item-style">
+    <div class="article-link">
+      <%= link_to "投稿内容を編集する", edit_article_path, class: "btn btn-green" %>
+      <%= link_to "投稿を削除する", article_path, method: :delete, class: "btn btn-red" %>
+    </div>
+    <div class="article-show-flex">
+      <div class="article-left">
+        <table>
+          <tbody>
+            <tr>
+              <td><%= attachment_image_tag @article, :article_image, fallback: "no_image.png", class: "article_show_img"%></td>
+            </tr>
+            <tr>
+              <td><h3><i class="fas fa-volume-up"></i> 投稿者から</h3></td>
+            </tr>
+            <tr>
+              <td><p><%= @article.message %></p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="article-right">
+        <table>
+          <tbody>
+            <tr>
+              <th>品種名</th>
+              <td><%= @article.cultivar_name %></td>
+            </tr>
+            <tr>
+              <th>都道府県</th>
+              <td><%= @article.prefecture.name %></td>
+            </tr>
+            <tr>
+              <th>市区町村</th>
+              <td><%= @article.municipality.municipality_name %></td>
+            </tr>
+            <tr>
+              <th>難易度</th>
+              <td><%= @article.level %></td>
+            </tr>
+            <tr>
+              <th>時期</th>
+              <td><%= @article.season %></td>
+            </tr>
+            <tr>
+              <th>肥料</th>
+              <td><%= @article.fertilizer_existence %></td>
+            </tr>      <tr>
+              <th></th>
+              <td><%= @article.fertilizer_info %></td>
+            </tr>
+            <tr>
+              <th>場所</th>
+              <td><%= @article.place %></td>
+            </tr>
+            <tr>
+              <th>条件</th>
+              <td><%= @article.condition %></td>
+            </tr>
+            <tr>
+              <th>開始時</th>
+              <td><%= @article.state_at_start %></td>
+            </tr>
+            <tr>
+              <th>タグ</th>
+              <td>
+                <% if @tags.present? %>
+                  <% @tags.each do |tag| %>
+                    <%= tag.name %>(<%= tag.taggings_count %>)
+                  <% end %>
+                <% else %>
+                  登録されているタグはありません。
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
