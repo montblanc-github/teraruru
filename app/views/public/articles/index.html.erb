@@ -16,6 +16,28 @@
             <% end %>
             <div class="card-title">
               <h5><%= article.cultivar_name %></h5>
+              <% if article.level == "1" %>
+                <div class="level-icon level1-icon">激</div>
+              <% elsif article.level == "2" %>
+                <div class="level-icon level2-icon">難</div>
+              <% elsif article.level == "3" %>
+                <div class="level-icon level3-icon">並</div>
+              <% elsif article.level == "4" %>
+                <div class="level-icon level4-icon">易</div>
+              <% elsif article.level == "5" %>
+                <div class="level-icon level5-icon">甘</div>
+              <% end %>
+
+              <% if article.category == "vegetable" %>
+                <div class="category-icon category-vegetable-icon"><i class="fas fa-carrot"></i></div>
+              <% elsif article.category == "fruit" %>
+                <div class="category-icon category-fruit-icon"><i class="fas fa-apple-alt"></i></div>
+              <% elsif article.category == "plant" %>
+                <div class="category-icon category-plant-icon"><i class="fas fa-tree"></i></div>
+              <% elsif article.category == "flower" %>
+                <div class="category-icon category-flower-icon"><i class="fas fa-hand-holding-heart"></i></div>
+              <% end %>
+
               <% if article.season == "spring" %>
                 <div class="season-icon season-spring-icon"></div>
               <% elsif article.season == "summer" %>
