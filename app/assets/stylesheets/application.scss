@@ -16,6 +16,8 @@
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "jquery.tagit";
+@import "tagit.ui-zendesk";
 
 // リセットCSS
 *{
@@ -52,7 +54,7 @@ footer{
 
 // アイテムスタイル
 .item-style {
-  max-width: 650px;
+  max-width: 755px;
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -147,13 +149,6 @@ footer{
 
 .btn-gray{
   background-color: #696969;
-}
-
-// プロフィール画像
-.profile_small_icon{
-  width: 55px;
-  height: 55px;
-  border-radius: 100%;
 }
 
 // 表
@@ -279,4 +274,141 @@ footer{
 // 退会確認画面
 .unsubscribe-style{
   text-align: center;
+}
+
+// プロフィール画像
+.profile_small_icon{
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+}
+
+// 投稿詳細画面
+.article-show-flex{
+ display: flex;
+
+   .article-left{
+    width: 50%;
+
+    .article_show_img{
+      width: 315px;
+      height: 210px;
+      margin-top: 1em;
+      object-fit: cover;
+    }
+
+    h3{
+      margin-top: 1.5em;
+      font-size: 20px;
+    }
+
+    p{
+      padding-left: 1.5em;
+    }
+  }
+
+
+  .article-right{
+    width: 50%;
+
+    tr{
+      height: 50px;
+    }
+
+    th{
+      text-align: left;
+    }
+
+    td{
+      padding-left: 2em;
+    }
+  }
+}
+
+// カードスタイル
+.card-wrapper{
+  width: 170px;
+  height: 190px;
+  margin: 10px 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  .card-img{
+    text-align: center;
+
+    .card-index-img{
+    width: 162px;
+    height: 108px;
+    margin-top: 5px;
+    border-radius: 5px;
+    object-fit: cover;
+    }
+  }
+
+  .card-title{
+    width: 100%;
+    height: 20px;
+    padding-top: 5px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    h5{
+      margin-right: auto;
+    }
+
+    .season-icon{
+      width: 1em;
+      height: 1em;
+      margin-right: 8px;
+      border-radius: 100%;
+    }
+
+    .season-spring-icon{
+      background-color: pink;
+    }
+
+    .season-summer-icon{
+      background-color: skyblue;
+    }
+
+    .season-autumn-icon{
+      background-color: orange;
+    }
+
+    .season-winter-icon{
+      background-color: blue;
+    }
+  }
+
+  .card-footer-wrapper{
+    width: 100%;
+    height: 45px;
+    text-align: right;
+    position: relative;
+    .card-footer-text{
+      padding-right: 5px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+.card-wrapper:nth-child(3n){
+  margin-right: 0;
+}
+
+.article_index_flex{
+  display: flex;
+  .article_index_left{
+    width: 29%;
+  }
+
+  .article_index_right{
+    width: 71%;
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
