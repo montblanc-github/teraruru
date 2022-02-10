@@ -1,40 +1,47 @@
 <header>
   <%= link_to image_tag("teraruru_logo.png"), root_path, class: "header-logo" %>
 
-  <div class="header-link-group">
+  <div class="header-link-wrapper">
     <% if user_signed_in? %>
-      <div class="header-account-text">ようこそ <%= current_user.account_name %>さん!</div>
-      <%= render "layouts/common-link" %>
-      <%= link_to new_article_path, class: "header-link-item" do %>
-        <p><i class="fas fa-feather-alt"></i>投稿する</p>
-      <% end %>
-      <%= link_to user_path(current_user), class: "header-link-item" do %>
-        <p><i class="fas fa-user-cog"></i>マイページ</p>
-      <% end %>
-      <%= link_to destroy_user_session_path, method: :delete, class: "header-link-item" do %>
-        <p><i class="fas fa-sign-out-alt"></i>ログアウト</p>
-      <% end %>
-
+      <div class="link-group">
+        <%= render "layouts/common-link" %>
+        <%= link_to new_article_path, class: "header-link-item" do %>
+          <p><i class="fas fa-feather-alt"></i>投稿する</p>
+        <% end %>
+        <%= link_to user_path(current_user), class: "header-link-item" do %>
+          <p><i class="fas fa-user-cog"></i>マイページ</p>
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "header-link-item" do %>
+          <p><i class="fas fa-sign-out-alt"></i>ログアウト</p>
+        <% end %>
+      </div>
     <% elsif admin_signed_in? %>
-      <div class="header-blank"></div>
-      <%= render "layouts/common-link" %>
-      <%= link_to admin_users_path, class: "header-link-item" do %>
-        <p><i class="fas fa-info-circle"></i>会員一覧</p>
-      <% end %>
-      <%= link_to destroy_admin_session_path, method: :delete, class: "header-link-item" do %>
-        <p><i class="fas fa-sign-out-alt"></i>ログアウト</p>
-      <% end %>
+      <div class="link-group">
+        <%= render "layouts/common-link" %>
+        <%= link_to admin_users_path, class: "header-link-item" do %>
+          <p><i class="fas fa-info-circle"></i>会員一覧</p>
+        <% end %>
+        <%= link_to destroy_admin_session_path, method: :delete, class: "header-link-item" do %>
+          <p><i class="fas fa-sign-out-alt"></i>ログアウト</p>
+        <% end %>
+      </div>
 
     <% else %>
-      <div class="header-blank"></div>
-      <%= render "layouts/common-link" %>
-      <%= link_to new_user_registration_path, class: "header-link-item" do %>
-        <p><i class="fas fa-user-plus"></i>新規登録</p>
-      <% end %>
-      <%= link_to new_user_session_path, class: "header-link-item" do %>
-        <p><i class="fas fa-sign-in-alt"></i>ログイン</p>
-      <% end %>
+      <div class="link-group">
+        <%= render "layouts/common-link" %>
+        <%= link_to new_user_registration_path, class: "header-link-item" do %>
+          <p><i class="fas fa-user-plus"></i>新規登録</p>
+        <% end %>
+        <%= link_to new_user_session_path, class: "header-link-item" do %>
+          <p><i class="fas fa-sign-in-alt"></i>ログイン</p>
+        <% end %>
+      </div>
+
     <% end %>
+  </div>
+
+  <div class="search-wrapper">
+    <div class="search-box">品種名検索 <i class="fas fa-search"></i></div>
   </div>
 
 </header>
