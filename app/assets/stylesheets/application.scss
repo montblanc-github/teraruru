@@ -26,6 +26,79 @@
   box-sizing: border-box;
 }
 
+// ヘッダー
+header{
+  height: 80px;
+  background-color: #003B00;
+  display: flex;
+  justify-content: center;
+
+  .header-link-wrapper{
+
+    p, a{
+      display: inline-block;
+    }
+
+    i{
+      padding-right: 5px;
+    }
+
+    .link-group{
+      width: 600px;
+      margin: 0 15px;
+      text-align: center;
+    }
+
+    .header-link-item{
+      width: 105px;
+      line-height: 80px;
+      text-align: center;
+      color: #fff;
+      font-size: 14px;
+      text-decoration: none;
+      }
+  }
+
+  .header-logo{
+    img{
+      width: 66px;
+      height: 66px;
+      margin: 7px 20px 7px 30px;
+      border-radius: 100%;
+    }
+  }
+
+  .search-wrapper{
+    width: 200px;
+
+    .search-box{
+      width: 180px;
+      height: 30px;
+      margin: 25px 30px 0 30px;
+      padding-right: 0.6em;
+      text-align: right;
+      line-height: 30px;
+      border-radius: 6px;
+      background-color: #F4FFF4;
+    }
+  }
+}
+
+// アバウトページ
+.about-logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+}
+
+.title-with-logo{
+  height: 40px;
+
+  h2{
+  line-height: 40px;
+  }
+}
+
 // フッター
 footer{
   margin-top: 30px;
@@ -36,13 +109,14 @@ footer{
 // コンテナ
 .content{
   width: 100%;
+  min-height: 550px;
   margin: 2% auto;
 }
 
 // タイトル
 .title{
   max-width: 760px;
-  margin: 0 auto;
+  margin: 50px auto 20px auto;
   display: flex;
   align-items: flex-end;
 
@@ -52,10 +126,19 @@ footer{
   }
 }
 
+.subtitle{
+  width: 100%;
+  margin-bottom: 5px;
+
+  p{
+    padding-top: 5px;
+  }
+}
+
 // アイテムスタイル
 .item-style {
   max-width: 755px;
-  margin-top: 40px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -63,7 +146,6 @@ footer{
 // フォーム
 .form-style {
   max-width: 650px;
-  margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
 
@@ -140,7 +222,7 @@ footer{
 }
 
 .btn-green{
-  background-color: green;
+  background-color: #003B00;
 }
 
 .btn-red{
@@ -159,9 +241,9 @@ footer{
   border-collapse: collapse;
 
   th{
-    height: 50px;
-    border-top: 1px solid green;
-    border-bottom: 1px solid green;
+    height: 40px;
+    border-top: 1px solid #003B00;
+    border-bottom: 1px solid #003B00;
 
     &:first-child{
       width: 12%;
@@ -184,8 +266,8 @@ footer{
   }
 
   td{
-    height: 80px;
-    border-bottom: 1px solid green;
+    height: 70px;
+    border-bottom: 1px solid #003B00;
 
     &:first-child{
       padding-left: 20px;
@@ -196,7 +278,7 @@ footer{
     }
 
     &:nth-child(n+2){
-      line-height: 80px;
+      line-height: 70px;
     }
 
     img{
@@ -206,14 +288,14 @@ footer{
 
   i{
     font-size: 1.8em;
-    color: green;
+    color: #003B00;
   }
 
 }
 
 // ページネーション
 .page-item{
-  margin-top: 20px;
+  margin-top: 15px;
 
   nav {
     display: flex;
@@ -229,8 +311,8 @@ footer{
 
   .pagination span {
     margin: 0 1px;
-    background-color: green;
-    border: 2px solid green;
+    background-color: #003B00;
+    border: 2px solid #003B00;
     border-radius: 4px;
   }
 
@@ -258,13 +340,13 @@ footer{
 
   .current{
     background-color: #fff!important;
-    color: green!important;
+    color: #003B00!important;
   }
 }
 
 // ステータス
 .text-green{
-  color: green;
+  color: #003B00;
 }
 
 .text-red{
