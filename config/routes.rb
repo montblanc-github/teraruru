@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
     # homes
     root "homes#top"
+    get "/about", to: "homes#about"
 
     # articles
     resources :articles do
