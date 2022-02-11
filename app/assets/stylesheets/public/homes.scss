@@ -1,3 +1,50 @@
 // Place all the styles related to the public/Homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// トップページ
+.top-content{
+  width: 100%;
+  min-height: 450px;
+  margin: 2% auto;
+}
+
+.slide-img-wrapper{
+  height: 125px;
+
+  .slide-img1{
+    background-image: url("test1.jpg");
+  }
+
+  .slide-img2{
+    background-image: url("test2.jpg");
+  }
+
+  .slide-img3{
+    background-image: url("test3.jpg");
+  }
+
+  .slide-img4{
+    background-image: url("test4.jpg");
+  }
+
+  .slide-img5{
+    background-image: url("test5.jpg");
+  }
+}
+
+
+// アバウトページ
+.about-logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+}
+
+.title-with-logo{
+  height: 40px;
+
+  h2{
+  line-height: 40px;
+  }
+}
