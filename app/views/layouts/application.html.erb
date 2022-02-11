@@ -11,6 +11,9 @@
 
   <body>
     <%= render "layouts/header" %>
+    <% if current_page?(root_path)%>
+      <%= render "layouts/skippr" %>
+    <% end %>
     <% flash.each do |key, value| %>
       <%= content_tag(:p, value, class: "alert alert-#{key}") %>
     <% end %>
