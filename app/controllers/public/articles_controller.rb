@@ -1,6 +1,10 @@
 class Public::ArticlesController < ApplicationController
   def index
     @articles = Article.search(params[:keyword])
+    if @tag = params[:tag]
+      @articles = Article.tagged_with(params[:tag])
+    end
+
   end
 
   def show
