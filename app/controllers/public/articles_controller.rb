@@ -4,7 +4,7 @@ class Public::ArticlesController < ApplicationController
     if @tag = params[:tag]
       @articles = Article.tagged_with(params[:tag])
     end
-
+    @q = Article.ransack(params[:q])
   end
 
   def show
@@ -52,6 +52,11 @@ class Public::ArticlesController < ApplicationController
       flash[:notice] = "投稿の削除に失敗しました。"
       redirect_to article_path(article.id)
     end
+  end
+
+  def search
+    @q = Article.ransack(params[:q])
+    @articles = @q.result
   end
 
   def get_municipalities
