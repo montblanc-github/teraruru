@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :articles do
       collection do
         get "get_municipalities"
+        get 'search'
      end
     end
 
