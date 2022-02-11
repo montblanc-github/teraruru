@@ -41,7 +41,10 @@
   </div>
 
   <div class="search-wrapper">
-    <div class="search-box">品種名検索 <i class="fas fa-search"></i></div>
+    <%= form_with url: articles_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, placeholder: "商品名検索  \uf002", class: "search-box fa" %>
+      <% f.submit %>
+    <% end %>
   </div>
 
 </header>
