@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-
   # ユーザ側ルーティング
   devise_for :users, skip: [:registrations], controllers: {
     sessions: "public/sessions",
-    passwords: "public/passwords"
+    passwords: "public/passwords",
   }
 
   devise_scope :user do
@@ -30,14 +29,13 @@ Rails.application.routes.draw do
         get "get_municipalities"
         get "get_municipalities_search"
         get 'search'
-     end
+      end
     end
-
   end
 
   # 管理者側ルーティング
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
+    sessions: "admin/sessions",
   }
 
   namespace :admin do
@@ -45,5 +43,4 @@ Rails.application.routes.draw do
 
     resources :articles, only: [:show, :update, :destroy]
   end
-
 end
