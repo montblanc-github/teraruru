@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
+    get "relationships/followings"
+    get "relationships/followers"
   end
   # ユーザ側ルーティング
   devise_for :users, skip: [:registrations], controllers: {
@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get 'users/cancel', to: 'public/registrations#cancel', as: :cancel_user_registration
-    get 'users/sign_up', to: 'public/registrations#new', as: :new_user_registration
-    resource :users, only: [:create], as: 'user_registration', controller: 'public/registrations'
+    get "users/cancel", to: "public/registrations#cancel", as: :cancel_user_registration
+    get "users/sign_up", to: "public/registrations#new", as: :new_user_registration
+    resource :users, only: [:create], as: "user_registration", controller: "public/registrations"
   end
 
   scope module: :public do
@@ -21,6 +21,11 @@ Rails.application.routes.draw do
       member do
         get "unsubscribe"
       end
+
+      resource :relationships, only: [:create, :destroy]
+      get "followings", to: "relationships#followings", as: "followings"
+      get "followers", to: "relationships#followers", as: "followers"
+
     end
 
     # homes
@@ -32,7 +37,7 @@ Rails.application.routes.draw do
       collection do
         get "get_municipalities"
         get "get_municipalities_search"
-        get 'search'
+        get "search"
       end
     end
   end
