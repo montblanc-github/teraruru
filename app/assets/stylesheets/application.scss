@@ -122,7 +122,7 @@ footer{
 
 // アイテムスタイル
 .item-style {
-  max-width: 755px;
+  max-width: 765px;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -471,10 +471,16 @@ footer{
   display: flex;
   .article_index_left{
     width: 29%;
+    font-size: 10px;
+
+    label{
+      width: 10%;
+    }
   }
 
   .article_index_right{
     width: 71%;
+    margin-left: 5px;
     display: flex;
     flex-wrap: wrap;
   }

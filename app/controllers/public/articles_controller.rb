@@ -1,6 +1,12 @@
 class Public::ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @articles = Article.search(params[:keyword])
+    @q = Article.ransack(params[:q])
+    @prefectures = Prefecture.all
+    @municipalities = Municipality.all
+    if @tag = params[:tag]
+      @articles = Article.tagged_with(params[:tag])
+    end
   end
 
   def show
@@ -26,6 +32,9 @@ class Public::ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    @prefectures = Prefecture.all
+    @municipalities = Municipality.all
+    @prefecture_id = @article.prefecture_id
   end
 
   def update
@@ -50,10 +59,22 @@ class Public::ArticlesController < ApplicationController
     end
   end
 
+
+  def search
+    @q = Article.ransack(params[:q])
+    @articles = @q.result
+    @prefectures = Prefecture.all
+    @municipalities = Municipality.all
+    @prefecture_id = params[:q][:prefecture_id_eq]
+  end
+
   def get_municipalities
     @municipalities = Municipality.where(prefecture_id: params[:prefecture_id])
   end
 
+  def get_municipalities_search
+    @municipalities = Municipality.where(prefecture_id: params[:prefecture_id])
+  end
   private
 
   def article_params
