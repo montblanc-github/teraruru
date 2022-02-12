@@ -1,4 +1,6 @@
 class Public::ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show, :search, :get_municipalities, :get_municipalities_search]
+
   def index
     @articles = Article.search(params[:keyword])
     @q = Article.ransack(params[:q])
@@ -11,6 +13,7 @@ class Public::ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @user = @article.user
     @tags = @article.tags_on(:tags)
   end
 

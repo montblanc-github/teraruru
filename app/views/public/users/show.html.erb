@@ -1,3 +1,6 @@
 <h2>プロフィール</h2>
-
-<%= @user.first_name %>
+      <div class="user-profile-card">
+        <%= @user.account_name %>
+        <%= link_to "#{@user.followings.count} フォロー", user_followings_path(@user) %>
+        <%= link_to "#{@user.followers.count} フォロワー", user_followers_path(@user) %>
+      </div>
