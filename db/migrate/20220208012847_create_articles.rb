@@ -15,6 +15,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.string :condition,             null: false
       t.string :state_at_start,        null: false
       t.text :message
+      t.boolean :is_delete,            null: false, default: false
 
       t.timestamps
     end

@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_060050) do
     t.string "condition", null: false
     t.string "state_at_start", null: false
     t.text "message"
+    t.boolean "is_delete", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["municipality_id"], name: "index_articles_on_municipality_id"
