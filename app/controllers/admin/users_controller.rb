@@ -6,7 +6,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
@@ -29,5 +28,4 @@ class Admin::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :post_code, :address, :account_name, :profile_image, :introduction, :is_active)
   end
-
 end

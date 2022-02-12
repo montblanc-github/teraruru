@@ -1,5 +1,4 @@
 class Article < ApplicationRecord
-
   # refile読み込み
   attachment :article_image
 
@@ -14,6 +13,6 @@ class Article < ApplicationRecord
   # 検索
   def self.search(keyword)
     return Article.all unless keyword
-    Article.where("(cultivar_name LIKE?) OR (prefecture_id = ?)","%#{keyword}%","#{keyword}")
+    Article.where("(cultivar_name LIKE?) OR (prefecture_id = ?)", "%#{keyword}%", "#{keyword}")
   end
 end
