@@ -32,6 +32,7 @@ class Public::ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    @prefecture_id = @article.prefecture_id
   end
 
   def update
