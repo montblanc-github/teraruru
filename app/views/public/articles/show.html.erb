@@ -1,12 +1,16 @@
 <div class="content">
   <div class="item-style">
-    <% if current_user == @article.user || current_admin %>
+    <% if current_user == @article.user %>
       <div class="article-link">
         <%= link_to "投稿内容を編集する", edit_article_path, class: "btn btn-green" %>
         <%= link_to "投稿を削除する", article_path, method: :delete, class: "btn btn-red" %>
       </div>
     <% end %>
-    <div class="article-show-flex">
+    <% if current_admin %>
+      <div class="article-link">
+        <%= link_to "投稿を削除する", article_path, method: :delete, class: "btn btn-red" %>
+      </div>
+    <% end %>    <div class="article-show-flex">
       <div class="article-left">
         <table>
           <tbody>
