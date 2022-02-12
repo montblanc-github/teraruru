@@ -20,5 +20,4 @@ class Public::ArticlesControllerTest < ActionDispatch::IntegrationTest
     get public_articles_edit_url
     assert_response :success
   end
-
 end

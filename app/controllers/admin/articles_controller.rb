@@ -33,5 +33,4 @@ class Admin::ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:user_id, :artical_image_id, :cultivar_name, :prefecture_id, :municipality_id, :level, :category, :season, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :tag_list, :message, :is_delete)
   end
-
 end
