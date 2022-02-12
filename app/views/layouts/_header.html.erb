@@ -41,7 +41,7 @@
   </div>
 
   <div class="search-wrapper">
-    <%= form_with url: articles_path, method: :get, local: true do |f| %>
+    <%= form_with url: articles_path, method: :get, skip_enforcing_utf8: true, local: true do |f| %>
       <%= f.text_field :keyword, placeholder: "商品名検索  \uf002", class: "search-box fa" %>
       <% f.submit %>
     <% end %>
