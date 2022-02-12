@@ -4,7 +4,7 @@
   </div>
   <div class="item-style article_index_flex">
     <div class="article_index_left">
-      <%= render "search-form", q: @q %>
+      <%= render "search-form", q: @q, prefectures: @prefectures, municipalities: @municipalities %>
     </div>
     <div class="article_index_right">
       <% if @articles.present? %>
