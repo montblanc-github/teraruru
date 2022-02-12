@@ -1,10 +1,10 @@
 class Public::ArticlesController < ApplicationController
   def index
     @articles = Article.search(params[:keyword])
+    @q = Article.ransack(params[:q])
     if @tag = params[:tag]
       @articles = Article.tagged_with(params[:tag])
     end
-    @q = Article.ransack(params[:q])
   end
 
   def show
@@ -53,6 +53,7 @@ class Public::ArticlesController < ApplicationController
       redirect_to article_path(article.id)
     end
   end
+
 
   def search
     @q = Article.ransack(params[:q])
