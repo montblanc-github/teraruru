@@ -14,6 +14,6 @@ class Article < ApplicationRecord
   # 検索
   def self.search(keyword)
     return Article.all unless keyword
-    Article.where("cultivar_name LIKE?","%#{keyword}%")
+    Article.where("(cultivar_name LIKE?) OR (prefecture_id = ?)","%#{keyword}%","#{keyword}")
   end
 end
