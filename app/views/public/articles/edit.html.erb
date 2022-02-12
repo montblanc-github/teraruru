@@ -20,13 +20,13 @@
       <!--都道府県-->
       <div class="field">
         <%= f.label :prefecture_id, "都道府県" %>
-        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {selected: @article.prefecture_id} %>
+        <%= f.collection_select :prefecture_id, @prefectures, :id, :name, {selected: @article.prefecture_id} %>
       </div>
 
       <!--市区町村-->
       <div class="field">
         <%= f.label :municipality_id, "市区町村" %>
-        <%= f.collection_select :municipality_id, Municipality.all, :id, :municipality_name, {selected: @article.municipality_id} %>
+        <%= f.collection_select :municipality_id, @municipalities, :id, :municipality_name, {selected: @article.municipality_id} %>
       </div>
 
       <!--難易度-->
@@ -140,6 +140,19 @@
         prefecture_id: $(this).val()
       }
     }).done();
+  });
+
+  $(function(){
+    if(!!<%= @prefecture_id || "0" %>){
+    $.ajax({
+      type: 'GET',
+      url: '/articles/get_municipalities',
+      dataType: 'script',
+      data: {
+        prefecture_id: <%= @prefecture_id || "0" %>
+      }
+    }).done();
+    }
   });
 
   $(document).ready(function() {
