@@ -11,7 +11,7 @@ FactoryBot.define do
     fertilizer_existence { Faker::Boolean.boolean }
     fertilizer_info { Faker::Lorem.characters(number: 15) }
     place { 'indoor' }
-    condition { 'pot'}
+    condition { 'pot' }
     state_at_start { 'seed' }
     message { Faker::Lorem.characters(number: 30) }
     tag_list { Faker::Lorem.characters(number: 5) }

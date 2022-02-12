@@ -86,3 +86,6 @@ gem 'jquery-ui-rails'
 
 # 検索用gem
 gem 'ransack'
+
+# コードフォーマット用gem
+gem 'rubocop-airbnb'

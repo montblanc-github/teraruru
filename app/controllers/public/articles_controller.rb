@@ -1,5 +1,4 @@
 class Public::ArticlesController < ApplicationController
-
   def index
     @articles = Article.search(params[:keyword])
     @q = Article.ransack(params[:q])
@@ -60,7 +59,6 @@ class Public::ArticlesController < ApplicationController
     end
   end
 
-
   def search
     @q = Article.ransack(params[:q])
     @articles = @q.result
@@ -76,10 +74,10 @@ class Public::ArticlesController < ApplicationController
   def get_municipalities_search
     @municipalities = Municipality.where(prefecture_id: params[:prefecture_id])
   end
+
   private
 
   def article_params
     params.require(:article).permit(:user_id, :artical_image_id, :cultivar_name, :prefecture_id, :municipality_id, :level, :category, :season, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :tag_list, :message)
   end
-
 end

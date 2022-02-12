@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Prefectureモデルのテスト', type: :model do
-
   describe 'アソシエーションのテスト' do
     context 'Municipalityモデルとの関係' do
       it '1:Nとなっている' do
