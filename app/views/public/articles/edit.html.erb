@@ -142,6 +142,19 @@
     }).done();
   });
 
+  $(function(){
+    if(!!<%= @prefecture_id || "0" %>){
+    $.ajax({
+      type: 'GET',
+      url: '/articles/get_municipalities',
+      dataType: 'script',
+      data: {
+        prefecture_id: <%= @prefecture_id || "0" %>
+      }
+    }).done();
+    }
+  });
+
   $(document).ready(function() {
     $(".tag_form").tagit({
       singleField: true,
