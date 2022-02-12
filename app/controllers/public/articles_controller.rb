@@ -1,4 +1,5 @@
 class Public::ArticlesController < ApplicationController
+
   def index
     @articles = Article.search(params[:keyword])
     @q = Article.ransack(params[:q])

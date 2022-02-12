@@ -64,9 +64,9 @@
       <!--肥料-->
       <div class="field">
         <%= f.label :fertilizer_existence, "肥料" %>
-        <%= f.radio_button :fertilizer_existence, :spring, checked: true %>
+        <%= f.radio_button :fertilizer_existence, :true, checked: true %>
         <%= f.label :fertilizer_existence, "あり", value: true %>
-        <%= f.radio_button :fertilizer_existence, :summer %>
+        <%= f.radio_button :fertilizer_existence, :false %>
         <%= f.label :fertilizer_existence, "なし", value: false %>
       </div>
 
