@@ -1,8 +1,8 @@
 class Public::FavoritesController < ApplicationController
-  before_action :authenticata_user!
+  before_action :authenticate_user!
 
   def create
-    @article = Article.find(params[:id])
+    @article = Article.find(params[:article_id])
     current_user.favorite(@article)
   end
 

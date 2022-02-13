@@ -37,6 +37,8 @@ Rails.application.routes.draw do
         get "get_municipalities_search"
         get "search"
       end
+
+      resources :favorites, only: [:create, :destroy]
     end
 
   end

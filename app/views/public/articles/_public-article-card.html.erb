@@ -42,6 +42,13 @@
           <% end %>
         </div>
         <div class="card-footer-wrapper">
+          <% if user_signed_in? && current_user != article.user %>
+            <% if current_user.favorite?(article) %>
+              <%= link_to "\uf004 #{article.favorites.count}", article_favorite_path(article.id), method: :delete, class: "fas" %>
+            <% else %>
+              <%= link_to "\uf004 #{article.favorites.count}", article_favorites_path(article.id), method: :post, class: "far" %>
+            <% end %>
+          <% end %>
           <div class="card-footer-text">
             <%= article.user.account_name %>
           </div>
