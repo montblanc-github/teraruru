@@ -344,6 +344,12 @@ footer{
 }
 
 // プロフィール画像
+.profile_large_icon{
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+}
+
 .profile_small_icon{
   width: 55px;
   height: 55px;
@@ -483,5 +489,49 @@ footer{
     margin-left: 5px;
     display: flex;
     flex-wrap: wrap;
+  }
+}
+
+// プロフィールカードスタイル
+.user-profile-card{
+  width: 100%;
+  height: 180px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  display: flex;
+
+  .profile-card-left{
+    width: 130px;
+    height: 140px;
+    margin-right: 20px;
+    padding: 15px 0;
+  }
+
+  .profile-card-right{
+    width: 100%;
+    height: 140px;
+
+    th{
+      height: 36px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    td{
+      vertical-align: top;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .follow-count{
+      height: 22px;
+      text-align: right;
+    }
+
+    .profile-introduction{
+      padding-left: 1em;
+    }
   }
 }
