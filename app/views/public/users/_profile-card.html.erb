@@ -4,7 +4,7 @@
   </div>
     <table class="profile-card-right">
       <tr>
-        <th><h2><%= user.account_name %></h2></th>
+        <th><h2><%= link_to user.account_name, user_path(user) %></h2></th>
       </tr>
       <tr>
         <td class="follow-count">
