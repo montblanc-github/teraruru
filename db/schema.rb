@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_13_073232) do
+ActiveRecord::Schema.define(version: 2022_02_13_142228) do
 
   create_table "admins", id: :string, force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 2022_02_13_073232) do
     t.index ["room_id"], name: "index_chats_on_room_id"
     t.index ["user_id"], name: "index_chats_on_user_id"
     t.index ["user_id"], name: "index_chats_on_user_id_and_user_id", unique: true
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "user_id"
+    t.integer "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_favorites_on_article_id"
+    t.index ["user_id", "article_id"], name: "index_favorites_on_user_id_and_article_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "municipalities", force: :cascade do |t|
