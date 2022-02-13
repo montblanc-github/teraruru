@@ -11,6 +11,7 @@ class Article < ApplicationRecord
   belongs_to :municipality
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
+  has_many :comments, dependent: :destroy
 
   # 検索
   def self.search(keyword)
