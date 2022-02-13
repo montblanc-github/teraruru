@@ -1,0 +1,19 @@
+<div class="user-profile-card">
+  <div class="profile-card-left">
+    <%= attachment_image_tag user, :profile_image, fallback: "no_image.png", class: "profile_large_icon"%>
+  </div>
+    <table class="profile-card-right">
+      <tr>
+        <th><h2><%= user.account_name %></h2></th>
+      </tr>
+      <tr>
+        <td class="follow-count">
+          <%= link_to "#{user.followings.count} フォロー", user_followings_path(user) %>
+          <%= link_to "#{user.followers.count} フォロワー", user_followers_path(user) %>
+        </td>
+      </tr>
+      <tr>
+        <td class="profile-introduction"><%= user.introduction %></td>
+      </tr>
+    </table>
+</div>
