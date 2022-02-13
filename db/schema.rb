@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_112741) do
+ActiveRecord::Schema.define(version: 2022_02_13_142228) do
 
   create_table "admins", id: :string, force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -47,6 +47,27 @@ ActiveRecord::Schema.define(version: 2022_02_12_112741) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
+  create_table "chats", force: :cascade do |t|
+    t.string "user_id"
+    t.integer "room_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_chats_on_room_id"
+    t.index ["user_id"], name: "index_chats_on_user_id"
+    t.index ["user_id"], name: "index_chats_on_user_id_and_user_id", unique: true
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "user_id"
+    t.integer "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_favorites_on_article_id"
+    t.index ["user_id", "article_id"], name: "index_favorites_on_user_id_and_article_id", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "municipalities", force: :cascade do |t|
     t.string "municipality_name", null: false
     t.integer "prefecture_id", null: false
@@ -70,6 +91,11 @@ ActiveRecord::Schema.define(version: 2022_02_12_112741) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -99,6 +125,16 @@ ActiveRecord::Schema.define(version: 2022_02_12_112741) do
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "user_rooms", force: :cascade do |t|
+    t.string "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_user_rooms_on_room_id"
+    t.index ["user_id"], name: "index_user_rooms_on_user_id"
+    t.index ["user_id"], name: "index_user_rooms_on_user_id_and_user_id", unique: true
   end
 
   create_table "users", id: :string, force: :cascade do |t|
