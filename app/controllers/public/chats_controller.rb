@@ -17,7 +17,7 @@ class Public::ChatsController < ApplicationController
     end
 
     @chats = @room.chats
-    @chat = chat.new(room_id: @room.id)
+    @chat = Chat.new(room_id: @room.id)
   end
 
   def create
@@ -35,7 +35,7 @@ class Public::ChatsController < ApplicationController
     user = User.find(params[:id])
     if !(current_user.following?(user) && user.following?(current_user))
       flash[:notice] = "相互フォローしている場合のみ、ダイレクトメッセージ機能をご利用いただけます。"
-      redirect_to public_relationships_followers_path
+      redirect_to request.referer
     end
   end
 end

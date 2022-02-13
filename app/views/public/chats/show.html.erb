@@ -1,2 +1,32 @@
-<h1>Public::Chats#show</h1>
-<p>Find me in app/views/public/chats/show.html.erb</p>
+<div class="content">
+  <div class="title">
+    <h2><i class="fas fa-comments"></i> <%= @user.account_name %>さんとのメッセージ</h2>
+  </div>
+  <div class="item-style">
+    <div class="chat-wrapper">
+      <div class="chat-content-wrapper">
+        <% @chats.each do |chat| %>
+          <% if chat.user_id != current_user.id %>
+            <div class="chat-left">
+              <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", class: "profile_small_icon" %>
+              <div class="chat-content"><%= chat.content %></div>
+              <div class="chat-time"><%= chat.created_at %></div>
+            </div>
+          <% else %>
+            <div class="chat-right">
+              <div class="chat-time"><%= chat.created_at %></div>
+              <div class="chat-content"><%= chat.content %></div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="chat-form-wrapper">
+        <%= form_with model: @chat, remote: true do |f| %>
+          <%= f.text_field :content, class: "form-box" %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "\uf1d8", class: "fa form-submit" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@
         <tr>
           <th></th>
           <th>アカウント名</th>
-          <th colspan="2"></th>
+          <th colspan="3"></th>
         </tr>
       </thead>
       <% @users.each do |user| %>
@@ -17,8 +17,17 @@
           <td><%= attachment_image_tag user, :profile_image, fallback: "no_image.png", class: "profile_small_icon" %></td>
           <td><%= user.account_name %></td>
           <td>
+            <% if user_signed_in? && user.following?(current_user) %>
+              <p>フォローしています</p>
+            <% end %>
           </td>
           <td>
+            <% if user_signed_in? && current_user == @user %>
+              <%= link_to "\uf086", chat_path(user), class: "fa" %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "\uf022", user_path(user), class: "fa" %>
           </td>
         </tr>
       </tbody>
