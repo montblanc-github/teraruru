@@ -100,7 +100,7 @@ footer{
 
 // タイトル
 .title{
-  max-width: 760px;
+  max-width: 950px;
   margin: 50px auto 20px auto;
   display: flex;
   align-items: flex-end;
@@ -122,7 +122,7 @@ footer{
 
 // アイテムスタイル
 .item-style {
-  max-width: 765px;
+  max-width: 900px;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -492,10 +492,6 @@ footer{
   }
 }
 
-.card-wrapper:nth-child(3n){
-  margin-right: 0;
-}
-
 .article_index_flex{
   display: flex;
   .article_index_left{
@@ -513,6 +509,12 @@ footer{
     display: flex;
     flex-wrap: wrap;
   }
+}
+
+// ユーザ詳細投稿一覧
+.user-articles-flex{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 // プロフィールカードスタイル
