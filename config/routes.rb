@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'chats/show'
+  end
+  namespace :public do
     get "relationships/followings"
     get "relationships/followers"
   end
