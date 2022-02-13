@@ -13,6 +13,10 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_articles, through: :favorites, source: :article
 
   # idを生成する前にset_uuidを呼び出す。
   before_create :set_uuid
@@ -45,6 +49,19 @@ class User < ApplicationRecord
   # 郵便番号
   def post_code_add_mark
     "〒" + self.post_code.to_s.insert(3, "-")
+  end
+
+  # いいね機能
+  def favorite(article)
+    favorites.find_or_create_by(article: article)
+  end
+
+  def favorite?(article)
+    favorite_articles.include?(article)
+  end
+
+  def unfavorite(article)
+    favorite_articles.delete(article)
   end
 
   private

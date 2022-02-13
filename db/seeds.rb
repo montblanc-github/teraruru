@@ -62,3 +62,11 @@
       )
     end
   end
+
+# フォローseed
+  users = User.all
+  user  = users.first
+  following = users.limit(9).offset(1)
+  followers = users.limit(15).offset(2)
+  following.each { |val| user.follow(val.id) }
+  followers.each { |f| f.follow(user.id) }
