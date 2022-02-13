@@ -1,24 +1,21 @@
 <div class="content">
   <div class="item-style">
     <% if @article.is_delete == false %>
-      <% if current_user == @user %>
-        <div class="article-link">
-          <%= link_to "投稿内容を編集する", edit_article_path, class: "btn btn-green" %>
-          <%= link_to "投稿を削除する", article_path, method: :delete, class: "btn btn-red" %>
-        </div>
-      <% else %>
+     <% if user_signed_in? && current_user != @user %>
         <% if current_user.following?(@user) %>
           <%= link_to "フォロー解除", user_relationships_path(@user), method: :delete %>
         <% else %>
           <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
         <% end %>
       <% end %>
-      <div class="user-profile-card">
-        <%= @user.account_name %>
-        <%= link_to "#{@user.followings.count} フォロー", user_followings_path(@user) %>
-        <%= link_to "#{@user.followers.count} フォロワー", user_followers_path(@user) %>
-      </div>
+      <%= render "public/users/profile-card", user: @user %>
       <div class="article-show-flex">
+        <% if current_user == @user %>
+          <div class="article-link">
+            <%= link_to "投稿内容を編集する", edit_article_path, class: "btn btn-green" %>
+            <%= link_to "投稿を削除する", article_path, method: :delete, class: "btn btn-red" %>
+          </div>
+        <% end %>
         <div class="article-left">
           <table>
             <tbody>
