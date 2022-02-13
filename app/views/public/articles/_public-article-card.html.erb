@@ -44,9 +44,9 @@
         <div class="card-footer-wrapper">
           <% if user_signed_in? && current_user != article.user %>
             <% if current_user.favorite?(article) %>
-              <%= link_to "\uf004 #{article.favorites.count}", article_favorites_path(article), method: :delete, class: "fas" %>
+              <%= link_to "\uf004 #{article.favorites.count}", article_favorites_path(article), method: :delete, class: "fas card-favorite" %>
             <% else %>
-              <%= link_to "\uf004 #{article.favorites.count}", article_favorites_path(article), method: :post, class: "far" %>
+              <%= link_to "\uf004 #{article.favorites.count}", article_favorites_path(article), method: :post, class: "far card-favorite" %>
             <% end %>
           <% end %>
           <div class="card-footer-text">
