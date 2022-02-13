@@ -38,7 +38,7 @@ Rails.application.routes.draw do
         get "search"
       end
 
-      resources :favorites, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
 
   end

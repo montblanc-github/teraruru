@@ -7,8 +7,8 @@ class Public::FavoritesController < ApplicationController
   end
 
   def destroy
-    @article = Favorite.find(params[:id]).article
-    current_user.unlike(@article)
+    @article = Article.find(params[:article_id])
+    current_user.unfavorite(@article)
   end
 
 end
