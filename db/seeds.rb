@@ -28,6 +28,7 @@
     password: "123456"
     )
 
+
 # 都道府県・市区町村CSV読み込み
   require "csv"
 
@@ -37,4 +38,27 @@
 
   CSV.foreach('lib/市区町村リスト.csv') do |row|
     Municipality.create!(prefecture_id: row[0], municipality_name: row[1])
+  end
+
+# 投稿seed
+  User.all.each do |user|
+    20.times do |num|
+      test_category = ["vegetable", "fruit", "plant", "flower"]
+      test_season = ["spring", "summer", "autumn", "winter"]
+      test_place = ["indoor", "outdoor", "veranda"]
+      test_condition = ["pot", "ground", "greenhouse"]
+      test_state = ["seed", "seedling", "bulb"]
+      user.articles.create!(
+        cultivar_name: "test#{num}",
+        prefecture_id: 1,
+        municipality_id: rand(1..10),
+        level: rand(1..5),
+        category: test_category.sample,
+        season: test_season.sample,
+        fertilizer_existence: false,
+        place: test_place.sample,
+        condition: test_condition.sample,
+        state_at_start: test_state.sample
+      )
+    end
   end

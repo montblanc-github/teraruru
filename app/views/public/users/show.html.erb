@@ -36,5 +36,19 @@
       </table>
     <% end %>
   </div>
+  <div class="title">
+    <% if current_user == @user %>
+      <h2><i class="fas fa-feather-alt"></i> あなたの投稿一覧</h2>
+    <% else %>
+      <h2><i class="fas fa-feather-alt"></i> <%= @user.account_name %>の投稿一覧</h2>
+    <% end %>
+  </div>
+  <div class="item-style user-articles-flex">
+    <% if current_admin %>
+      <%= render "admin/articles/admin-article-card", articles: @articles %>
+    <% else %>
+      <%= render "public/articles/public-article-card", articles: @articles %>
+    <% end %>
+  </div>
 </div>
 

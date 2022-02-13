@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @articles = @user.articles.page(params[:page]).per(15)
   end
 
   def edit

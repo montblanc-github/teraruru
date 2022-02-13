@@ -2,12 +2,12 @@ class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search, :get_municipalities, :get_municipalities_search]
 
   def index
-    @articles = Article.search(params[:keyword])
+    @articles = Article.search(params[:keyword]).page(params[:page]).per(9)
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
     if @tag = params[:tag]
-      @articles = Article.tagged_with(params[:tag])
+      @articles = Article.tagged_with(params[:tag]).page(params[:page]).per(9)
     end
   end
 
@@ -64,7 +64,7 @@ class Public::ArticlesController < ApplicationController
 
   def search
     @q = Article.ransack(params[:q])
-    @articles = @q.result
+    @articles = @q.result.page(params[:page]).per(9)
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
     @prefecture_id = params[:q][:prefecture_id_eq]
