@@ -1,6 +1,40 @@
-<h2>プロフィール</h2>
-      <div class="user-profile-card">
-        <%= @user.account_name %>
-        <%= link_to "#{@user.followings.count} フォロー", user_followings_path(@user) %>
-        <%= link_to "#{@user.followers.count} フォロワー", user_followers_path(@user) %>
-      </div>
+<div class="content">
+  <div class="title">
+    <h2><i class="fas fa-user"></i> プロフィール</h2>
+  </div>
+  <div class="item-style">
+    <% if user_signed_in? && current_user != @user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to "フォロー解除", user_relationships_path(@user), method: :delete %>
+      <% else %>
+        <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
+      <% end %>
+    <% end %>
+    <%= render "public/users/profile-card", user: @user %>
+    <% if user_signed_in? && current_user == @user %>
+      <table class="small-table" >
+        <tr>
+          <th>氏名</th>
+          <td><%= @user.full_name %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @user.full_name_kana %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @user.post_code_add_mark %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @user.address %></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>
+
