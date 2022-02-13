@@ -278,6 +278,29 @@ footer{
 
 }
 
+.small-table{
+  width: 95%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: left;
+
+  th{
+    width: 20%;
+    height: 35px;
+    padding-left: 1em;
+    border-top: 1px solid #DAE8DB;
+    border-bottom: 1px solid #DAE8DB;
+  }
+
+  td{
+    width: 80%;
+    height: 35px;
+    padding-left: 2em;
+    border-top: 1px solid #DAE8DB;
+    border-bottom: 1px solid #DAE8DB;
+  }
+}
+
 // ページネーション
 .page-item{
   margin-top: 15px;
