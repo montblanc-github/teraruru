@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'chats/show'
-  end
-  namespace :public do
-    get "relationships/followings"
-    get "relationships/followers"
-  end
+
   # ユーザ側ルーティング
   devise_for :users, skip: [:registrations], controllers: {
     sessions: "public/sessions",
@@ -28,8 +22,9 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get "followings", to: "relationships#followings", as: "followings"
       get "followers", to: "relationships#followers", as: "followers"
-
     end
+
+    resources :chats, only: [:show, :create]
 
     # homes
     root "homes#top"
@@ -43,6 +38,7 @@ Rails.application.routes.draw do
         get "search"
       end
     end
+
   end
 
   # 管理者側ルーティング
