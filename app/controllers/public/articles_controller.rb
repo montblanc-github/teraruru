@@ -15,6 +15,8 @@ class Public::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @user = @article.user
     @tags = @article.tags_on(:tags)
+    @comment = Comment.new
+    @comments = @article.comments
   end
 
   def new
