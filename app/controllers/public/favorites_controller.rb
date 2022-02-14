@@ -10,5 +10,4 @@ class Public::FavoritesController < ApplicationController
     @article = Article.find(params[:article_id])
     current_user.unfavorite(@article)
   end
-
 end
