@@ -40,16 +40,16 @@ class User < ApplicationRecord
 
   # フルネーム
   def full_name
-    self.last_name + " " + self.first_name
+    last_name + " " + first_name
   end
 
   def full_name_kana
-    self.last_name_kana + " " + self.first_name_kana
+    last_name_kana + " " + first_name_kana
   end
 
   # 郵便番号
   def post_code_add_mark
-    "〒" + self.post_code.to_s.insert(3, "-")
+    "〒" + post_code.to_s.insert(3, "-")
   end
 
   # いいね機能
