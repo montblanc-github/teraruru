@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   acts_as_taggable_on :tags
 
   # 閲覧数impressionist読み込み
-  is_impressionable
+  is_impressionable counter_cache: true
 
   # アソシエーション
   belongs_to :user

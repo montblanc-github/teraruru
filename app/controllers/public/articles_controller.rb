@@ -1,11 +1,11 @@
 class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search, :get_municipalities, :get_municipalities_search]
-  impressionist :actions => [:show]
+  impressionist :actions => [:show], :unique => [:session_hash.to_s]
 
   def index
     @articles = Article.search(params[:keyword]).page(params[:page]).per(9)
     @favorite_articles = Article.includes(:favorite_users).sort{|a,b| b.favorite_users.size <=> a.favorite_users.size}.first(3)
-    # @most_view_articles = 
+    @most_view_articles = Article.order('impressions_count DESC').first(3)
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
