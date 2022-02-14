@@ -13,7 +13,7 @@ class Article < ApplicationRecord
   belongs_to :prefecture
   belongs_to :municipality
   has_many :favorites, dependent: :destroy
-  has_many :users, through: :favorites
+  has_many :favorite_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
 
   # 検索

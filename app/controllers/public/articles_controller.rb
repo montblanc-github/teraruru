@@ -4,6 +4,8 @@ class Public::ArticlesController < ApplicationController
 
   def index
     @articles = Article.search(params[:keyword]).page(params[:page]).per(9)
+    @favorite_articles = Article.includes(:favorite_users).sort{|a,b| b.favorite_users.size <=> a.favorite_users.size}.first(3)
+    # @most_view_articles = 
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
