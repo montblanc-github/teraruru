@@ -1,0 +1,6 @@
+<div class="comment-form-wrapper">
+  <%= form_with model: [article, comment], url: article_comments_path(article.id), method: :post, remote: true do |f| %>
+    <%= f.text_field :content, class: "form-box" %>
+    <%= f.submit "\uf1d8", class: "fa form-submit" %>
+  <% end %>
+</div>
