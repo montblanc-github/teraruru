@@ -61,7 +61,7 @@
     <% end %>
   <% end %>
   <div class="page-item">
-    <%= paginate articles %>
+    <%= paginate articles, param_name: "top_article_page" %>
   </div>
 <% else %>
   <h3>投稿がありません。ヘッダーの投稿するリンクから投稿しよう！</h3>
