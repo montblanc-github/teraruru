@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_14_065151) do
+ActiveRecord::Schema.define(version: 2022_02_14_080607) do
 
   create_table "admins", id: :string, force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -111,6 +111,17 @@ ActiveRecord::Schema.define(version: 2022_02_14_065151) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prefecture_id"], name: "index_municipalities_on_prefecture_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "article_id"
+    t.string "visiter_id"
+    t.string "visited_id"
+    t.integer "comment_id"
+    t.string "action"
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "prefectures", force: :cascade do |t|
