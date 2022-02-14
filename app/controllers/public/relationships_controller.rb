@@ -1,5 +1,5 @@
 class Public::RelationshipsController < ApplicationController
-before_action :authenticate_user!, except: [:followings, :followers]
+  before_action :authenticate_user!, except: [:followings, :followers]
 
   def create
     @user = User.find(params[:user_id])

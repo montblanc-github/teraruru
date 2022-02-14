@@ -1,5 +1,5 @@
 class Public::HomesController < ApplicationController
-  
+
   def top
     articles_array = Article.includes(:favorite_users).sort{|a,b| b.favorite_users.size <=> a.favorite_users.size}
     @favorite_articles = Kaminari.paginate_array(articles_array).page(params[:page]).per(6)

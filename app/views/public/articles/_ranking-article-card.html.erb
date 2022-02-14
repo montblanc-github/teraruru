@@ -42,12 +42,18 @@
           <% end %>
         </div>
         <div class="card-footer-wrapper">
-          <% if user_signed_in? && current_user != article.user %>
-            <% if current_user.favorite?(article) %>
-              <%= link_to "\uf004 #{article.favorites.count}", article_favorites_path(article), method: :delete, class: "fas card-favorite" %>
-            <% else %>
-              <%= link_to "\uf004 #{article.favorites.count}", article_favorites_path(article), method: :post, class: "far card-favorite" %>
-            <% end %>
+           <% if user_signed_in? && current_user != article.user %>
+            <div class="favorite-<%= article.id %> card-favorite">
+              <% if current_user.favorite?(article) %>
+                <%= link_to  article_favorites_path(article), method: :delete, remote: true do %>
+                    <i class="fas fa-heart"></i> <%= article.favorites.count %>
+                <% end %>
+              <% else %>
+                <%= link_to article_favorites_path(article), method: :post, remote: true do %>
+                    <i class="far fa-heart"></i> <%= article.favorites.count %>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
           <div class="card-eyes">
             <i class="fas fa-eye"></i>
