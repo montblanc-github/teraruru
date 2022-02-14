@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_articles, through: :favorites, source: :article
   has_many :comments, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_noticifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   # idを生成する前にset_uuidを呼び出す。
   before_create :set_uuid

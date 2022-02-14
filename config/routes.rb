@@ -42,6 +42,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
+    # notifications
+    resources :notifications, only: [:index]
+
   end
 
   # 管理者側ルーティング

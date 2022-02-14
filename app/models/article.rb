@@ -15,6 +15,7 @@ class Article < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
+  has_many :notification, dependent: :destroy
 
   # 検索
   def self.search(keyword)
