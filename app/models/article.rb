@@ -5,6 +5,9 @@ class Article < ApplicationRecord
   # acts-as-taggable-on読み込み
   acts_as_taggable_on :tags
 
+  # 閲覧数impressionist読み込み
+  is_impressionable
+
   # アソシエーション
   belongs_to :user
   belongs_to :prefecture

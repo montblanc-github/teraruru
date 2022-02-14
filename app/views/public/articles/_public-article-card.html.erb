@@ -49,6 +49,10 @@
               <%= link_to "\uf004 #{article.favorites.count}", article_favorites_path(article), method: :post, class: "far card-favorite" %>
             <% end %>
           <% end %>
+          <div class="card-eyes">
+            <i class="fas fa-eye"></i>
+            <%= article.impressionist_count(:filter=>:session_hash) %>
+          </div>
           <div class="card-footer-text">
             <%= article.user.account_name %>
           </div>
