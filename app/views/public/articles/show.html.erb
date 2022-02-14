@@ -90,26 +90,9 @@
         </div>
       </div>
       <div class="comments-wrap">
-        <% @comments.each do |comment| %>
-          <table class="small-table">
-            <tr>
-              <td><%= comment.user.account_name %></td>
-              <td><%= comment.content %></td>
-              <td>
-                <% if comment.user == current_user %>
-                  <%= link_to "削除", article_comment_path(comment), method: :delete %>
-                <% end %>
-              </td>
-            </tr>
-          </table>
-        <% end %>
+        <%= render "public/comments/comment-content", comments: @comments %>
         <% if user_signed_in? %>
-          <div class="comment-form-wrapper">
-            <%= form_with model: [@article, @comment], url: article_comments_path(@article.id), method: :post, local: true do |f| %>
-              <%= f.text_field :content, class: "form-box" %>
-              <%= f.submit "\uf1d8", class: "fa form-submit" %>
-            <% end %>
-          </div>
+        <%= render "public/comments/comment-form", article: @article,comment: @comment %>
         <% end %>
       </div>
     <% else %>
