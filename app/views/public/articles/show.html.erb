@@ -1,7 +1,9 @@
 <div class="content">
   <div class="item-style">
     <% if @article.is_delete == false %>
-      <%= render "public/relationships/follow-btn", user: @user %>
+      <% if user_signed_in? && current_user != @user %>
+        <%= render "public/relationships/follow-btn", user: @user %>
+      <% end %>
       <%= render "public/users/profile-card", user: @user %>
       <% if current_user == @user %>
         <div class="article-link">
