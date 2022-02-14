@@ -12,6 +12,12 @@
       <% else %>
         <%= render "public/articles/public-article-card", articles: @articles %>
       <% end %>
+      <% if user_signed_in? %>
+        <div class="subtitle">
+          <h3><i class="fab fa-gratipay"></i> フォロ－しているユーザの記事一覧</h3>
+        </div>
+        <%= render "public/articles/top-article-card", articles: @following_articles %>
+      <% end %>
     </div>
   </div>
 </div>
