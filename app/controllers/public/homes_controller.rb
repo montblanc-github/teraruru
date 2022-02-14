@@ -1,4 +1,5 @@
 class Public::HomesController < ApplicationController
+  
   def top
     @articles = Article.page(params[:page]).per(6)
     user = User.find(current_user.id)

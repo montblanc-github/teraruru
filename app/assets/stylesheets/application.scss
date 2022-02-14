@@ -490,9 +490,18 @@ footer{
       padding-left: 5px;
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: 1px;
       text-decoration: none;
       color: red;
+    }
+
+    .card-eyes{
+      height: 24px;
+      line-height: 24px;
+      padding-left: 5px;
+      position: absolute;
+      left: 35px;
+      bottom: 0;
     }
 
     .card-footer-text{
