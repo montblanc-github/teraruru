@@ -5,8 +5,10 @@ class Public::CommentsController < ApplicationController
         article = Article.find(params[:article_id])
         comment = current_user.comments.new(comment_params)
         comment.article_id = article.id
-        comment.save
-        redirect_to article_path(article)
+        if comment.save
+            comment.article.create_notification_comment!(current_user, comment.id)
+            render :show
+        end
     end
     
     def destroy
