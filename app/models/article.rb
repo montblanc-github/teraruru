@@ -5,12 +5,16 @@ class Article < ApplicationRecord
   # acts-as-taggable-on読み込み
   acts_as_taggable_on :tags
 
+  # 閲覧数impressionist読み込み
+  is_impressionable counter_cache: true
+
   # アソシエーション
   belongs_to :user
   belongs_to :prefecture
   belongs_to :municipality
   has_many :favorites, dependent: :destroy
-  has_many :users, through: :favorites
+  has_many :favorite_users, through: :favorites, source: :user
+  has_many :comments, dependent: :destroy
 
   # 検索
   def self.search(keyword)

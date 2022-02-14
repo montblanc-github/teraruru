@@ -8,9 +8,15 @@
         <h3><i class="fab fa-gratipay"></i> みんなが「いいね」した記事</h3>
       </div>
       <% if current_admin %>
-        <%= render "admin/articles/admin-article-card", articles: @articles %>
+        <%= render "admin/articles/admin-article-card", articles: @favorite_articles %>
       <% else %>
-        <%= render "public/articles/public-article-card", articles: @articles %>
+        <%= render "public/articles/public-article-card", articles: @favorite_articles %>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="subtitle">
+          <h3><i class="fab fa-gratipay"></i> フォロ－しているユーザの記事一覧</h3>
+        </div>
+        <%= render "public/articles/top-article-card", articles: @following_articles %>
       <% end %>
     </div>
   </div>

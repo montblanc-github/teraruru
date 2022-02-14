@@ -51,6 +51,10 @@
                 <td><%= @article.level %></td>
               </tr>
               <tr>
+                <th>カテゴリ</th>
+                <td><%= @article.category %></td>
+              </tr>
+              <tr>
                 <th>時期</th>
                 <td><%= @article.season %></td>
               </tr>
@@ -78,7 +82,7 @@
                 <td>
                   <% if @tags.present? %>
                     <% @tags.each do |tag| %>
-                      <%= tag.name %>(<%= tag.taggings_count %>)
+                      <%= link_to "#{tag.name}(#{tag.taggings_count})", search_articles_path(tag: tag.name) %>
                     <% end %>
                   <% else %>
                     登録されているタグはありません。
@@ -88,6 +92,29 @@
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="comments-wrap">
+        <% @comments.each do |comment| %>
+          <table class="small-table">
+            <tr>
+              <td><%= comment.user.account_name %></td>
+              <td><%= comment.content %></td>
+              <td>
+                <% if comment.user == current_user %>
+                  <%= link_to "削除", article_comment_path(comment), method: :delete %>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+        <% if user_signed_in? %>
+          <div class="comment-form-wrapper">
+            <%= form_with model: [@article, @comment], url: article_comments_path(@article.id), method: :post, local: true do |f| %>
+              <%= f.text_field :content, class: "form-box" %>
+              <%= f.submit "\uf1d8", class: "fa form-submit" %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     <% else %>
       <h5>管理者によって投稿が非表示にされています。</h5>

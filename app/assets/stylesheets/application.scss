@@ -490,9 +490,18 @@ footer{
       padding-left: 5px;
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: 1px;
       text-decoration: none;
       color: red;
+    }
+
+    .card-eyes{
+      height: 24px;
+      line-height: 24px;
+      padding-left: 5px;
+      position: absolute;
+      left: 35px;
+      bottom: 0;
     }
 
     .card-footer-text{
@@ -661,3 +670,33 @@ footer{
   }
 }
 
+.comment-form-wrapper{
+  max-width: 900px;
+  height: 40px;
+  position: relative;
+
+  .form-box{
+    width: 700px;
+    height: 40px;
+    padding-right: 30px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+  }
+
+  .form-submit{
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,0);
+    border: 0 solid transparent;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 110px;
+  }
+}

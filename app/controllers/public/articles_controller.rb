@@ -1,20 +1,25 @@
 class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search, :get_municipalities, :get_municipalities_search]
+  impressionist :actions => [:show], :unique => [:session_hash.to_s]
 
   def index
-    @articles = Article.search(params[:keyword]).page(params[:page]).per(9)
+    @articles = Article.page(params[:page]).per(9)
+    @favorite_articles = Article.includes(:favorite_users).sort{|a,b| b.favorite_users.size <=> a.favorite_users.size}.first(3)
+    @most_view_articles = Article.order('impressions_count DESC').first(3)
+    @tags = ActsAsTaggableOn::Tag.most_used(10)
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
-    if @tag = params[:tag]
-      @articles = Article.tagged_with(params[:tag]).page(params[:page]).per(9)
-    end
   end
 
   def show
     @article = Article.find(params[:id])
     @user = @article.user
     @tags = @article.tags_on(:tags)
+    @comment = Comment.new
+    @comments = @article.comments
+    # can't cast Rack::Session::SessionIdエラーを解消するため、to_sを記載。
+    impressionist(@article, nil, unique: [:session_hash.to_s])
   end
 
   def new
@@ -64,10 +69,16 @@ class Public::ArticlesController < ApplicationController
 
   def search
     @q = Article.ransack(params[:q])
-    @articles = @q.result.page(params[:page]).per(9)
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
-    @prefecture_id = params[:q][:prefecture_id_eq]
+    if params[:keyword].present?
+      @articles = Article.search(params[:keyword]).page(params[:page]).per(9)
+    elsif params[:q].present?
+      @articles = @q.result.page(params[:page]).per(9)
+      @prefecture_id = params[:q][:prefecture_id_eq]
+    elsif @tag = params[:tag]
+      @articles = Article.tagged_with(params[:tag]).page(params[:page]).per(9)
+    end
   end
 
   def get_municipalities

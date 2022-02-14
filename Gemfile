@@ -89,3 +89,6 @@ gem 'ransack'
 
 # コードフォーマット用gem
 gem 'rubocop-airbnb'
+
+# 閲覧数用gem
+gem 'impressionist', '~>1.6.1'
