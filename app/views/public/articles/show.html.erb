@@ -1,13 +1,7 @@
 <div class="content">
   <div class="item-style">
     <% if @article.is_delete == false %>
-     <% if user_signed_in? && current_user != @user %>
-        <% if current_user.following?(@user) %>
-          <%= link_to "フォロー解除", user_relationships_path(@user), method: :delete %>
-        <% else %>
-          <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
-        <% end %>
-      <% end %>
+      <%= render "public/relationships/follow-btn", user: @user %>
       <%= render "public/users/profile-card", user: @user %>
       <% if current_user == @user %>
         <div class="article-link">
