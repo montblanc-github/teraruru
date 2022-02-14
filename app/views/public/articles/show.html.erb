@@ -82,7 +82,7 @@
                 <td>
                   <% if @tags.present? %>
                     <% @tags.each do |tag| %>
-                      <%= tag.name %>(<%= tag.taggings_count %>)
+                      <%= link_to "#{tag.name}(#{tag.taggings_count})", search_articles_path(tag: tag.name) %>
                     <% end %>
                   <% else %>
                     登録されているタグはありません。

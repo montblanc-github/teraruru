@@ -58,7 +58,7 @@
         fertilizer_existence: false,
         place: test_place.sample,
         condition: test_condition.sample,
-        state_at_start: test_state.sample
+        state_at_start: test_state.sample,
       )
     end
   end
