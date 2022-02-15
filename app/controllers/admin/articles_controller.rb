@@ -9,6 +9,7 @@ class Admin::ArticlesController < ApplicationController
   def update
     article = Article.find(params[:id])
     if article.update(article_params)
+      article.create_notification_hidden!
       flash[:notice] = "投稿の表示状態を変更しました。"
       redirect_to admin_article_path(article.id)
     else
@@ -20,6 +21,7 @@ class Admin::ArticlesController < ApplicationController
   def destroy
     article = Article.find(params[:id])
     if article.destroy
+      article.create_notification_delete!
       flash[:notice] = "投稿を削除しました。"
       redirect_to root_path
     else

@@ -4,6 +4,8 @@ class Public::FavoritesController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
     current_user.favorite(@article)
+    # 通知
+    @article.create_notification_by(current_user)
   end
 
   def destroy
