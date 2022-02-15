@@ -40,6 +40,11 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+
+    # notifications
+    resources :notifications, only: [:index]
+
+
   end
 
   # 管理者側ルーティング
