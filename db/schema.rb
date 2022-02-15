@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2022_02_14_080607) do
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_chats_on_room_id"
     t.index ["user_id"], name: "index_chats_on_user_id"
-    t.index ["user_id"], name: "index_chats_on_user_id_and_user_id", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
@@ -182,7 +181,6 @@ ActiveRecord::Schema.define(version: 2022_02_14_080607) do
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_user_rooms_on_room_id"
     t.index ["user_id"], name: "index_user_rooms_on_user_id"
-    t.index ["user_id"], name: "index_user_rooms_on_user_id_and_user_id", unique: true
   end
 
   create_table "users", id: :string, force: :cascade do |t|
