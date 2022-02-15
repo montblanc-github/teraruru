@@ -1,0 +1,13 @@
+<div class="content">
+  <div class="title">
+    <h2>通知</h2>
+  </div>
+  <div class="item-style">
+    <%= link_to "全削除", destroy_all_user_notifications_path(current_user), method: :delete %>
+    <% if @notifications.present? %>
+      <%= render @notifications %>
+    <% else %>
+      <h5>通知はありません。</h5>
+    <% end %>
+  </div>
+</div>

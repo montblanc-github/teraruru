@@ -9,7 +9,7 @@
           <%= f.label :is_delete, "非表示", value: true %>
           <%= f.submit "変更" %>
         <% end %>
-        <%= link_to "投稿を完全削除する", article_path, method: :delete, class: "btn btn-red" %>
+        <%= link_to "投稿を完全削除する", admin_article_path, method: :delete, class: "btn btn-red" %>
       </div>
     <% end %>
     <div class="article-show-flex">

@@ -7,8 +7,9 @@ class Public::CommentsController < ApplicationController
     comment = current_user.comments.new(comment_params)
     comment.article_id = article.id
     if comment.save
-        comment.article.create_notification_comment!(current_user, comment.id)
-        render :show
+      if article.user != current_user
+        article.create_notification_comment!(current_user, comment.id, article.user_id)
+      end
     end
   end
 
