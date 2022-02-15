@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # ユーザ側ルーティング
   devise_for :users, skip: [:registrations], controllers: {
     sessions: "public/sessions",
@@ -41,7 +40,6 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-
   end
 
   # 管理者側ルーティング

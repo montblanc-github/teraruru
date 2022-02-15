@@ -5,5 +5,4 @@ class Public::ChatsControllerTest < ActionDispatch::IntegrationTest
     get public_chats_show_url
     assert_response :success
   end
-
 end

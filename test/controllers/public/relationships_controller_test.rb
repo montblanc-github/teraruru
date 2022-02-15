@@ -10,5 +10,4 @@ class Public::RelationshipsControllerTest < ActionDispatch::IntegrationTest
     get public_relationships_followers_url
     assert_response :success
   end
-
 end

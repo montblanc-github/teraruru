@@ -1,0 +1,4 @@
+$(".favorite-<%= @article.id %>").html(
+'<%= link_to  article_favorites_path(@article), method: :delete, remote: true do %>\
+  <i class="fas fa-heart"></i> <%= @article.favorites.count %>\
+<% end %>');
