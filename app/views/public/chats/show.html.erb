@@ -4,7 +4,7 @@
   </div>
   <div class="item-style">
     <div class="chat-wrapper">
-      <div class="chat-content-wrapper">
+      <div class="chat-content-wrapper" id="chat-content-area">
         <% @chats.each do |chat| %>
           <% if chat.user_id != current_user.id %>
             <div class="chat-left">

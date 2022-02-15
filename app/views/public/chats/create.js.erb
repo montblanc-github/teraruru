@@ -1,0 +1,8 @@
+$("#chat-content-area").append(
+'<div class="chat-right">\
+  <div class="chat-time"><%= @chat.created_at %></div>\
+  <div class="chat-content"><%= @chat.content %></div>\
+</div>');
+
+console.log("test")
+$("input[type=text]").val('');
