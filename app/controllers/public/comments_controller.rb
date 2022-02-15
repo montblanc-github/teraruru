@@ -6,7 +6,11 @@ class Public::CommentsController < ApplicationController
     @comments = article.comments
     comment = current_user.comments.new(comment_params)
     comment.article_id = article.id
-    comment.save
+    if comment.save
+      if article.user != current_user
+        article.create_notification_comment!(current_user, comment.id, article.user_id)
+      end
+    end
   end
 
   def destroy
