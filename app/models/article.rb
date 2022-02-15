@@ -33,23 +33,34 @@ class Article < ApplicationRecord
     notification.save if notification.valid?
   end
 
-  def create_notification_comment!(current_user, comment_id)
-    temp_ids = Comment.select(:user_id).where(article_id: id).where.not(user_id: current_user.id).distinct
-    temp_ids.each do |temp_id|
-        save_notification_comment!(current_user, comment_id, temp_id['user_id'])
-    end
-    save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
+  def create_notification_hidden!
+    notification = Notification.new(
+      article_id: id,
+      visited_id: user_id,
+      admin_id: 1,
+      action: "hidden"
+    )
+    notification.save
   end
 
-  def save_notification_comment!(current_user, comment_id, visited_id)
-    notification = current_user.active_notifications.new(
+  def create_notification_delete!
+    notification = Notification.new(
       article_id: id,
-      comment_id: comment_id,
-      visited_id: visited_id,
-      action: 'comment'
+      visited_id: user_id,
+      admin_id: 1,
+      action: "delete"
     )
-    if notification.visiter_id == notification.visited_id
-      notification.checked = true
+    notification.save
+  end
+
+  def create_notification_comment!(current_user, comment_id, visited_id)
+    unless current_user.id == visited_id
+      notification = current_user.active_notifications.new(
+        article_id: id,
+        comment_id: comment_id,
+        visited_id: visited_id,
+        action: 'comment'
+      )
     end
     notification.save if notification.valid?
   end

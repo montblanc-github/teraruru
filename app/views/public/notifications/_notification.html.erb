@@ -1,0 +1,7 @@
+<%= attachment_image_tag notification.visiter, :profile_image, fallback: "no_image.png", class: "profile_small_icon" %>
+<%= notification_form(notification) %><%= "(#{time_ago_in_words(notification.created_at)} 前)" %>
+<br>
+<% if !@comment.nil? %>
+  <p><%= @comment.truncate(35) %></p>
+<% end %>
+<%= link_to "削除", user_notification_path(current_user.id,notification.id), method: :delete %>
