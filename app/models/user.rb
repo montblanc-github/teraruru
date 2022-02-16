@@ -79,6 +79,20 @@ class User < ApplicationRecord
     end
   end
 
+  # ゲストログイン機能
+  def self.guest
+    find_or_create_by!(account_name: 'guestuser' ,email: 'guest@example.com') do |user|
+      user.last_name = "竜宮の乙姫の"
+      user.first_name = "元結の切外し"
+      user.last_name_kana = "リュウグウノオトヒメノ"
+      user.first_name_kana = "モトユイノキリハズシ"
+      user.password = SecureRandom.urlsafe_base64
+      user.post_code = "1234567"
+      user.address = "東京都中央区てらるるビル10階-1"
+      user.account_name = "guestuser"
+    end
+  end
+
   private
 
   # idをuuidに変更。

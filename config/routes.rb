@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "users/cancel", to: "public/registrations#cancel", as: :cancel_user_registration
     get "users/sign_up", to: "public/registrations#new", as: :new_user_registration
+    post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
     resource :users, only: [:create], as: "user_registration", controller: "public/registrations"
   end
 
