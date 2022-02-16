@@ -10,6 +10,9 @@
         <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
       <% end %>
     <% end %>
+    <% if @user.account_name != "guestuser" && current_user == @user %>
+      <%= link_to "プロフィールを編集する", edit_user_path(@user), class: "btn btn-green" %>
+    <% end %>
     <%= render "public/users/profile-card", user: @user %>
     <% if user_signed_in? && current_user == @user %>
       <table class="small-table" >
