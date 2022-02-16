@@ -1,10 +1,42 @@
-<div class="content">
+<div class="top-content">
   <div class="title">
     <h2><i class="fas fa-crown"></i> ランキング</h2>
   </div>
-  <%= render "public/articles/tag-ranking", tags: @tags %>
-  <%= render "public/articles/ranking-article-card", articles: @favorite_articles %>
-  <%= render "public/articles/ranking-article-card", articles: @most_view_articles %>
+  <div class="article-index-style ranking-flex">
+    <div class="ranking-left">
+      <div class="top-title index-subtitle">
+        <h3><i class="fas fa-tag"></i> 人気のタグ Top10</h3>
+      </div>
+      <div class="article-index-tags-wrapper">
+        <div class="article-index-tags-contents">
+          <% @tags.each.with_index(1) do |tag, i| %>
+            <div class="tag-flex">
+              <div class="tag-ranking-num"><p><%= "No.#{i}" %></p></div>
+              <%= link_to "#{tag.name} (#{tag.taggings_count})", search_articles_path(tag: tag.name), class: "article-index-tag-content" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="ranking-right">
+      <div class="favorite-ranking-wrapper">
+        <div class="top-title index-subtitle">
+          <h3><i class="fab fa-gratipay"></i> みんなが「いいね」した記事 Top3</h3>
+        </div>
+        <div class="favorite-ranking-content">
+          <%= render "public/articles/ranking-article-card", articles: @favorite_articles %>
+        </div>
+      </div>
+      <div class="view-ranking-wrapper">
+        <div class="top-title index-subtitle">
+          <h3><i class="fas fa-eye"></i> みんなが閲覧した記事 Top3</h3>
+        </div>
+        <div class="view-ranking-content">
+          <%= render "public/articles/ranking-article-card", articles: @most_view_articles %>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="title">
     <h2><i class="fas fa-feather-alt"></i> みんなの投稿</h2>
   </div>
