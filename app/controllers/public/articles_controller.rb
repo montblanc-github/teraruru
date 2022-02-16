@@ -4,7 +4,7 @@ class Public::ArticlesController < ApplicationController
 
   def index
     @articles = Article.page(params[:page]).per(9)
-    @favorite_articles = Article.includes(:favorite_users).sort { |a, b| b.favorite_users.size <=> a.favorite_users.size }.first(3)
+    @favorite_articles = Article.includes(:favorite_users).sort{ |a, b| b.favorite_users.size <=> a.favorite_users.size }.first(3)
     @most_view_articles = Article.order('impressions_count DESC').first(3)
     @tags = ActsAsTaggableOn::Tag.most_used(10)
     @q = Article.ransack(params[:q])
