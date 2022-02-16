@@ -1,0 +1,51 @@
+<header>
+  <%= link_to image_tag("teraruru_logo.png"), root_path, class: "header-logo" %>
+
+  <div class="header-link-wrapper">
+    <% if user_signed_in? %>
+      <div class="link-group">
+        <%= render "layouts/common-link" %>
+        <%= link_to new_article_path, class: "header-link-item" do %>
+          <p><i class="fas fa-feather-alt"></i>投稿する</p>
+        <% end %>
+        <%= link_to user_path(current_user), class: "header-link-item" do %>
+          <p><i class="fas fa-user-cog"></i>マイページ</p>
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete, class: "header-link-item" do %>
+          <p><i class="fas fa-sign-out-alt"></i>ログアウト</p>
+        <% end %>
+        <%= link_to "\uf0f3", user_notifications_path(current_user), class: "fas" %>
+      </div>
+    <% elsif admin_signed_in? %>
+      <div class="link-group">
+        <%= render "layouts/common-link" %>
+        <%= link_to admin_users_path, class: "header-link-item" do %>
+          <p><i class="fas fa-info-circle"></i>会員一覧</p>
+        <% end %>
+        <%= link_to destroy_admin_session_path, method: :delete, class: "header-link-item" do %>
+          <p><i class="fas fa-sign-out-alt"></i>ログアウト</p>
+        <% end %>
+      </div>
+
+    <% else %>
+      <div class="link-group">
+        <%= render "layouts/common-link" %>
+        <%= link_to new_user_registration_path, class: "header-link-item" do %>
+          <p><i class="fas fa-user-plus"></i>新規登録</p>
+        <% end %>
+        <%= link_to new_user_session_path, class: "header-link-item" do %>
+          <p><i class="fas fa-sign-in-alt"></i>ログイン</p>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div class="search-wrapper">
+    <%= form_with url: search_articles_path, method: :get, skip_enforcing_utf8: true, local: true do |f| %>
+      <%= f.text_field :keyword, placeholder: "品種名検索  \uf002", class: "search-box fa" %>
+      <% f.submit %>
+    <% end %>
+  </div>
+
+</header>

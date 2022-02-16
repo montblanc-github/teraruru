@@ -1,0 +1,117 @@
+// Place all the styles related to the public/Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 投稿一覧画面
+.article-index-style {
+  max-width: 950px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.index-subtitle{
+  padding-left: 1em;
+}
+
+.ranking-flex{
+  display: flex;
+
+  .ranking-left{
+    width: 305px;
+    height: 610px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+  }
+
+  .ranking-right{
+    width: 630px;
+    margin-left: 5px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.article-index-tags-wrapper{
+  width: 305px;
+  height: 410px;
+  margin-top: 10px;
+
+  .article-index-tags-contents{
+    width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tag-flex{
+    display: flex;
+    margin-bottom: 16px;
+
+    .tag-ranking-num{
+      width: 45px;
+      height: 30px;
+      padding: 3px 0;
+      margin: 4px 4px 4px 0;
+      line-height: 24px;
+      color: #003B00;
+      font-weight: bold;
+    }
+  }
+
+  .article-index-tag-content{
+    width: 200px;
+    height: 30px;
+    padding: 3px 10px;
+    margin: 4px;
+    display: inline-block;
+    background-color: #003B00;
+    color: #F4FFF4;
+    line-height: 24px;
+    font-size: 12px;
+    border: 1px solid #003B00;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+}
+
+.article-ranking-content{
+  margin: 0 5px;
+}
+
+.favorite-ranking-wrapper, .view-ranking-wrapper{
+  width: 100%;
+  padding-top: 20px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+
+  .favorite-ranking-content, .view-ranking-content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .ranking-wrapper{
+      height: 300px;
+      border: 1px solid #000;
+    }
+
+    .ranking-num{
+      width: 100%;
+      height: 30px;
+      padding: 3px 0;
+      margin: 0 4px 4px 0;
+      text-align: center;
+      line-height: 24px;
+      color: #003B00;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}
+
+
+.favorite-ranking-wrapper{
+  margin-bottom: 10px;
+}

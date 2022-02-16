@@ -48,14 +48,50 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry-byebug'
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# ユーザ管理、管理者機能導入のgem
+gem 'devise'
+
+# 画像投稿用gem
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'
+
+# アイコン用gem
+gem 'font-awesome-sass', '~> 5.15.1'
+
+# ページネーション用gem
+gem 'kaminari'
+
+# 非同期通信用gem
+gem 'jquery-rails'
+
+# タグ付け用gem
+gem 'acts-as-taggable-on', '~> 8.1'
+gem 'jquery-ui-rails'
+
+# 検索用gem
+gem 'ransack'
+
+# コードフォーマット用gem
+gem 'rubocop-airbnb'
+
+# 閲覧数用gem
+gem 'impressionist', '~>1.6.1'
+
+# 環境変数用gem
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

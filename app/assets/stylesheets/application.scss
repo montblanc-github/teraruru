@@ -1,0 +1,704 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "jquery.tagit";
+@import "tagit.ui-zendesk";
+
+// リセットCSS
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// ヘッダー
+header{
+  height: 80px;
+  background-color: #003B00;
+  display: flex;
+  justify-content: center;
+
+  .header-link-wrapper{
+
+    p, a{
+      display: inline-block;
+    }
+
+    i{
+      padding-right: 5px;
+    }
+
+    .link-group{
+      width: 600px;
+      margin: 0 15px;
+      text-align: center;
+    }
+
+    .header-link-item{
+      width: 105px;
+      line-height: 80px;
+      text-align: center;
+      color: #fff;
+      font-size: 14px;
+      text-decoration: none;
+      }
+  }
+
+  .header-logo{
+    img{
+      width: 66px;
+      height: 66px;
+      margin: 7px 20px 7px 30px;
+      border-radius: 100%;
+    }
+  }
+
+  .search-wrapper{
+    width: 200px;
+
+    .search-box{
+      width: 180px;
+      height: 30px;
+      margin: 25px 30px 0 30px;
+      padding-right: 0.6em;
+      text-align: right;
+      line-height: 30px;
+      border-radius: 6px;
+      background-color: #F4FFF4;
+    }
+  }
+}
+
+// フッター
+footer{
+  height: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+// コンテナ
+.content{
+  width: 100%;
+  min-height: 550px;
+  margin: 2% auto;
+}
+
+// タイトル
+.title{
+  max-width: 950px;
+  margin: 50px auto 20px auto;
+  display: flex;
+  align-items: flex-end;
+
+  p{
+    padding-left: 20px;
+    padding-bottom: 5px;
+  }
+}
+
+.subtitle{
+  width: 100%;
+  margin-bottom: 5px;
+
+  p{
+    padding-top: 5px;
+  }
+}
+
+// アイテムスタイル
+.item-style {
+  max-width: 900px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// フォーム
+.form-style {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .pf-info{
+    margin-top: 35px;
+    padding-top: 35px;
+    border-top: 1px solid #ddd;
+  }
+}
+
+.field {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+  label {
+    width: 100%;
+    max-width: 185px;
+    margin-bottom: 0;
+    letter-spacing: 0.05em;
+  }
+
+  .small-label{
+    width: 4em;
+
+    &:nth-of-type(2n+1){
+      padding-left: 5px;
+    }
+  }
+
+  .item{
+    width: 100%;
+    height: 35px;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    flex: 1;
+  }
+
+  .half-item{
+    width: 30%;
+  }
+
+  .area{
+    height: 105px;
+  }
+}
+
+// ボタン
+.btn {
+  width: 280px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-radius: 6px;
+  display: block;
+  letter-spacing: 0.05em;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  text-decoration: none;
+  // inputタグCSSリセット
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.btn-green{
+  background-color: #003B00;
+}
+
+.btn-red{
+  background-color: red;
+}
+
+.btn-gray{
+  background-color: #696969;
+}
+
+// 表
+.table{
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-collapse: collapse;
+
+  th{
+    height: 40px;
+    border-top: 1px solid #003B00;
+    border-bottom: 1px solid #003B00;
+
+    &:first-child{
+      width: 12%;
+    }
+
+    &:nth-of-type(2){
+      width: 46%;
+      text-align: left;
+    }
+
+    &:nth-of-type(3){
+      width: 14%;
+      text-align: left;
+    }
+
+    &:nth-of-type(n+4){
+      width: 14%;
+      text-align: center;
+    }
+  }
+
+  td{
+    height: 70px;
+    border-bottom: 1px solid #003B00;
+
+    &:first-child{
+      padding-left: 20px;
+    }
+
+    &:nth-child(2){
+      padding-left: 0.8em;
+    }
+
+    &:nth-child(n+2){
+      line-height: 70px;
+    }
+
+    img{
+      vertical-align: middle;
+    }
+  }
+
+  i{
+    font-size: 1.8em;
+    color: #003B00;
+  }
+
+}
+
+.small-table{
+  width: 95%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: left;
+
+  th{
+    width: 20%;
+    height: 35px;
+    padding-left: 1em;
+    border-top: 1px solid #DAE8DB;
+    border-bottom: 1px solid #DAE8DB;
+  }
+
+  td{
+    width: 80%;
+    height: 35px;
+    padding-left: 2em;
+    border-top: 1px solid #DAE8DB;
+    border-bottom: 1px solid #DAE8DB;
+  }
+}
+
+// ページネーション
+.page-item{
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+
+  nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagination {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .pagination span {
+    margin: 0 1px;
+    background-color: #003B00;
+    border: 2px solid #003B00;
+    border-radius: 4px;
+  }
+
+  .page, .first, .last, .prev, .next, .trancate{
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .page, .prev, .next, .trancate{
+    width: 30px;
+    height: 30px;
+  }
+
+  .first, .last{
+    width: 60px;
+    height: 30px;
+  }
+
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .current{
+    background-color: #fff!important;
+    color: #003B00!important;
+  }
+}
+
+// ステータス
+.text-green{
+  color: green;
+}
+
+.text-red{
+  color: red;
+}
+
+// 退会確認画面
+.unsubscribe-style{
+  text-align: center;
+}
+
+// プロフィール画像
+.profile_large_icon{
+  width: 110px;
+  height: 110px;
+  border-radius: 100%;
+}
+
+.profile_small_icon{
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+}
+
+// 投稿詳細画面
+.article-show-flex{
+ display: flex;
+
+   .article-left{
+    width: 50%;
+
+    .article_show_img{
+      width: 315px;
+      height: 210px;
+      margin-top: 1em;
+      object-fit: cover;
+    }
+
+    h3{
+      margin-top: 1.5em;
+      font-size: 20px;
+    }
+
+    p{
+      padding-left: 1.5em;
+    }
+  }
+
+
+  .article-right{
+    width: 50%;
+
+    tr{
+      height: 50px;
+    }
+
+    th{
+      text-align: left;
+    }
+
+    td{
+      padding-left: 2em;
+    }
+  }
+}
+
+// カードスタイル
+.card-wrapper{
+  width: 170px;
+  height: 190px;
+  margin: 10px 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  .card-img{
+    text-align: center;
+
+    .card-index-img{
+    width: 162px;
+    height: 108px;
+    margin-top: 5px;
+    border-radius: 5px;
+    object-fit: cover;
+    }
+  }
+
+  .card-title{
+    width: 100%;
+    height: 20px;
+    padding-top: 5px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    h5{
+      margin-right: auto;
+    }
+
+    .season-icon{
+      width: 1em;
+      height: 1em;
+      margin-right: 8px;
+      border-radius: 100%;
+    }
+
+    .season-spring-icon{
+      background-color: pink;
+    }
+
+    .season-summer-icon{
+      background-color: skyblue;
+    }
+
+    .season-autumn-icon{
+      background-color: orange;
+    }
+
+    .season-winter-icon{
+      background-color: blue;
+    }
+  }
+
+  .card-footer-wrapper{
+    width: 100%;
+    height: 45px;
+    text-align: right;
+    position: relative;
+
+    .card-favorite{
+      height: 24px;
+      line-height: 24px;
+      padding-left: 5px;
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      text-decoration: none;
+      color: red;
+    }
+
+    .card-eyes{
+      height: 24px;
+      line-height: 24px;
+      padding-left: 5px;
+      position: absolute;
+      left: 35px;
+      bottom: 0;
+    }
+
+    .card-footer-text{
+      padding-right: 5px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+.article_index_flex{
+  display: flex;
+  .article_index_left{
+    width: 29%;
+    font-size: 10px;
+
+    label{
+      width: 10%;
+    }
+  }
+
+  .article_index_right{
+    width: 71%;
+    margin-left: 5px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+// ユーザ詳細投稿一覧
+.user-articles-flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// プロフィールカードスタイル
+.user-profile-card{
+  width: 100%;
+  height: 180px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  display: flex;
+
+  .profile-card-left{
+    width: 130px;
+    height: 140px;
+    margin-right: 20px;
+    padding: 15px 0;
+  }
+
+  .profile-card-right{
+    width: 100%;
+    height: 140px;
+
+    th{
+      height: 36px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    td{
+      vertical-align: top;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .follow-count{
+      height: 22px;
+      text-align: right;
+    }
+
+    .profile-introduction{
+      padding-left: 1em;
+    }
+  }
+}
+
+// チャット
+.chat-wrapper{
+  height: 500px;
+  position: relative;
+  .chat-content-wrapper{
+    width: 80%;
+    height: 420px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: scroll;
+
+    .chat-left, .chat-right{
+      width: 50%;
+    }
+
+    .chat-left{
+      margin-right: 50%;
+      display: flex;
+
+      img{
+        margin-right: 10px;
+      }
+
+      .chat-content{
+        display: flex;
+        align-items: center;
+      }
+
+    }
+
+    .chat-right{
+      margin-left: 50%;
+      display: flex;
+      .chat-content{
+        margin-left: auto;
+      }
+    }
+
+    .chat-time{
+      font-size: 8px;
+      display: flex;
+      align-items: flex-end;
+      margin-right: 5px;
+    }
+
+    .chat-content{
+      max-width: 90%;
+      padding: 0.5em 0.8em;
+      display: inline-block;
+      background-color: #ddd;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      word-break: break-word;
+    }
+
+  }
+
+  .chat-form-wrapper{
+    max-width: 900px;
+    height: 40px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+
+    .form-box{
+      width: 600px;
+      height: 40px;
+      padding-right: 30px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .form-submit{
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0,0,0,0);
+      border: 0 solid transparent;
+      font-size: 18px;
+      position: absolute;
+      right: 10px;
+    }
+  }
+}
+
+.comment-form-wrapper{
+  max-width: 900px;
+  height: 40px;
+  position: relative;
+
+  .form-box{
+    width: 700px;
+    height: 40px;
+    padding-right: 30px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+  }
+
+  .form-submit{
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,0);
+    border: 0 solid transparent;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 110px;
+  }
+}

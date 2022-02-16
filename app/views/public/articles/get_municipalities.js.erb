@@ -1,0 +1,7 @@
+$('#article_municipality_id').html('');
+var options = '';
+<% @municipalities.each do | m | %>
+  options = options + '<option value="<%= m.id %>"><%= m.municipality_name %></option>';
+<% end %>
+
+$('#article_municipality_id').html(options);

@@ -5,11 +5,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= favicon_link_tag('favicon.ico') %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= render "layouts/header" %>
+    <% if current_page?(root_path)%>
+      <%= render "layouts/skippr" %>
+    <% end %>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:p, value, class: "alert alert-#{key}") %>
+    <% end %>
     <%= yield %>
+    <%= render "layouts/footer" %>
   </body>
 </html>
