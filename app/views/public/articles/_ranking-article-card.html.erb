@@ -1,27 +1,32 @@
 <% if articles.present? %>
-  <% articles.each do |article| %>
+  <% articles.each.with_index(1) do |article, i| %>
     <% if article.is_delete == false %>
-      <div class="card-wrapper">
-        <%= link_to article_path(article) do %>
-          <div class="card-img">
-            <%= attachment_image_tag article, :article_image, fallback: "no_image.png", class: "card-index-img" %>
+      <div class="article-ranking-content">
+        <div class="card-wrapper">
+          <%= link_to article_path(article) do %>
+            <div class="card-img">
+              <%= attachment_image_tag article, :article_image, fallback: "no_image.png", class: "card-index-img" %>
+            </div>
+          <% end %>
+          <div class="card-title">
+            <%= content_tag(:h5, article.cultivar_name) %>
+            <%= level_icon(article.level) %>
+            <%= category_icon(article.category) %>
+            <%= season_icon(article.season)%>
           </div>
-        <% end %>
-        <div class="card-title">
-          <%= content_tag(:h5, article.cultivar_name) %>
-          <%= level_icon(article.level) %>
-          <%= category_icon(article.category) %>
-          <%= season_icon(article.season)%>
+          <div class="card-footer-wrapper">
+            <%= favorite_btn(article) %>
+            <div class="card-eyes">
+              <i class="fas fa-eye"></i>
+              <%= article.impressionist_count(:filter=>:session_hash) %>
+            </div>
+            <div class="card-footer-text">
+              <%= article.user.account_name %>
+            </div>
+          </div>
         </div>
-        <div class="card-footer-wrapper">
-          <%= favorite_btn(article) %>
-          <div class="card-eyes">
-            <i class="fas fa-eye"></i>
-            <%= article.impressionist_count(:filter=>:session_hash) %>
-          </div>
-          <div class="card-footer-text">
-            <%= article.user.account_name %>
-          </div>
+        <div class="ranking-num">
+          <p><%= icon("fas", "crown", "No.#{i}") %></p>
         </div>
       </div>
     <% end %>
