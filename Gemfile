@@ -71,9 +71,6 @@ gem 'refile-mini_magick'
 # アイコン用gem
 gem 'font-awesome-sass', '~> 5.15.1'
 
-# 環境変数用gem
-gem 'dotenv-rails'
-
 # ページネーション用gem
 gem 'kaminari'
 
@@ -92,3 +89,9 @@ gem 'rubocop-airbnb'
 
 # 閲覧数用gem
 gem 'impressionist', '~>1.6.1'
+
+# 環境変数用gem
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
