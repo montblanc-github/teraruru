@@ -8,10 +8,8 @@ class Public::ArticlesController < ApplicationController
     else
       @articles = Article.where(is_visible: true).page(params[:page]).per(9)
     end
-
     favorite_article_id = Article.extract_favorite_ranking_articles.limit(3).pluck(:article_id)
     @favorite_articles = Article.find(favorite_article_id)
-
     @most_view_articles = Article.where(is_visible: true).order('impressions_count DESC').first(3)
     @tags = ActsAsTaggableOn::Tag.most_used(10)
     @q = Article.ransack(params[:q])
@@ -87,7 +85,11 @@ class Public::ArticlesController < ApplicationController
     if params[:keyword].present?
       @articles = Article.search(is_current_admin, params[:keyword]).page(params[:page]).per(9)
     elsif params[:q].present?
-      @articles = @q.result.page(params[:page]).per(9)
+      if current_admin
+        @articles = @q.result.page(params[:page]).per(9)
+      else
+        @articles = @q.where(is_visible: true).result.page(params[:page]).per(9)
+      end
       @prefecture_id = params[:q][:prefecture_id_eq]
     elsif @tag = params[:tag]
       @articles = Article.tagged_with(params[:tag]).page(params[:page]).per(9)

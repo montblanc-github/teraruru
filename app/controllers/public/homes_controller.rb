@@ -4,9 +4,8 @@ class Public::HomesController < ApplicationController
     @favorite_articles = Kaminari.paginate_array(article_array).page(params[:page]).per(3)
     @tags = ActsAsTaggableOn::Tag.most_used(10)
     if user_signed_in?
-      user = User.find(current_user.id)
-      following_users = user.followings
-      @following_articles = Article.where(user_id: following_users).order(created_at: :desc).page(params[:top_article_page]).per(6)
+      following_users = User.find(current_user.id).followings
+      @following_articles = Article.where(user_id: following_users, is_visible: true).order(created_at: :desc).page(params[:top_article_page]).per(6)
     end
   end
 
