@@ -17,6 +17,21 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :notification, dependent: :destroy
 
+  # バリデーション
+    # 品種名の文字数制限は、アマモの名称「リュウグウノオトヒメノモトユイノキリハズシ」から決定。
+  validates :cultivar_name, presence: true, length: {maximum: 21}
+  validates :level , presence: true
+  validates :category, presence: true
+  validates :season, presence: true
+    # boolean型は、falseの時にエラーが返る状態にならないよう、presenceは使わない。
+  validates :fertilizer_existence, inclusion: {in: [true, false]}
+  validates :fertilizer_info, length: {maximum: 100}
+  validates :fertilizer_info, presence: true, if: :fertilizer_existence?
+  validates :place, presence: true
+  validates :condition, presence: true
+  validates :state_at_start, presence: true
+  validate :validate_tag
+
   # 検索
   def self.search(keyword)
     return Article.all unless keyword
@@ -64,4 +79,20 @@ class Article < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+
+  private
+
+  TAG_MAX_COUNT = 10
+  def validate_tag
+    if tag_list.size > TAG_MAX_COUNT
+      return errors.add(:tag_list, :too_many_tags, message: "は#{TAG_MAX_COUNT}個以下にしてください")
+    end
+
+    tag_list.each do |tag_name|
+      tag = Tag.new(name: tag_name)
+      tag.validate_name
+      tag.errors.messages[:name].each { |message| errors.add(:tag_list, message) }
+    end
+  end
+
 end

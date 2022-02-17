@@ -8,6 +8,9 @@ class Admin < ApplicationRecord
   # idを生成する前にset_uuidを呼び出す。
   before_create :set_uuid
 
+  # バリデーション
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+
   private
 
   # idをuuidに変更。

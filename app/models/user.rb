@@ -21,6 +21,16 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
+  # バリデーション
+  validates :last_name, presence: true, format: { with: VALID_NAME_REGEX }, length: {maximum: 10}
+  validates :first_name, presence: true, format: { with: VALID_NAME_REGEX }, length: {maximum: 10}
+  validates :last_name_kana, presence: true, format: { with: VALID_KANA_REGEX }, length: {maximum: 10}
+  validates :first_name_kana, presence: true, format: { with: VALID_KANA_REGEX }, length: {maximum: 10}
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }, length: {maximum: 254}
+  validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }, length: {is: 7}
+  validates :address, presence: true, length: {maximum: 70}
+  validates :account_name, presence: true, length: {maximum: 15}
+
   # idを生成する前にset_uuidを呼び出す。
   before_create :set_uuid
 

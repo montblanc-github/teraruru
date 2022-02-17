@@ -95,3 +95,6 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# エラーメッセージ日本語化gem
+gem 'rails-i18n', '~> 5.1'
