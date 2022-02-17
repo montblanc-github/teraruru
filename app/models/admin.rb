@@ -9,9 +9,7 @@ class Admin < ApplicationRecord
   before_create :set_uuid
 
   # バリデーション
-  validates :email, { presence: true,
-                      format: { with: VALID_EMAIL_REGEX },
-                      uniqueness: true }
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 
   private
 
