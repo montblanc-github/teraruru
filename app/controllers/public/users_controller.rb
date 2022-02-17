@@ -17,7 +17,6 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "ユーザ情報を変更しました。"
       redirect_to user_path
     else
-      flash[:notice] = "ユーザ情報の変更に失敗しました。"
       render :edit
     end
   end
