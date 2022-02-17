@@ -18,13 +18,15 @@ class Article < ApplicationRecord
   has_many :notification, dependent: :destroy
 
   # バリデーション
-  validates :cultivar_name, presence: true
+    # 品種名の文字数制限は、アマモの名称「リュウグウノオトヒメノモトユイノキリハズシ」から決定。
+  validates :cultivar_name, presence: true, length: {maximum: 21}
   validates :prefecture_id, presence: true
   validates :municipality_id, presence: true
   validates :level , presence: true
   validates :category, presence: true
   validates :season, presence: true
   validates :fertilizer_existence, presence: true
+  validates :fertilizer_info, length: {maximum: 100}
   validates :place, presence: true
   validates :condition, presence: true
   validates :state_at_start, presence: true
