@@ -29,6 +29,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }
   validates :address, presence: true
+  validates :account_name, presence: true
 
   # idを生成する前にset_uuidを呼び出す。
   before_create :set_uuid
