@@ -1,126 +1,125 @@
-<div class="form-style">
-  <%= form_with model: article, local: true do |f| %>
+<%= form_with model: article, local: true do |f| %>
 
-    <!--画像-->
-    <div class="field">
-      <%= f.label :article_image, "画像" %>
-      <%= f.attachment_field :article_image, autofocus: true, autocomplete: "artical_image" %>
-    </div>
+  <!--画像-->
+  <div class="field">
+    <%= f.label :article_image, "画像" %>
+    <%= f.attachment_field :article_image, autofocus: true, autocomplete: "artical_image" %>
+  </div>
 
-    <!--品種名-->
-    <div class="field">
-      <%= f.label :cultivar_name, "品種名" %>
-      <%= f.text_field :cultivar_name, autofocus: true, autocomplete: "cultivar_name", class: "item" %>
-    </div>
+  <!--品種名-->
+  <div class="field">
+    <%= f.label :cultivar_name, "品種名" %>
+    <%= f.text_field :cultivar_name, autofocus: true, autocomplete: "cultivar_name", class: "item" %>
+  </div>
 
-    <!--都道府県-->
-    <div class="field">
-      <%= f.label :prefecture_id, "都道府県" %>
-      <%= f.collection_select :prefecture_id, prefectures, :id, :name, prompt: "選択してください" %>
-    </div>
+  <!--都道府県-->
+  <div class="field">
+    <%= f.label :prefecture_id, "都道府県" %>
+    <%= f.collection_select :prefecture_id, prefectures, :id, :name, prompt: "選択してください" %>
+  </div>
 
-    <!--市区町村-->
-    <div class="field">
-      <%= f.label :municipality_id, "市区町村" %>
-      <%= f.collection_select :municipality_id, municipalities, :id, :municipality_name, prompt: "選択してください" %>
-    </div>
+  <!--市区町村-->
+  <div class="field">
+    <%= f.label :municipality_id, "市区町村" %>
+    <%= f.collection_select :municipality_id, municipalities, :id, :municipality_name, prompt: "選択してください" %>
+  </div>
 
-    <!--難易度-->
-    <div class="field">
-      <%= f.label :level, "難易度" %>
-      <%= f.select :level, [["とても難しい",1],["難しい",2],["普通",3],["簡単",4],["とても簡単",5]], prompt: "選択してください", selected: 3 %>
-    </div>
+  <!--難易度-->
+  <div class="field">
+    <%= f.label :level, "難易度" %>
+    <%= f.select :level, [["とても難しい",1],["難しい",2],["普通",3],["簡単",4],["とても簡単",5]], prompt: "選択してください", selected: 3 %>
+  </div>
 
-    <!--カテゴリ-->
-    <div class="field">
-      <%= f.label :category, "カテゴリ" %>
-      <%= f.radio_button :category, :vegetable, checked: true %>
-      <%= f.label :category, "野菜", value: :vegetable %>
-      <%= f.radio_button :category, :fruit %>
-      <%= f.label :category, "果物", value: :fruit %>
-      <%= f.radio_button :category, :plant %>
-      <%= f.label :category, "草木", value: :plant %>
-      <%= f.radio_button :category, :flower %>
-      <%= f.label :category, "花", value: :flower %>
-    </div>
+  <!--カテゴリ-->
+  <div class="field">
+    <%= f.label :category, "カテゴリ" %>
+    <%= f.radio_button :category, :vegetable, checked: true %>
+    <%= f.label :category, "野菜", value: :vegetable %>
+    <%= f.radio_button :category, :fruit %>
+    <%= f.label :category, "果物", value: :fruit %>
+    <%= f.radio_button :category, :plant %>
+    <%= f.label :category, "草木", value: :plant %>
+    <%= f.radio_button :category, :flower %>
+    <%= f.label :category, "花", value: :flower %>
+  </div>
 
-    <!--時期-->
-    <div class="field">
-      <%= f.label :season, "季節" %>
-      <%= f.radio_button :season, :spring, checked: true %>
-      <%= f.label :season, "春", value: :spring %>
-      <%= f.radio_button :season, :summer %>
-      <%= f.label :season, "夏", value: :summer %>
-      <%= f.radio_button :season, :autumn %>
-      <%= f.label :season, "秋", value: :autumn %>
-      <%= f.radio_button :season, :winter %>
-      <%= f.label :season, "冬", value: :winter %>
-    </div>
+  <!--時期-->
+  <div class="field">
+    <%= f.label :season, "季節" %>
+    <%= f.radio_button :season, :spring, checked: true %>
+    <%= f.label :season, "春", value: :spring %>
+    <%= f.radio_button :season, :summer %>
+    <%= f.label :season, "夏", value: :summer %>
+    <%= f.radio_button :season, :autumn %>
+    <%= f.label :season, "秋", value: :autumn %>
+    <%= f.radio_button :season, :winter %>
+    <%= f.label :season, "冬", value: :winter %>
+  </div>
 
-    <!--肥料-->
-    <div class="field">
-      <%= f.label :fertilizer_existence, "肥料" %>
-      <%= f.radio_button :fertilizer_existence, :true, checked: true %>
-      <%= f.label :fertilizer_existence, "あり", value: true %>
-      <%= f.radio_button :fertilizer_existence, :false %>
-      <%= f.label :fertilizer_existence, "なし", value: false %>
-    </div>
+  <!--肥料-->
+  <div class="field">
+    <%= f.label :fertilizer_existence, "肥料" %>
+    <%= f.radio_button :fertilizer_existence, :true, checked: true %>
+    <%= f.label :fertilizer_existence, "あり", value: true %>
+    <%= f.radio_button :fertilizer_existence, :false %>
+    <%= f.label :fertilizer_existence, "なし", value: false %>
+  </div>
 
-    <p>※「あり」を選択された方は、肥料の詳細を記入してください。</p>
+  <p>※「あり」を選択された方は、肥料の詳細を記入してください。</p>
 
-    <div class="field">
-      <%= f.text_field :fertilizer_info, autofocus: true, autocomplete: "fertilizer_info", class: "item" %>
-    </div>
+  <div class="field">
+    <%= f.text_field :fertilizer_info, autofocus: true, autocomplete: "fertilizer_info", class: "item" %>
+  </div>
 
-    <!--場所-->
-    <div class="field">
-      <%= f.label :place, "場所" %>
-      <%= f.radio_button :place, :indoor, checked: true %>
-      <%= f.label :place, "屋内", value: :indoor %>
-      <%= f.radio_button :place, :outdoor %>
-      <%= f.label :place, "屋外", value: :outdoor %>
-      <%= f.radio_button :place, :veranda %>
-      <%= f.label :place, "ベランダ", value: :veranda %>
-    </div>
+  <!--場所-->
+  <div class="field">
+    <%= f.label :place, "場所" %>
+    <%= f.radio_button :place, :indoor, checked: true %>
+    <%= f.label :place, "屋内", value: :indoor %>
+    <%= f.radio_button :place, :outdoor %>
+    <%= f.label :place, "屋外", value: :outdoor %>
+    <%= f.radio_button :place, :veranda %>
+    <%= f.label :place, "ベランダ", value: :veranda %>
+  </div>
 
-    <!--条件-->
-    <div class="field">
-      <%= f.label :condition, "条件" %>
-      <%= f.radio_button :condition, :pot, checked: true %>
-      <%= f.label :condition, "鉢", value: :pot %>
-      <%= f.radio_button :condition, :ground %>
-      <%= f.label :condition, "地植え", value: :ground %>
-      <%= f.radio_button :condition, :greenhouse %>
-      <%= f.label :condition, "ハウス", value: :greenhouse %>
-    </div>
+  <!--条件-->
+  <div class="field">
+    <%= f.label :condition, "条件" %>
+    <%= f.radio_button :condition, :pot, checked: true %>
+    <%= f.label :condition, "鉢", value: :pot %>
+    <%= f.radio_button :condition, :ground %>
+    <%= f.label :condition, "地植え", value: :ground %>
+    <%= f.radio_button :condition, :greenhouse %>
+    <%= f.label :condition, "ハウス", value: :greenhouse %>
+  </div>
 
-    <!--開始時-->
-    <div class="field">
-      <%= f.label :state_at_start, "開始時" %>
-      <%= f.radio_button :state_at_start, :seed, checked: true %>
-      <%= f.label :state_at_start, "種から", value: :seed %>
-      <%= f.radio_button :state_at_start, :seedling %>
-      <%= f.label :state_at_start, "苗から", value: :seedling %>
-      <%= f.radio_button :state_at_start, :bulb %>
-      <%= f.label :state_at_start, "球根から", value: :bulb %>
-    </div>
+  <!--開始時-->
+  <div class="field">
+    <%= f.label :state_at_start, "開始時" %>
+    <%= f.radio_button :state_at_start, :seed, checked: true %>
+    <%= f.label :state_at_start, "種から", value: :seed %>
+    <%= f.radio_button :state_at_start, :seedling %>
+    <%= f.label :state_at_start, "苗から", value: :seedling %>
+    <%= f.radio_button :state_at_start, :bulb %>
+    <%= f.label :state_at_start, "球根から", value: :bulb %>
+  </div>
 
-    <!--タグ-->
-    <div class="field">
-      <%= f.label :tag_list, "タグ"%>
-      <%= f.text_field :tag_list, value: article.tag_list.join(","), class: "tag_form tagit-hidden-field", name: "article[tag_list]", id: "article_tag_list" %>
-    </div>
+  <!--タグ-->
+  <div class="field">
+    <%= f.label :tag_list, "タグ"%>
+    <%= f.text_field :tag_list, value: article.tag_list.join(","), class: "tag_form tagit-hidden-field", name: "article[tag_list]", id: "article_tag_list" %>
+  </div>
 
-    <!--メッセージ-->
-    <div class="field">
-      <%= f.label :message, "あなたからのメッセージ" %>
-      <%= f.text_area :message, autofocus: true, autocomplete: "message", class: "item area" %>
-    </div>
+  <!--メッセージ-->
+  <div class="field">
+    <%= f.label :message, "あなたからのメッセージ" %>
+    <%= f.text_area :message, autofocus: true, autocomplete: "message", class: "item area" %>
+  </div>
 
 
-    <div class="actions">
-      <%= f.submit "投稿する", class: "btn btn-green" %>
-    </div>
+  <div class="actions">
+    <%= f.submit "投稿する", class: "btn btn-green" %>
+  </div>
 
-  <% end %>
-</div>
+<% end %>
+
