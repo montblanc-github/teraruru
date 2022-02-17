@@ -47,11 +47,7 @@
     <% end %>
   </div>
   <div class="item-style user-articles-flex">
-    <% if current_admin %>
-      <%= render "admin/articles/admin-article-card", articles: @articles %>
-    <% else %>
-      <%= render "public/articles/public-article-card", articles: @articles %>
-    <% end %>
+    <%= render "public/articles/public-article-card", articles: @articles %>
   </div>
 </div>
 
