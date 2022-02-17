@@ -24,16 +24,19 @@ class Public::ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @prefectures = Prefecture.all
+    @municipalities = Municipality.all
   end
 
   def create
-    article = Article.new(article_params)
-    article.user_id = current_user.id
-    if article.save
+    @article = Article.new(article_params)
+    @article.user_id = current_user.id
+    if @article.save
       flash[:notice] = "投稿を作成しました。"
-      redirect_to article_path(article.id)
+      redirect_to article_path(@article.id)
     else
-      flash[:notice] = "投稿の作成に失敗しました。"
+      @prefectures = Prefecture.all
+      @municipalities = Municipality.all
       render :new
     end
   end
@@ -46,24 +49,25 @@ class Public::ArticlesController < ApplicationController
   end
 
   def update
-    article = Article.find(params[:id])
-    if article.update(article_params)
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
       flash[:notice] = "投稿を編集しました。"
-      redirect_to article_path(article.id)
+      redirect_to article_path(@article.id)
     else
-      flash[:notice] = "投稿の編集に失敗しました。"
+      @prefectures = Prefecture.all
+      @municipalities = Municipality.all
       render :edit
     end
   end
 
   def destroy
-    article = Article.find(params[:id])
-    if article.destroy
+    @article = Article.find(params[:id])
+    if @article.destroy
       flash[:notice] = "投稿を削除しました。"
       redirect_to root_path
     else
       flash[:notice] = "投稿の削除に失敗しました。"
-      redirect_to article_path(article.id)
+      redirect_to article_path(@article.id)
     end
   end
 

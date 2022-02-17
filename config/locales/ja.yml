@@ -2,8 +2,8 @@ ja:
   errors:
     messages:
       not_saved:
-        one: "エラーが発生したため %{resource} 情報を保存できません。"
-        other: "%{count} 件のエラーが発生したため %{resource} 情報を保存できません。"
+        one: "エラーが発生したため、%{resource}情報を保存できません。"
+        other: "%{count} 件のエラーが発生したため、%{resource}情報を保存できません。"
 
   views:
     pagination:
@@ -18,6 +18,8 @@ ja:
       user: "ユーザ"
       admin: "管理者"
       article: "投稿"
+      prefecture: "都道府県"
+      municipality: "市区町村"
 
     attributes:
       user:
@@ -35,6 +37,21 @@ ja:
         introduction: "紹介文"
       admin:
         email: "メールアドレス"
+      article:
+        artical_image: "画像"
+        cultivar_name: "品種名"
+        prefecture: "都道府県"
+        municipality: "市区町村"
+        level: "難易度"
+        category: "カテゴリ"
+        season: "季節"
+        fertilizer_existence: "肥料の使用状況"
+        fertilizer_info: "肥料の詳細情報"
+        place: "場所"
+        condition: "条件"
+        state_at_start: "開始時"
+        tag_list: "タグ"
+        message: "メッセージ"
 
   devise:
     failure:
