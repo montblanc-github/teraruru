@@ -1,6 +1,6 @@
 <div class="content">
   <div class="item-style">
-    <% if @article.is_delete == false %>
+    <% if @article.is_visible == true %>
       <% if user_signed_in? && current_user != @user %>
         <%= render "public/relationships/follow-btn", user: @user %>
       <% end %>

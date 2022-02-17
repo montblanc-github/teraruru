@@ -32,10 +32,18 @@ class Article < ApplicationRecord
   validates :state_at_start, presence: true
   validate :validate_tag
 
+  # いいねランキング
+  def self.extract_favorite_ranking_articles
+    Article.where(is_visible: true).joins(:favorites).group(:article_id).order(Arel.sql('count(article_id) desc'))
+  end
+
   # 検索
-  def self.search(keyword)
-    return Article.all unless keyword
-    Article.where("(cultivar_name LIKE?) OR (prefecture_id = ?)", "%#{keyword}%", "#{keyword}")
+  def self.search(is_current_admin, keyword)
+    if is_current_admin
+      Article.where( "(cultivar_name LIKE?) OR (prefecture_id = ?)", "%#{keyword}%", "#{keyword}")
+    else
+      Article.where(is_visible: true).where( "(cultivar_name LIKE?) OR (prefecture_id = ?)", "%#{keyword}%", "#{keyword}")
+    end
   end
 
   # 通知
