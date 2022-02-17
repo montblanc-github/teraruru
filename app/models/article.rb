@@ -17,6 +17,19 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :notification, dependent: :destroy
 
+  # バリデーション
+  validates :cultivar_name, presence: true
+  validates :prefecture_id, presence: true
+  validates :municipality_id, presence: true
+  validates :level , presence: true
+  validates :category, presence: true
+  validates :season, presence: true
+  validates :fertilizer_existence, presence: true
+  validates :place, presence: true
+  validates :condition, presence: true
+  validates :state_at_start, presence: true
+  validates :is_delete, presence: true
+
   # 検索
   def self.search(keyword)
     return Article.all unless keyword
