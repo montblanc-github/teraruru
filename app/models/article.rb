@@ -20,17 +20,17 @@ class Article < ApplicationRecord
   # バリデーション
     # 品種名の文字数制限は、アマモの名称「リュウグウノオトヒメノモトユイノキリハズシ」から決定。
   validates :cultivar_name, presence: true, length: {maximum: 21}
-  validates :prefecture_id, presence: true
-  validates :municipality_id, presence: true
   validates :level , presence: true
   validates :category, presence: true
   validates :season, presence: true
-  validates :fertilizer_existence, presence: true
+    # boolean型は、falseの時にエラーが返る状態にならないよう、presenceは使わない。
+  validates :fertilizer_existence, inclusion: {in: [true, false]}
   validates :fertilizer_info, length: {maximum: 100}
+  validates :fertilizer_info, presence: true, if: :fertilizer_existence?
   validates :place, presence: true
   validates :condition, presence: true
   validates :state_at_start, presence: true
-  validates :is_delete, presence: true
+  TAG_MAX_COUNT = 10
 
   # 検索
   def self.search(keyword)
@@ -79,4 +79,5 @@ class Article < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+
 end
