@@ -30,6 +30,7 @@ class Article < ApplicationRecord
   validates :place, presence: true
   validates :condition, presence: true
   validates :state_at_start, presence: true
+  validates :message, length: {maximum: 150}
   validate :validate_tag
 
   # いいねランキング
