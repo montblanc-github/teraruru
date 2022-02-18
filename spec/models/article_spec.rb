@@ -95,6 +95,17 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
       end
     end
 
+    context 'messageカラム' do
+      it '150文字以下であること: 150文字は〇' do
+        article.message = Faker::Lorem.characters(number: 150)
+        is_expected.to eq true
+      end
+      it '150文字以下であること: 151文字は×' do
+        article.message = Faker::Lorem.characters(number: 151)
+        is_expected.to eq false
+      end
+    end
+
     context 'tag_listカラム'do
       it '10個以下であること: 10個は〇' do
         article.tag_list = Faker::Lorem.words(number: 10)

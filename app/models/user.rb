@@ -30,6 +30,7 @@ class User < ApplicationRecord
   validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }, length: {is: 7}
   validates :address, presence: true, length: {maximum: 70}
   validates :account_name, presence: true, length: {maximum: 15}
+  validates :introduction, length: {maximum: 150}
 
   # idを生成する前にset_uuidを呼び出す。
   before_create :set_uuid
