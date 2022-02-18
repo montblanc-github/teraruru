@@ -1,5 +1,5 @@
 class Public::CommentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :login_check
 
   def create
     article = Article.find(params[:article_id])
@@ -24,5 +24,11 @@ class Public::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content)
+  end
+
+  def login_check
+    unless user_signed_in? || admin_signed_in?
+      redirect_to new_user_session_path
+    end
   end
 end

@@ -4,6 +4,7 @@ class Admin::ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @tags = @article.tags_on(:tags)
+    @comments = @article.comments
   end
 
   def update

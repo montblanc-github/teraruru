@@ -1,17 +1,16 @@
 <div class="content">
   <div class="item-style">
-    <% if current_admin %>
-      <div class="article-link">
-        <%= form_with model: @article, url: admin_article_path, local: true do |f| %>
-          <%= f.radio_button :is_visible, :true, checked: true %>
-          <%= f.label :is_visible, "表示", value: true %>
-          <%= f.radio_button :is_visible, :false %>
-          <%= f.label :is_visible, "非表示", value: false %>
-          <%= f.submit "変更" %>
-        <% end %>
-        <%= link_to "投稿を完全削除する", admin_article_path, method: :delete, class: "btn btn-red" %>
-      </div>
-    <% end %>
+    <%= render "public/users/profile-card", user: @article.user %>
+    <div class="article-link">
+      <%= form_with model: @article, url: admin_article_path, local: true do |f| %>
+        <%= f.radio_button :is_visible, :true, checked: true %>
+        <%= f.label :is_visible, "表示", value: true %>
+        <%= f.radio_button :is_visible, :false %>
+        <%= f.label :is_visible, "非表示", value: false %>
+        <%= f.submit "変更" %>
+      <% end %>
+      <%= link_to "投稿を完全削除する", admin_article_path, method: :delete, class: "btn btn-red" %>
+    </div>
     <div class="article-show-flex">
       <div class="article-left">
         <table>
@@ -95,6 +94,12 @@
           </tbody>
         </table>
       </div>
+    </div>
+    <div class="comments-wrap">
+      <div class="title">
+        <h2><i class="fas fa-comment-dots"></i> コメント</h2>
+      </div>
+      <%= render "public/comments/comment-content", comments: @comments %>
     </div>
   </div>
 </div>
