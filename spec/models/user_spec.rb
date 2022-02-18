@@ -178,5 +178,60 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect(User.reflect_on_association(:articles).macro).to eq :has_many
       end
     end
+    context 'Relationshipモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:relationships).macro).to eq :has_many
+      end
+    end
+    context 'Relationshipモデル(reverse_of_relationships)との関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:reverse_of_relationships).macro).to eq :has_many
+      end
+    end
+    context 'Followingとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:followings).macro).to eq :has_many
+      end
+    end
+    context 'Followerとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:followers).macro).to eq :has_many
+      end
+    end
+    context 'UserRoomモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:user_rooms).macro).to eq :has_many
+      end
+    end
+    context 'Chatモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:chats).macro).to eq :has_many
+      end
+    end
+    context 'Favoriteモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:favorites).macro).to eq :has_many
+      end
+    end
+    context 'FavoriteArticleとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:favorite_articles).macro).to eq :has_many
+      end
+    end
+    context 'Commentモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:comments).macro).to eq :has_many
+      end
+    end
+    context 'Notificationモデル(ActiveNotification)との関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:active_notifications).macro).to eq :has_many
+      end
+    end
+    context 'Notificationモデル(PassiveNotification)との関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:passive_notifications).macro).to eq :has_many
+      end
+    end
   end
 end
