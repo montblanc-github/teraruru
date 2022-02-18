@@ -13,7 +13,7 @@ class Article < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
-  has_many :notification, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   # バリデーション
     # 品種名の文字数制限は、アマモの名称「リュウグウノオトヒメノモトユイノキリハズシ」から決定。
