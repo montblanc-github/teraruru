@@ -3,10 +3,10 @@
     <% if current_admin %>
       <div class="article-link">
         <%= form_with model: @article, url: admin_article_path, local: true do |f| %>
-          <%= f.radio_button :is_delete, :false, checked: true %>
-          <%= f.label :is_delete, "表示", value: false %>
-          <%= f.radio_button :is_delete, :true %>
-          <%= f.label :is_delete, "非表示", value: true %>
+          <%= f.radio_button :is_visible, :true, checked: true %>
+          <%= f.label :is_visible, "表示", value: true %>
+          <%= f.radio_button :is_visible, :false %>
+          <%= f.label :is_visible, "非表示", value: false %>
           <%= f.submit "変更" %>
         <% end %>
         <%= link_to "投稿を完全削除する", admin_article_path, method: :delete, class: "btn btn-red" %>
@@ -34,7 +34,7 @@
             <tr>
               <th>表示状態</th>
               <td>
-                <% if @article.is_delete == false %>
+                <% if @article.is_visible == true %>
                   <p class="text-green">表示中</p>
                 <% else %>
                   <p class="text-red">非表示中</p>
