@@ -132,5 +132,25 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
         expect(Article.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
+    context 'Favoriteモデルとの関係' do
+      it 'N:1となっている' do
+        expect(Article.reflect_on_association(:favorites).macro).to eq :has_many
+      end
+    end
+    context 'Favoriteモデル(FavoriteUser)との関係' do
+      it 'N:1となっている' do
+        expect(Article.reflect_on_association(:favorite_users).macro).to eq :has_many
+      end
+    end
+    context 'Commentモデルとの関係' do
+      it 'N:1となっている' do
+        expect(Article.reflect_on_association(:comments).macro).to eq :has_many
+      end
+    end
+    context 'Notificationモデルとの関係' do
+      it 'N:1となっている' do
+        expect(Article.reflect_on_association(:notifications).macro).to eq :has_many
+      end
+    end
   end
 end
