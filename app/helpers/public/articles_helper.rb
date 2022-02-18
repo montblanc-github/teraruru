@@ -45,4 +45,13 @@ module Public::ArticlesHelper
     end
   end
 
+# 都道府県/市区町村表示用
+  def extract_article_prefecture_name(article)
+    Prefecture.find(article.prefecture_id).name
+  end
+
+  def extract_article_municipality_name(article)
+    Municipality.find(article.municipality_id).municipality_name
+  end
+
 end

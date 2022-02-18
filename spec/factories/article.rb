@@ -14,7 +14,6 @@ FactoryBot.define do
     condition { 'pot' }
     state_at_start { 'seed' }
     message { Faker::Lorem.characters(number: 30) }
-    tag_list { Faker::Lorem.characters(number: 5) }
 
     after(:build) do |article|
       article.article_image = Refile::FileDouble.new("dummy", "article_image.jpeg", content_type: "image/jpeg")
