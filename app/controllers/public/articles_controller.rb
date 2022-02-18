@@ -3,9 +3,14 @@ class Public::ArticlesController < ApplicationController
   impressionist :actions => [:show], :unique => [:session_hash.to_s]
 
   def index
-    @articles = Article.page(params[:page]).per(9)
-    @favorite_articles = Article.includes(:favorite_users).sort{ |a, b| b.favorite_users.size <=> a.favorite_users.size }.first(3)
-    @most_view_articles = Article.order('impressions_count DESC').first(3)
+    if current_admin
+      @articles = Article.page(params[:page]).per(9)
+    else
+      @articles = Article.where(is_visible: true).page(params[:page]).per(9)
+    end
+    favorite_article_id = Article.extract_favorite_ranking_articles.limit(3).pluck(:article_id)
+    @favorite_articles = Article.find(favorite_article_id)
+    @most_view_articles = Article.where(is_visible: true).order('impressions_count DESC').first(3)
     @tags = ActsAsTaggableOn::Tag.most_used(10)
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
@@ -75,10 +80,16 @@ class Public::ArticlesController < ApplicationController
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
+    is_current_admin = current_admin.present? ? true : false
+
     if params[:keyword].present?
-      @articles = Article.search(params[:keyword]).page(params[:page]).per(9)
+      @articles = Article.search(is_current_admin, params[:keyword]).page(params[:page]).per(9)
     elsif params[:q].present?
-      @articles = @q.result.page(params[:page]).per(9)
+      if current_admin
+        @articles = @q.result.page(params[:page]).per(9)
+      else
+        @articles = @q.where(is_visible: true).result.page(params[:page]).per(9)
+      end
       @prefecture_id = params[:q][:prefecture_id_eq]
     elsif @tag = params[:tag]
       @articles = Article.tagged_with(params[:tag]).page(params[:page]).per(9)

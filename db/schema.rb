@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2022_02_14_080607) do
     t.string "condition", null: false
     t.string "state_at_start", null: false
     t.text "message"
-    t.boolean "is_delete", default: false, null: false
+    t.boolean "is_visible", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "impressions_count", default: 0, null: false
