@@ -17,6 +17,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      @user.articles.where(is_visible: true).update_all(is_visible: false) unless @user.is_active
       flash[:notice] = "会員情報を変更しました。"
       redirect_to admin_user_path
     else
