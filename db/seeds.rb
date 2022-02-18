@@ -8,15 +8,17 @@
 
 # ユーザ側seed
   20.times do |n|
+    test_user = Gimei.name
+    address = Gimei.address
     User.create!(
-      last_name: "田中",
-      first_name: "太郎#{n+1}",
-      last_name_kana: "タナカ",
-      first_name_kana: "タロウ#{n+1}",
-      email: "#{n+1}tanaka@test",
+      last_name: test_user.last.kanji,
+      first_name: test_user.first.kanji,
+      last_name_kana: test_user.last.katakana,
+      first_name_kana: test_user.first.katakana,
+      email: "#{n+1}tanaka@test.test",
       password: "123456",
       post_code: "1234567",
-      address: "東京都中央区20‐20-#{n+1}00",
+      address: address.kanji,
       account_name: "t.t#{n+1}"
     )
   end
@@ -24,7 +26,7 @@
 
 # 管理者側seed
   Admin.create!(
-    email: "test@test",
+    email: "test@test.test",
     password: "123456"
     )
 
@@ -59,6 +61,7 @@
         place: test_place.sample,
         condition: test_condition.sample,
         state_at_start: test_state.sample,
+        is_visible: [true, false].sample
       )
     end
   end

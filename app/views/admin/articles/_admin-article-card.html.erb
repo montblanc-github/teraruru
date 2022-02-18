@@ -1,6 +1,6 @@
 <% if articles.present? %>
   <% articles.each do |article| %>
-    <% if article.is_delete == false %>
+    <% if article.is_visible == true %>
       <div class="card-wrapper">
         <%= link_to admin_article_path(article) do %>
           <div class="card-img">

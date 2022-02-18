@@ -1,6 +1,6 @@
 <div class="content">
   <div class="item-style">
-    <% if @article.is_delete == false %>
+    <% if @article.is_visible == true %>
       <% if user_signed_in? && current_user != @user %>
         <%= render "public/relationships/follow-btn", user: @user %>
       <% end %>
@@ -92,7 +92,7 @@
       <div class="comments-wrap">
         <%= render "public/comments/comment-content", comments: @comments %>
         <% if user_signed_in? %>
-        <%= render "public/comments/comment-form", article: @article,comment: @comment %>
+          <%= render "public/comments/comment-form", article: @article,comment: @comment %>
         <% end %>
       </div>
     <% else %>

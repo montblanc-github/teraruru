@@ -59,6 +59,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
 
-    resources :articles, only: [:show, :update, :destroy]
+    resources :articles, only: [:show, :update, :destroy] do
+      collection do
+        patch "visible_update_all"
+        delete "destroy_all"
+      end
+    end
   end
 end
