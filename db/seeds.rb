@@ -49,7 +49,7 @@
       test_season = ["spring", "summer", "autumn", "winter","all_season"]
       test_place = ["indoor", "outdoor", "veranda"]
       test_condition = ["pot", "ground", "greenhouse"]
-      test_state = ["seed", "seedling", "bulb","complete"]
+      test_state = ["seed", "seedling", "bulb", "complete"]
       user.articles.create!(
         cultivar_name: "test#{num}",
         prefecture_id: 1,
