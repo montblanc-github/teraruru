@@ -36,7 +36,7 @@
     <h2><i class="fas fa-feather-alt"></i> <%= @user.account_name %>の投稿一覧</h2>
   </div>
   <div class="link-group">
-    <%= link_to "投稿一括表示(表示ユーザのみ)", visible_update_all_admin_articles_path(@user.id), method: :patch, class: "btn btn-red" %>
+    <%= link_to "投稿一括表示(表示ユーザのみ)", visible_update_all_admin_articles_path(@user.id), method: :patch, class: "btn btn-green" %>
     <%= link_to "投稿一括削除(表示ユーザのみ)", destroy_all_admin_articles_path(@user.id), method: :delete, class: "btn btn-red" %>
   </div>
   <div class="item-style user-articles-flex">

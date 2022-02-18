@@ -92,7 +92,7 @@
       <div class="comments-wrap">
         <%= render "public/comments/comment-content", comments: @comments %>
         <% if user_signed_in? %>
-        <%= render "public/comments/comment-form", article: @article,comment: @comment %>
+          <%= render "public/comments/comment-form", article: @article,comment: @comment %>
         <% end %>
       </div>
     <% else %>
