@@ -3,9 +3,9 @@ require "refile/file_double"
 FactoryBot.define do
   factory :article do
     cultivar_name { Faker::Lorem.characters(number: 5) }
-    prefecture_id { Faker::Number.number(digits: 1) }
-    municipality_id { Faker::Number.number(digits: 1) }
-    level { Faker::Number.between(from: 1, to: 5) }
+    prefecture_id { '1' }
+    municipality_id { '1' }
+    level { '3' }
     category { 'plant' }
     season { 'spring' }
     fertilizer_existence { Faker::Boolean.boolean }
