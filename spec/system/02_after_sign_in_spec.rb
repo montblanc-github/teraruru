@@ -64,6 +64,77 @@ describe '[STEP2] ユーザログイン後のテスト' do
     end
   end
 
+  describe '投稿作成画面のテスト' do
+    before do
+      visit new_article_path
+    end
+
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/articles/new'
+      end
+      it '「投稿する」と表示される' do
+        expect(page).to have_content '投稿する'
+      end
+      it '品種名入力フォームが表示される' do
+        expect(page).to have_field 'article[cultivar_name]'
+      end
+      it '都道府県選択フォームが表示される' do
+        expect(page).to have_select 'article[prefecture_id]'
+      end
+      it '市区町村選択フォームが表示される' do
+        expect(page).to have_select 'article[municipality_id]'
+      end
+      it '難易度選択フォームが表示される' do
+        expect(page).to have_select 'article[level]'
+      end
+      it 'カテゴリラジオボタンが表示される' do
+        expect(page).to have_checked_field('野菜')
+      end
+      it '時期チェックボタンが表示される' do
+        expect(page).to have_checked_field('')
+      end
+      it '肥料の有無ラジオボタンが表示される' do
+        expect(page).to have_checked_field('あり')
+      end
+      it '肥料の詳細フォームが表示される' do
+        expect(page).to have_field 'article[fertilizer_info]'
+      end
+      it '場所ラジオボタンが表示される' do
+        expect(page).to have_checked_field('屋内')
+      end
+      it '条件ラジオボタンが表示される' do
+        expect(page).to have_checked_field('鉢')
+      end
+      it '開始時ラジオボタンが表示される' do
+        expect(page).to have_checked_field('種から')
+      end
+      it 'メッセージフォームが表示される' do
+        expect(page).to have_field 'article[message]'
+      end
+    end
+
+    context '投稿成功のテスト' do
+      before do
+        fill_in 'article[cultivar_name]', with: Faker::Lorem.characters(number: 5)
+        select '北海道', from: '都道府県'
+        select '札幌市中央区', from: '市区町村'
+        select 'とても難しい', from: '難易度'
+        choose '野菜'
+        check '1月'
+        choose 'なし'
+        choose '屋内'
+        choose '鉢'
+        choose '種から'
+        fill_in 'article[message]', with: Faker::Lorem.characters(number: 50)
+      end
+
+      it '自分の新しい投稿が正しく保存される' do
+        expect { click_button '投稿する' }.to change(user.articles, :count).by(1)
+      end
+    end
+  end
+
   describe '自分の投稿詳細画面のテスト' do
     before do
       visit article_path(article.id)
@@ -186,6 +257,15 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/' + user.id.to_s
       end
+      it '自分のアカウント名のリンク先が正しい' do
+        expect(page).to have_link user.account_name, href: user_path(user.id)
+      end
+      it '自分のプロフィール編集リンク先が正しい' do
+        expect(page).to have_link 'プロフィールを編集する', href: edit_user_path(user.id)
+      end
+      it '自分の投稿のリンク先が正しい' do
+        expect(page).to have_link '', href: article_path(article.id)
+      end
       it '他人の投稿は表示されない' do
         expect(page).not_to have_link '', href: user_path(other_user.id)
         expect(page).not_to have_content other_article.cultivar_name
@@ -202,13 +282,34 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/' + user.id.to_s + '/edit'
       end
-      it 'アカウント名編集フォームに自分のアカウント名名が表示される' do
+      it '氏名(姓)編集フォームに自分の氏名(姓)が表示される' do
+        expect(page).to have_field 'user[last_name]', with: user.last_name
+      end
+      it '氏名(名)編集フォームに自分の氏名(名)が表示される' do
+        expect(page).to have_field 'user[first_name]', with: user.first_name
+      end
+      it 'フリガナ(セイ)編集フォームに自分のフリガナ(セイ)が表示される' do
+        expect(page).to have_field 'user[last_name_kana]', with: user.last_name_kana
+      end
+      it 'フリガナ(メイ)編集フォームに自分のフリガナ(メイ)が表示される' do
+        expect(page).to have_field 'user[first_name_kana]', with: user.first_name_kana
+      end
+      it 'メールアドレス編集フォームに自分のメールアドレスが表示される' do
+        expect(page).to have_field 'user[email]', with: user.email
+      end
+      it '郵便番号編集フォームに自分の郵便番号が表示される' do
+        expect(page).to have_field 'user[post_code]', with: user.post_code
+      end
+      it '住所編集フォームに自分の住所が表示される' do
+        expect(page).to have_field 'user[address]', with: user.address
+      end
+      it 'アカウント名編集フォームに自分のアカウント名が表示される' do
         expect(page).to have_field 'user[account_name]', with: user.account_name
       end
       it '画像編集フォームが表示される' do
         expect(page).to have_field 'user[profile_image]'
       end
-      it '自己紹介編集フォームに自分の自己紹介文が表示される' do
+      it '紹介文編集フォームに自分の紹介文が表示される' do
         expect(page).to have_field 'user[introduction]', with: user.introduction
       end
       it '変更を保存するボタンが表示される' do
