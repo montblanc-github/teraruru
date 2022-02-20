@@ -77,8 +77,15 @@ header{
     }
   }
 
+  .notification-icon{
+    padding-left: 5px;
+    color: #fff;
+    font-size: 20px;
+  }
+
   .search-wrapper{
     width: 200px;
+    position: relative;
 
     .search-box{
       width: 180px;
@@ -89,6 +96,12 @@ header{
       line-height: 30px;
       border-radius: 6px;
       background-color: #F4FFF4;
+    }
+
+    .search-icon{
+      position: absolute;
+      top: 33px;
+      left: 38px;
     }
   }
 }
