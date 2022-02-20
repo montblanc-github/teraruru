@@ -7,8 +7,8 @@ FactoryBot.define do
     municipality_id { '1' }
     level { '3' }
     category { 'plant' }
-    season { 'spring' }
-    fertilizer_existence { Faker::Boolean.boolean }
+    season_ids { '1' }
+    fertilizer_existence { 'あり' }
     fertilizer_info { Faker::Lorem.characters(number: 15) }
     place { 'indoor' }
     condition { 'pot' }

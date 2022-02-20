@@ -5,6 +5,7 @@ RSpec.describe 'Favoriteモデルのテスト', type: :model do
     subject { favorite.valid? }
 
     let(:user) { create(:user) }
+    let!(:season) { create(:season) }
     let(:article) { create(:article, user_id: user.id) }
     let!(:favorite) { build(:favorite, user_id: user.id, article_id: article.id ) }
 

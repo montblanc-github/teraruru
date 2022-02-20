@@ -6,6 +6,7 @@ RSpec.describe 'Notificationモデルのテスト', type: :model do
 
     let!(:other_user) { create(:user) }
     let(:user) { create(:user) }
+    let!(:season) { create(:season) }
     let(:article) { create(:article, user_id: user.id) }
     let(:favorite) { create(:favorite) }
     let!(:notification) { build(:notification, article_id: article.id, visiter_id: other_user.id, visited_id: user.id) }

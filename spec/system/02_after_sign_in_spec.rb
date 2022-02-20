@@ -5,6 +5,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
   let!(:other_user) { create(:user) }
   let!(:prefecture) { create(:prefecture) }
   let!(:municipality) { create(:municipality, prefecture_id: prefecture.id) }
+  let!(:season) { create(:season) }
   let!(:article) { create(:article, user_id: user.id) }
   let!(:other_article) { create(:article, user_id: other_user.id) }
 
@@ -137,8 +138,101 @@ describe '[STEP2] ユーザログイン後のテスト' do
       it 'カテゴリラジオボタンが表示される' do
         expect(page).to have_checked_field('草木')
       end
-      it '時期ラジオボタンが表示される' do
-        expect(page).to have_checked_field('春')
+      it '時期チェックボタンが表示される' do
+        expect(page).to have_checked_field('1月')
+      end
+      it '肥料の有無ラジオボタンが表示される' do
+        expect(page).to have_checked_field('あり')
+      end
+      it '肥料の詳細フォームが表示される' do
+        expect(page).to have_field 'article[fertilizer_info]', with: article.fertilizer_info
+      end
+      it '場所ラジオボタンが表示される' do
+        expect(page).to have_checked_field('屋内')
+      end
+      it '条件ラジオボタンが表示される' do
+        expect(page).to have_checked_field('鉢')
+      end
+      it '開始時ラジオボタンが表示される' do
+        expect(page).to have_checked_field('種から')
+      end
+      it 'メッセージフォームが表示される' do
+        expect(page).to have_field 'article[message]', with: article.message
+      end
+    end
+
+    context '編集成功のテスト' do
+      before do
+        @article_old_cultiver_name = article.cultivar_name
+        fill_in 'article[cultivar_name]', with: Faker::Lorem.characters(number: 5)
+        click_button '投稿する'
+      end
+
+      it 'cultivar_nameが正しく更新される' do
+        expect(article.reload.cultivar_name).not_to eq @article_old_cultiver_name
+      end
+      it 'リダイレクト先が、更新した投稿の詳細画面になっている' do
+        expect(current_path).to eq '/articles/' + article.id.to_s
+      end
+    end
+  end
+
+  describe '自分のユーザ詳細画面のテスト' do
+    before do
+      visit user_path(user.id)
+    end
+
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users/' + user.id.to_s
+      end
+      it '他人の投稿は表示されない' do
+        expect(page).not_to have_link '', href: user_path(other_user.id)
+        expect(page).not_to have_content other_article.cultivar_name
+      end
+    end
+  end
+
+  describe '自分のユーザ情報編集画面のテスト' do
+    before do
+      visit edit_user_path(user.id)
+    end
+
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users/' + user.id.to_s + '/edit'
+      end
+      it 'アカウント名編集フォームに自分のアカウント名名が表示される' do
+        expect(page).to have_field 'user[account_name]', with: user.account_name
+      end
+      it '画像編集フォームが表示される' do
+        expect(page).to have_field 'user[profile_image]'
+      end
+      it '自己紹介編集フォームに自分の自己紹介文が表示される' do
+        expect(page).to have_field 'user[introduction]', with: user.introduction
+      end
+      it '変更を保存するボタンが表示される' do
+        expect(page).to have_button '変更を保存する'
+      end
+    end
+
+    context '更新成功のテスト' do
+      before do
+        @user_old_account_name = user.account_name
+        @user_old_introduction = user.introduction
+        fill_in 'user[account_name]', with: Faker::Lorem.characters(number: 9)
+        fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 19)
+        click_button '変更を保存する'
+      end
+
+      it 'account_nameが正しく更新される' do
+        expect(user.reload.account_name).not_to eq @user_old_account_name
+      end
+      it 'introductionが正しく更新される' do
+        expect(user.reload.introduction).not_to eq @user_old_intrpduction
+      end
+      it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
+        expect(current_path).to eq '/users/' + user.id.to_s
       end
     end
   end

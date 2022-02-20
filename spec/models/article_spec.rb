@@ -5,6 +5,7 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
     subject { article.valid? }
 
     let(:user) { create(:user) }
+    let!(:season) { create(:season) }
     let!(:article) { build(:article, user_id: user.id) }
 
     context 'cultivar_nameカラム' do
@@ -37,9 +38,9 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
       end
     end
 
-    context 'seasonカラム'do
+    context 'season_idsカラム'do
       it '空欄でないこと' do
-        article.season = ''
+        article.season_ids = ''
         is_expected.to eq false
       end
     end
@@ -150,6 +151,16 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
     context 'Notificationモデルとの関係' do
       it 'N:1となっている' do
         expect(Article.reflect_on_association(:notifications).macro).to eq :has_many
+      end
+    end
+    context 'ArticleSeasonモデルとの関係' do
+      it 'N:1となっている' do
+        expect(Article.reflect_on_association(:article_seasons).macro).to eq :has_many
+      end
+    end
+    context 'Seasonモデルとの関係' do
+      it 'N:Nとなっている' do
+        expect(Article.reflect_on_association(:seasons).macro).to eq :has_many
       end
     end
   end

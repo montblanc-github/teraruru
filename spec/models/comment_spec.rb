@@ -5,6 +5,7 @@ RSpec.describe 'Commentモデルのテスト', type: :model do
     subject { comment.valid? }
 
     let(:user) { create(:user) }
+    let!(:season) { create(:season) }
     let(:article) { create(:article, user_id: user.id) }
     let!(:comment) { build(:comment, user_id: user.id, article_id: article.id) }
 

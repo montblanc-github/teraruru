@@ -114,6 +114,7 @@ module Public::ArticlesHelper
     elsif s == "complete"
       content_tag(:p, "完成形から")
     end
+  end
 
 # 都道府県/市区町村表示用
   def extract_article_prefecture_name(article)
