@@ -52,7 +52,7 @@
               </tr>
               <tr>
                 <th>時期</th>
-                <td><%= @article.season_ids %></td>
+                <td><%= @article.season_ids.map{|season_id| Season.find(season_id).month}.join(', ') %></td>
               </tr>
               <tr>
                 <th>肥料</th>

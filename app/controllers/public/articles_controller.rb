@@ -89,7 +89,7 @@ class Public::ArticlesController < ApplicationController
       if current_admin
         @articles = @q.result.page(params[:page]).per(9)
       else
-        @articles = @q.where(is_visible: true).result.page(params[:page]).per(9)
+        @articles = @q.result.where(is_visible: true).page(params[:page]).per(9)
       end
       @prefecture_id = params[:q][:prefecture_id_eq]
     elsif @tag = params[:tag]
