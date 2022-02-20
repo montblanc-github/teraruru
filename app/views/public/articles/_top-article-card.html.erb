@@ -10,7 +10,6 @@
         <h5><%= article.cultivar_name %></h5>
         <%= level_icon(article.level) %>
         <%= category_icon(article.category) %>
-        <%= season_icon(article.season)%>
       </div>
       <div class="card-footer-wrapper">
         <% if user_signed_in? && current_user != article.user %>

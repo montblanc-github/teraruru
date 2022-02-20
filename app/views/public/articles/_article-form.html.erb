@@ -46,9 +46,7 @@
   <!--時期-->
   <div class="field">
     <%= f.label "時期" %>
-    <%= collection_check_boxes(:article, :season_ids, Season.all, :id, :month, include_hidden: false) do |s| %>
-      <%= s.check_box + s.text %>
-    <% end %>
+    <%= f.collection_check_boxes :season_ids, Season.all, :id, :month, include_hidden: false %>
   </div>
 
   <!--肥料-->
