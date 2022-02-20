@@ -9,11 +9,15 @@
       </div>
       <div class="article-index-tags-wrapper">
         <div class="article-index-tags-contents">
-          <% @tags.each.with_index(1) do |tag, i| %>
-            <div class="tag-flex">
-              <div class="tag-ranking-num"><p><%= "No.#{i}" %></p></div>
-              <%= link_to "#{tag.name} (#{tag.taggings_count})", search_articles_path(tag: tag.name), class: "article-index-tag-content" %>
-            </div>
+          <% if @tags.present? %>
+            <% @tags.each.with_index(1) do |tag, i| %>
+              <div class="tag-flex">
+                <div class="tag-ranking-num"><p><%= "No.#{i}" %></p></div>
+                <%= link_to "#{tag.name} (#{tag.taggings_count})", search_articles_path(tag: tag.name), class: "article-index-tag-content" %>
+              </div>
+            <% end %>
+          <% else %>
+            <h4 class="no-tag">表示できるタグ <i class="fas fa-tag"></i> がありません。</h4>
           <% end %>
         </div>
       </div>
