@@ -43,28 +43,26 @@
   end
 
 # 投稿seed
-  User.all.each do |user|
-    20.times do |num|
-      test_category = ["vegetable", "fruit", "plant", "flower"]
-      test_season = ["spring", "summer", "autumn", "winter","all_season"]
-      test_place = ["indoor", "outdoor", "veranda"]
-      test_condition = ["pot", "ground", "greenhouse"]
-      test_state = ["seed", "seedling", "bulb", "complete"]
-      user.articles.create!(
-        cultivar_name: "test#{num}",
-        prefecture_id: 1,
-        municipality_id: rand(1..10),
-        level: rand(1..5),
-        category: test_category.sample,
-        season: test_season.sample,
-        fertilizer_existence: false,
-        place: test_place.sample,
-        condition: test_condition.sample,
-        state_at_start: test_state.sample,
-        is_visible: [true, false].sample
-      )
-    end
-  end
+  # User.all.each do |user|
+  #   20.times do |num|
+  #     test_category = ["vegetable", "fruit", "plant", "flower"]
+  #     test_place = ["indoor", "outdoor", "veranda"]
+  #     test_condition = ["pot", "ground", "greenhouse"]
+  #     test_state = ["seed", "seedling", "bulb"]
+  #     user.articles.create!(
+  #       cultivar_name: "test#{num}",
+  #       prefecture_id: 1,
+  #       municipality_id: rand(1..10),
+  #       level: rand(1..5),
+  #       category: test_category.sample,
+  #       fertilizer_existence: false,
+  #       place: test_place.sample,
+  #       condition: test_condition.sample,
+  #       state_at_start: test_state.sample,
+  #       is_visible: [true, false].sample
+  #     )
+  #   end
+  # end
 
 # フォローseed
   users = User.all
