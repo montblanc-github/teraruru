@@ -23,9 +23,9 @@ module Public::ArticlesHelper
     end
   end
 
-# 投稿シーズンアイコン表示用
-  def season_icon(val)
-    content_tag(:div, "", class: ["season-icon", "season-#{val}-icon"])
+# 投稿シーズン表示用
+  def season_content(article)
+    article.season_ids.map{|season_id| Season.find(season_id).month}.join(', ')
   end
 
 # いいねアイコン表示用
