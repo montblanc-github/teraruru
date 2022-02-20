@@ -10,18 +10,18 @@ class Article < ApplicationRecord
 
   # アソシエーション
   belongs_to :user
-  belongs_to :prefecture
-  belongs_to :municipality
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
-  has_many :notification, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   has_many :article_seasons, dependent: :destroy
   has_many :seasons, through: :article_seasons
 
   # バリデーション
     # 品種名の文字数制限は、アマモの名称「リュウグウノオトヒメノモトユイノキリハズシ」から決定。
   validates :cultivar_name, presence: true, length: {maximum: 21}
+  validates :prefecture_id, presence: true
+  validates :municipality_id, presence: true
   validates :level , presence: true
   validates :category, presence: true
   validates :season_ids, presence: true
@@ -32,6 +32,7 @@ class Article < ApplicationRecord
   validates :place, presence: true
   validates :condition, presence: true
   validates :state_at_start, presence: true
+  validates :message, length: {maximum: 150}
   validate :validate_tag
 
   # いいねランキング

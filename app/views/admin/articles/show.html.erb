@@ -46,11 +46,11 @@
             </tr>
             <tr>
               <th>都道府県</th>
-              <td><%= @article.prefecture.name %></td>
+              <td><%= extract_article_prefecture_name(@article) %></td>
             </tr>
             <tr>
               <th>市区町村</th>
-              <td><%= @article.municipality.municipality_name %></td>
+              <td><%= extract_article_municipality_name(@article) %></td>
             </tr>
             <tr>
               <th>難易度</th>
