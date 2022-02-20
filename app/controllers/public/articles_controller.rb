@@ -85,10 +85,13 @@ class Public::ArticlesController < ApplicationController
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
+    @seasons = Season.all
     is_current_admin = current_admin.present? ? true : false
 
     if params[:keyword].present?
       @articles = Article.search(is_current_admin, params[:keyword]).page(params[:page]).per(9)
+    elsif params[:prefecture].present?
+      @articles = Article.prefecture_search(is_current_admin, params[:prefecture]).page(params[:page]).per(9)
     elsif params[:q].present?
       if current_admin
         @articles = @q.result.page(params[:page]).per(9)

@@ -44,7 +44,7 @@
     <!--時期-->
     <div class="field">
     <%= f.label "時期" %>
-    <%= f.collection_check_boxes :seasons_id_eq_any, Season.all, :id, :month %>
+    <%= f.collection_check_boxes :seasons_id_eq_any, @seasons, :id, :month %>
     </div>
 
     <!--肥料-->

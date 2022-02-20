@@ -43,9 +43,17 @@ class Article < ApplicationRecord
   # 検索
   def self.search(is_current_admin, keyword)
     if is_current_admin
-      Article.where( "(cultivar_name LIKE?) OR (prefecture_id = ?)", "%#{keyword}%", "#{keyword}")
+      Article.where( "(cultivar_name LIKE?)", "%#{keyword}%")
     else
-      Article.where(is_visible: true).where( "(cultivar_name LIKE?) OR (prefecture_id = ?)", "%#{keyword}%", "#{keyword}")
+      Article.where(is_visible: true).where( "(cultivar_name LIKE?)", "%#{keyword}%")
+    end
+  end
+
+  def self.prefecture_search(is_current_admin, prefecture)
+    if is_current_admin
+      Article.where( "(prefecture_id = ?)", "#{prefecture}")
+    else
+      Article.where(is_visible: true).where( "(prefecture_id = ?)", "#{prefecture}")
     end
   end
 
