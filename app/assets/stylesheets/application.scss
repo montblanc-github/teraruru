@@ -540,17 +540,22 @@ footer{
 .article_index_flex{
   display: flex;
   .article_index_left{
-    width: 29%;
+    width: 32%;
+    padding-top: 10px;
     font-size: 10px;
 
-    label{
-      width: 10%;
+    .search-label{
+      width: 50px;
+    }
+
+    .search-sublabel{
+      width: 55px;
     }
   }
 
   .article_index_right{
-    width: 71%;
-    margin-left: 5px;
+    width: 68%;
+    margin-left: 60px;
     display: flex;
     flex-wrap: wrap;
   }

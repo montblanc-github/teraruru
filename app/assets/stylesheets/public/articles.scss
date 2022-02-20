@@ -39,9 +39,27 @@
   padding-top: 80px;
 }
 
+.no-article{
+  padding-top: 10px;
+  padding-left: 100px;
+}
+
 .no-tag{
   padding-top: 200px;
   padding-left: 5px;
+}
+
+.search-form-table{
+  width: 100%;
+
+  tr{
+    height: 60px;
+  }
+
+  th{
+    width: 50px;
+    text-align: left;
+  }
 }
 
 .article-index-tags-wrapper{
