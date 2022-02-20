@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_14_080607) do
+ActiveRecord::Schema.define(version: 2022_02_20_052216) do
 
   create_table "admins", id: :string, force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2022_02_14_080607) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "article_seasons", force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "season_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_article_seasons_on_article_id"
+    t.index ["season_id"], name: "index_article_seasons_on_season_id"
+  end
+
   create_table "articles", force: :cascade do |t|
     t.string "user_id", null: false
     t.string "article_image_id"
@@ -32,7 +41,6 @@ ActiveRecord::Schema.define(version: 2022_02_14_080607) do
     t.integer "municipality_id", null: false
     t.string "level", null: false
     t.string "category", null: false
-    t.string "season", null: false
     t.boolean "fertilizer_existence", null: false
     t.string "fertilizer_info"
     t.string "place", null: false
@@ -142,6 +150,12 @@ ActiveRecord::Schema.define(version: 2022_02_14_080607) do
   end
 
   create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.string "month"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

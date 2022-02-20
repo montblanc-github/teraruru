@@ -16,13 +16,14 @@ class Article < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
   has_many :comments, dependent: :destroy
   has_many :notification, dependent: :destroy
+  has_many :article_seasons, dependent: :destroy
+  has_many :seasons, through: :article_seasons
 
   # バリデーション
     # 品種名の文字数制限は、アマモの名称「リュウグウノオトヒメノモトユイノキリハズシ」から決定。
   validates :cultivar_name, presence: true, length: {maximum: 21}
   validates :level , presence: true
   validates :category, presence: true
-  validates :season, presence: true
     # boolean型は、falseの時にエラーが返る状態にならないよう、presenceは使わない。
   validates :fertilizer_existence, inclusion: {in: [true, false]}
   validates :fertilizer_info, length: {maximum: 100}
