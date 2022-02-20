@@ -45,15 +45,19 @@
 
   <!--時期-->
   <div class="field">
-    <%= f.label :season, "季節" %>
-    <%= f.radio_button :season, :spring, checked: true %>
-    <%= f.label :season, "春", value: :spring %>
-    <%= f.radio_button :season, :summer %>
-    <%= f.label :season, "夏", value: :summer %>
-    <%= f.radio_button :season, :autumn %>
-    <%= f.label :season, "秋", value: :autumn %>
-    <%= f.radio_button :season, :winter %>
-    <%= f.label :season, "冬", value: :winter %>
+        <%= f.label :season, "時期" %>
+        <%= f.check_box :season, {multiple: true}, "1月" %> 1月
+        <%= f.check_box :season, {multiple: true}, "2月" %> 2月
+        <%= f.check_box :season, {multiple: true}, "3月" %> 3月
+        <%= f.check_box :season, {multiple: true}, "4月" %> 4月
+        <%= f.check_box :season, {multiple: true}, "5月" %> 5月
+        <%= f.check_box :season, {multiple: true}, "6月" %> 6月
+        <%= f.check_box :season, {multiple: true}, "7月" %> 7月
+        <%= f.check_box :season, {multiple: true}, "8月" %> 8月
+        <%= f.check_box :season, {multiple: true}, "9月" %> 9月
+        <%= f.check_box :season, {multiple: true}, "10月" %> 10月
+        <%= f.check_box :season, {multiple: true}, "11月" %> 11月
+        <%= f.check_box :season, {multiple: true}, "12月" %> 12月
   </div>
 
   <!--肥料-->
