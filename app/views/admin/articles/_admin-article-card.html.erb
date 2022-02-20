@@ -1,6 +1,6 @@
 <% if articles.present? %>
   <% articles.each do |article| %>
-    <% if article.is_delete == false %>
+    <% if article.is_visible == true %>
       <div class="card-wrapper">
         <%= link_to admin_article_path(article) do %>
           <div class="card-img">
@@ -58,6 +58,10 @@
           <h5><%= article.cultivar_name %></h5>
         </div>
         <div class="card-footer-wrapper">
+          <div class="card-eyes">
+            <i class="fas fa-eye"></i>
+            <%= article.impressionist_count(:filter=>:session_hash) %>
+          </div>
           <div class="card-footer-text">
             <%= article.user.account_name %>
           </div>

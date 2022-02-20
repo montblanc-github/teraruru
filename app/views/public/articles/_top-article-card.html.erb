@@ -1,0 +1,44 @@
+<% if articles.present? %>
+  <% articles.each do |article| %>
+    <div class="card-wrapper">
+      <%= link_to article_path(article) do %>
+        <div class="card-img">
+          <%= attachment_image_tag article, :article_image, fallback: "no_image.png", class: "card-index-img" %>
+        </div>
+      <% end %>
+      <div class="card-title">
+        <h5><%= article.cultivar_name %></h5>
+        <%= level_icon(article.level) %>
+        <%= category_icon(article.category) %>
+        <%= season_icon(article.season)%>
+      </div>
+      <div class="card-footer-wrapper">
+        <% if user_signed_in? && current_user != article.user %>
+          <div class="favorite-<%= article.id %> card-favorite">
+            <% if current_user.favorite?(article) %>
+              <%= link_to  article_favorites_path(article), method: :delete, remote: true do %>
+                  <i class="fas fa-heart"></i> <%= article.favorites.count %>
+              <% end %>
+            <% else %>
+              <%= link_to article_favorites_path(article), method: :post, remote: true do %>
+                  <i class="far fa-heart"></i> <%= article.favorites.count %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="card-eyes">
+          <i class="fas fa-eye"></i>
+          <%= article.impressionist_count(:filter=>:session_hash) %>
+        </div>
+        <div class="card-footer-text">
+          <%= article.user.account_name %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="page-item">
+    <%= paginate articles, param_name: "top_article_page" %>
+  </div>
+<% else %>
+  <h3>投稿がありません。ヘッダーの投稿するリンクから投稿しよう！</h3>
+<% end %>

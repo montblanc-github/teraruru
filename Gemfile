@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'gimei'
 end
 
 group :development do
@@ -71,9 +72,6 @@ gem 'refile-mini_magick'
 # アイコン用gem
 gem 'font-awesome-sass', '~> 5.15.1'
 
-# 環境変数用gem
-gem 'dotenv-rails'
-
 # ページネーション用gem
 gem 'kaminari'
 
@@ -89,3 +87,15 @@ gem 'ransack'
 
 # コードフォーマット用gem
 gem 'rubocop-airbnb'
+
+# 閲覧数用gem
+gem 'impressionist', '~>1.6.1'
+
+# 環境変数用gem
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+
+# エラーメッセージ日本語化gem
+gem 'rails-i18n', '~> 5.1'

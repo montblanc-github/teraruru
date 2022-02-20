@@ -14,6 +14,7 @@
         <%= link_to destroy_user_session_path, method: :delete, class: "header-link-item" do %>
           <p><i class="fas fa-sign-out-alt"></i>ログアウト</p>
         <% end %>
+        <%= link_to "\uf0f3", user_notifications_path(current_user), class: "fas" %>
       </div>
     <% elsif admin_signed_in? %>
       <div class="link-group">
@@ -41,7 +42,7 @@
   </div>
 
   <div class="search-wrapper">
-    <%= form_with url: articles_path, method: :get, skip_enforcing_utf8: true, local: true do |f| %>
+    <%= form_with url: search_articles_path, method: :get, skip_enforcing_utf8: true, local: true do |f| %>
       <%= f.text_field :keyword, placeholder: "品種名検索  \uf002", class: "search-box fa" %>
       <% f.submit %>
     <% end %>
