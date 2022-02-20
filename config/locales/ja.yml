@@ -44,7 +44,7 @@ ja:
         municipality: "市区町村"
         level: "難易度"
         category: "カテゴリ"
-        season: "季節"
+        season_ids: "時期"
         fertilizer_existence: "肥料の使用状況"
         fertilizer_info: "肥料の詳細情報"
         place: "場所"
