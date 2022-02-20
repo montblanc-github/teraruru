@@ -41,12 +41,14 @@
     <%= f.label :category, "草木", value: :plant %>
     <%= f.radio_button :category, :flower %>
     <%= f.label :category, "花", value: :flower %>
+    <%= f.radio_button :category, :succulent %>
+    <%= f.label :category, "多肉", value: :succulent %>
   </div>
 
   <!--時期-->
   <div class="field">
     <%= f.label "時期" %>
-    <%= f.collection_check_boxes :season_ids, Season.all, :id, :month, include_hidden: false %>
+    <%= f.collection_check_boxes :season_ids, seasons, :id, :month, include_hidden: false %>
   </div>
 
   <!--肥料-->
@@ -95,6 +97,8 @@
     <%= f.label :state_at_start, "苗から", value: :seedling %>
     <%= f.radio_button :state_at_start, :bulb %>
     <%= f.label :state_at_start, "球根から", value: :bulb %>
+    <%= f.radio_button :state_at_start, :complete %>
+    <%= f.label :state_at_start, "完成形", value: :complete %>
   </div>
 
   <!--タグ-->
