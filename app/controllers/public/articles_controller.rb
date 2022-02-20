@@ -15,6 +15,7 @@ class Public::ArticlesController < ApplicationController
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
+    @seasons = Season.all
   end
 
   def show
