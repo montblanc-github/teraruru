@@ -44,11 +44,11 @@
               </tr>
               <tr>
                 <th>難易度</th>
-                <td><%= @article.level %></td>
+                <td><%= level_content(@article) %></td>
               </tr>
               <tr>
                 <th>カテゴリ</th>
-                <td><%= @article.category %></td>
+                <td><%= category_content(@article) %></td>
               </tr>
               <tr>
                 <th>時期</th>
@@ -56,22 +56,22 @@
               </tr>
               <tr>
                 <th>肥料</th>
-                <td><%= @article.fertilizer_existence %></td>
+                <td><%= fertilizer_existence_content(@article) %></td>
               </tr>      <tr>
                 <th></th>
                 <td><%= @article.fertilizer_info %></td>
               </tr>
               <tr>
                 <th>場所</th>
-                <td><%= @article.place %></td>
+                <td><%= place_content(@article) %></td>
               </tr>
               <tr>
                 <th>条件</th>
-                <td><%= @article.condition %></td>
+                <td><%= condition_content(@article) %></td>
               </tr>
               <tr>
                 <th>開始時</th>
-                <td><%= @article.state_at_start %></td>
+                <td><%= state_at_start_content(@article) %></td>
               </tr>
               <tr>
                 <th>タグ</th>
