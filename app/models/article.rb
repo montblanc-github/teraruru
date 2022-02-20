@@ -24,6 +24,7 @@ class Article < ApplicationRecord
   validates :cultivar_name, presence: true, length: {maximum: 21}
   validates :level , presence: true
   validates :category, presence: true
+  validates :season_ids, presence: true
     # boolean型は、falseの時にエラーが返る状態にならないよう、presenceは使わない。
   validates :fertilizer_existence, inclusion: {in: [true, false]}
   validates :fertilizer_info, length: {maximum: 100}

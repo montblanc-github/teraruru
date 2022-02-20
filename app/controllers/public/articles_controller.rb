@@ -32,6 +32,7 @@ class Public::ArticlesController < ApplicationController
     @article.article_seasons.build
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
+    @seasons = Season.all
   end
 
   def create
@@ -43,6 +44,7 @@ class Public::ArticlesController < ApplicationController
     else
       @prefectures = Prefecture.all
       @municipalities = Municipality.all
+      @seasons = Season.all
       render :new
     end
   end
@@ -52,6 +54,7 @@ class Public::ArticlesController < ApplicationController
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
     @prefecture_id = @article.prefecture_id
+    @seasons = Season.all
   end
 
   def update
@@ -62,6 +65,7 @@ class Public::ArticlesController < ApplicationController
     else
       @prefectures = Prefecture.all
       @municipalities = Municipality.all
+      @seasons = Season.all
       render :edit
     end
   end

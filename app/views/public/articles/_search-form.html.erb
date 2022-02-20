@@ -37,6 +37,8 @@
       <%= f.label :category_eq, "草木", value: :plant %>
       <%= f.radio_button :category_eq, :flower %>
       <%= f.label :category_eq, "花", value: :flower %>
+      <%= f.radio_button :category_eq, :succulent %>
+      <%= f.label :category_eq, "多肉", value: :succulent %>
     </div>
 
     <!--時期-->
@@ -93,6 +95,8 @@
       <%= f.label :state_at_start_eq, "苗から", value: :seedling %>
       <%= f.radio_button :state_at_start_eq, :bulb %>
       <%= f.label :state_at_start_eq, "球根から", value: :bulb %>
+      <%= f.radio_button :state_at_start_eq, :complete %>
+      <%= f.label :state_at_start_eq, "完成形", value: :complete %>
     </div>
 
     <div class="actions">
