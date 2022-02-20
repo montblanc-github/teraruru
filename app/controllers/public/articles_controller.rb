@@ -29,8 +29,10 @@ class Public::ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @article.article_seasons.build
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
+    @seasons = Season.all
   end
 
   def create
@@ -42,6 +44,7 @@ class Public::ArticlesController < ApplicationController
     else
       @prefectures = Prefecture.all
       @municipalities = Municipality.all
+      @seasons = Season.all
       render :new
     end
   end
@@ -51,6 +54,7 @@ class Public::ArticlesController < ApplicationController
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
     @prefecture_id = @article.prefecture_id
+    @seasons = Season.all
   end
 
   def update
@@ -61,6 +65,7 @@ class Public::ArticlesController < ApplicationController
     else
       @prefectures = Prefecture.all
       @municipalities = Municipality.all
+      @seasons = Season.all
       render :edit
     end
   end
@@ -86,9 +91,9 @@ class Public::ArticlesController < ApplicationController
       @articles = Article.search(is_current_admin, params[:keyword]).page(params[:page]).per(9)
     elsif params[:q].present?
       if current_admin
-        @articles = @q.result.where(is_visible: true).page(params[:page]).per(9)
-      else
         @articles = @q.result.page(params[:page]).per(9)
+      else
+        @articles = @q.result.where(is_visible: true).page(params[:page]).per(9)
       end
       @prefecture_id = params[:q][:prefecture_id_eq]
     elsif @tag = params[:tag]
@@ -107,6 +112,7 @@ class Public::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:user_id, :artical_image_id, :cultivar_name, :prefecture_id, :municipality_id, :level, :category, :season, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :tag_list, :message)
+    params.require(:article).permit(:user_id, :artical_image_id, :cultivar_name, :prefecture_id, :municipality_id, :level, :category, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :tag_list, :message, season_ids: [])
   end
+
 end
