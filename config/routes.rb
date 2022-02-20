@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get "relationships/followings"
-    get "relationships/followers"
-  end
   # ユーザ側ルーティング
   devise_for :users, skip: [:registrations], controllers: {
     sessions: "public/sessions",
@@ -12,6 +8,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "users/cancel", to: "public/registrations#cancel", as: :cancel_user_registration
     get "users/sign_up", to: "public/registrations#new", as: :new_user_registration
+    post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
     resource :users, only: [:create], as: "user_registration", controller: "public/registrations"
   end
 
@@ -22,11 +19,19 @@ Rails.application.routes.draw do
         get "unsubscribe"
       end
 
+    # notifications
+    resources :notifications, only: [:index, :destroy] do
+      collection do
+        delete "destroy_all"
+      end
+    end
+
       resource :relationships, only: [:create, :destroy]
       get "followings", to: "relationships#followings", as: "followings"
       get "followers", to: "relationships#followers", as: "followers"
-
     end
+
+    resources :chats, only: [:show, :create]
 
     # homes
     root "homes#top"
@@ -39,7 +44,11 @@ Rails.application.routes.draw do
         get "get_municipalities_search"
         get "search"
       end
+
+      resource :favorites, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
+
   end
 
   # 管理者側ルーティング
@@ -50,6 +59,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
 
-    resources :articles, only: [:show, :update, :destroy]
+    resources :articles, only: [:show, :update, :destroy] do
+      collection do
+        patch "visible_update_all"
+        delete "destroy_all"
+      end
+    end
   end
 end

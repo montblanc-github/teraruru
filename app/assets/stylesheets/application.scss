@@ -26,6 +26,15 @@
   box-sizing: border-box;
 }
 
+.field_with_errors input{
+  border: 2px solid red!important;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+
 // ヘッダー
 header{
   height: 80px;
@@ -86,7 +95,7 @@ header{
 
 // フッター
 footer{
-  margin-top: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
 }
@@ -303,7 +312,9 @@ footer{
 
 // ページネーション
 .page-item{
-  margin-top: 15px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
 
   nav {
     display: flex;
@@ -325,20 +336,20 @@ footer{
   }
 
   .page, .first, .last, .prev, .next, .trancate{
-    line-height: 35px;
+    line-height: 30px;
     text-align: center;
-    font-size: 18px;
+    font-size: 14px;
     color: #fff;
   }
 
   .page, .prev, .next, .trancate{
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
   }
 
   .first, .last{
     width: 60px;
-    height: 35px;
+    height: 30px;
   }
 
   a{
@@ -483,6 +494,27 @@ footer{
     height: 45px;
     text-align: right;
     position: relative;
+
+    .card-favorite{
+      height: 24px;
+      line-height: 24px;
+      padding-left: 5px;
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      text-decoration: none;
+      color: red;
+    }
+
+    .card-eyes{
+      height: 24px;
+      line-height: 24px;
+      padding-left: 5px;
+      position: absolute;
+      left: 35px;
+      bottom: 0;
+    }
+
     .card-footer-text{
       padding-right: 5px;
       position: absolute;
@@ -558,5 +590,124 @@ footer{
     .profile-introduction{
       padding-left: 1em;
     }
+  }
+}
+
+// チャット
+.chat-wrapper{
+  height: 500px;
+  position: relative;
+  .chat-content-wrapper{
+    width: 80%;
+    height: 420px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: scroll;
+
+    .chat-left, .chat-right{
+      width: 50%;
+    }
+
+    .chat-left{
+      margin-right: 50%;
+      display: flex;
+
+      img{
+        margin-right: 10px;
+      }
+
+      .chat-content{
+        display: flex;
+        align-items: center;
+      }
+
+    }
+
+    .chat-right{
+      margin-left: 50%;
+      display: flex;
+      .chat-content{
+        margin-left: auto;
+      }
+    }
+
+    .chat-time{
+      font-size: 8px;
+      display: flex;
+      align-items: flex-end;
+      margin-right: 5px;
+    }
+
+    .chat-content{
+      max-width: 90%;
+      padding: 0.5em 0.8em;
+      display: inline-block;
+      background-color: #ddd;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      word-break: break-word;
+    }
+
+  }
+
+  .chat-form-wrapper{
+    max-width: 900px;
+    height: 40px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+
+    .form-box{
+      width: 600px;
+      height: 40px;
+      padding-right: 30px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .form-submit{
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0,0,0,0);
+      border: 0 solid transparent;
+      font-size: 18px;
+      position: absolute;
+      right: 10px;
+    }
+  }
+}
+
+.comment-form-wrapper{
+  max-width: 900px;
+  height: 40px;
+  position: relative;
+
+  .form-box{
+    width: 700px;
+    height: 40px;
+    padding-right: 30px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+  }
+
+  .form-submit{
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,0);
+    border: 0 solid transparent;
+    font-size: 18px;
+    position: absolute;
+    top: 10px;
+    right: 110px;
   }
 }

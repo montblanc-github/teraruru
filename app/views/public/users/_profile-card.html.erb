@@ -4,7 +4,15 @@
   </div>
     <table class="profile-card-right">
       <tr>
-        <th><h2><%= link_to user.account_name, user_path(user) %></h2></th>
+        <th>
+          <h2>
+            <% if current_admin %>
+              <%= link_to user.account_name, admin_user_path(user) %>
+            <% else %>
+              <%= link_to user.account_name, user_path(user) %>
+            <% end %>
+          </h2>
+        </th>
       </tr>
       <tr>
         <td class="follow-count">

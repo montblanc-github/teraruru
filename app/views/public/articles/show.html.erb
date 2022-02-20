@@ -1,12 +1,8 @@
 <div class="content">
   <div class="item-style">
-    <% if @article.is_delete == false %>
-     <% if user_signed_in? && current_user != @user %>
-        <% if current_user.following?(@user) %>
-          <%= link_to "フォロー解除", user_relationships_path(@user), method: :delete %>
-        <% else %>
-          <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
-        <% end %>
+    <% if @article.is_visible == true %>
+      <% if user_signed_in? && current_user != @user %>
+        <%= render "public/relationships/follow-btn", user: @user %>
       <% end %>
       <%= render "public/users/profile-card", user: @user %>
       <% if current_user == @user %>
@@ -51,6 +47,10 @@
                 <td><%= @article.level %></td>
               </tr>
               <tr>
+                <th>カテゴリ</th>
+                <td><%= @article.category %></td>
+              </tr>
+              <tr>
                 <th>時期</th>
                 <td><%= @article.season %></td>
               </tr>
@@ -78,7 +78,7 @@
                 <td>
                   <% if @tags.present? %>
                     <% @tags.each do |tag| %>
-                      <%= tag.name %>(<%= tag.taggings_count %>)
+                      <%= link_to "#{tag.name}(#{tag.taggings_count})", search_articles_path(tag: tag.name) %>
                     <% end %>
                   <% else %>
                     登録されているタグはありません。
@@ -88,6 +88,12 @@
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="comments-wrap">
+        <%= render "public/comments/comment-content", comments: @comments %>
+        <% if user_signed_in? %>
+          <%= render "public/comments/comment-form", article: @article,comment: @comment %>
+        <% end %>
       </div>
     <% else %>
       <h5>管理者によって投稿が非表示にされています。</h5>

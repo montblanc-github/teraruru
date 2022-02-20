@@ -1,0 +1,15 @@
+<div id="comment-content">
+  <% comments.each do |comment| %>
+    <table class="small-table">
+      <tr>
+        <td><%= comment.user.account_name %></td>
+        <td><%= comment.content %></td>
+        <td>
+          <% if comment.user == current_user || current_admin %>
+            <%= link_to "削除", article_comment_path(comment.article, comment), method: :delete, remote: true %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>

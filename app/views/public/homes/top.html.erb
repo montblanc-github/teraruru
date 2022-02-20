@@ -1,16 +1,35 @@
 <div class="top-content">
-  <div class="item-style article_index_flex">
-    <div class="article_index_left">
-      <div id="jmap"></div>
+  <div class="top-item-style top-flex">
+    <div class="top-left">
+      <div class="top-title">
+        <h3><i class="fas fa-search"></i> 都道府県で簡易検索</h3>
+      </div>
+      <div class="map-search">
+        <div id="jmap"></div>
+      </div>
+      <div class="top-title">
+        <h3><i class="fas fa-tag"></i> 人気のタグ</h3>
+      </div>
+      <div class="top-tags-wrapper">
+        <% @tags.each do |tag| %>
+          <%= link_to "#{tag.name} (#{tag.taggings_count})", search_articles_path(tag: tag.name), class: "top-tag-content" %>
+        <% end %>
+      </div>
     </div>
-    <div class="article_index_right">
-      <div class="subtitle">
+    <div class="top-right">
+      <div class="top-title top-right-title">
         <h3><i class="fab fa-gratipay"></i> みんなが「いいね」した記事</h3>
       </div>
       <% if current_admin %>
-        <%= render "admin/articles/admin-article-card", articles: @articles %>
+        <%= render "admin/articles/admin-article-card", articles: @favorite_articles %>
       <% else %>
-        <%= render "public/articles/public-article-card", articles: @articles %>
+        <%= render "public/articles/public-article-card", articles: @favorite_articles %>
+      <% end %>
+      <% if user_signed_in? %>
+        <div class="subtitle">
+          <h3><i class="fab fa-gratipay"></i> フォロ－しているユーザの記事一覧</h3>
+        </div>
+        <%= render "public/articles/top-article-card", articles: @following_articles %>
       <% end %>
     </div>
   </div>
@@ -33,9 +52,12 @@ $("#theTarget").skippr({
 
 $(document).ready(function() {
     $('#jmap').jmap({
-        width: "100%",
-        height: "200px",
-        fontSize: "0.5rem",
+        width: "95%",
+        height: "275px",
+        fontSize: "11px",
+        prefectureBackgroundColor: "#003B00",
+        prefectureBackgroundHoverColor: "#0d590d",
+        prefectureLineHoverColor: "#0d590d",
         areas: [
         {code : 1, name: "北海道" },
         {code : 2, name: "青森" },
@@ -86,7 +108,7 @@ $(document).ready(function() {
         {code : 47, name: "沖縄" }
         ],
         onSelect: function(e, data) {
-          window.location.href = "./articles?keyword=%d".replace("%d", data.option.code) ;
+          window.location.href = "./articles/search?keyword=%d".replace("%d", data.option.code) ;
         }
     });
 });
