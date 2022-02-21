@@ -235,6 +235,11 @@ footer{
   }
 }
 
+.btn-flex{
+  display: flex;
+  justify-content: center;
+}
+
 .btn-green{
   background-color: #003B00;
 
@@ -411,11 +416,6 @@ footer{
 
 .text-red{
   color: red;
-}
-
-// 退会確認画面
-.unsubscribe-style{
-  text-align: center;
 }
 
 // プロフィール画像
