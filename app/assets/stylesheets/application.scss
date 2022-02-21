@@ -325,6 +325,7 @@ footer{
 
 // ページネーション
 .page-item{
+  width: 100%;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -346,6 +347,17 @@ footer{
     background-color: #003B00;
     border: 2px solid #003B00;
     border-radius: 4px;
+
+    &:hover{
+      background-color: #0d590d;
+      cursor: pointer;
+    }
+
+    &:active{
+      -webkit-transform: translate(0,2px);
+      -moz-transform: translate(0,2px);
+      transform: translate(0,2px);
+    }
   }
 
   .page, .first, .last, .prev, .next, .trancate{
