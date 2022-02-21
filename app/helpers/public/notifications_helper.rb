@@ -1,11 +1,12 @@
 module Public::NotificationsHelper
   def notification_form(notification)
     @comment = nil
+    visiter = notification.visiter
     if !notification.visiter_id.nil?
-      visiter = link_to notification.visiter.account_name, user_path(notification.visiter.id), style: "font-weight: bold;"
+      visiter = link_to visiter.account_name, user_path(visiter.id), class: "notice-link"
     end
     if !notification.article_id.nil?
-      your_article = link_to "あなたの投稿", article_path(notification.article_id), style: "font-weight: bold;"
+      your_article = link_to "あなたの投稿", article_path(notification.article_id), class: "notice-link"
     end
     visiter_comment = notification.comment_id
     case notification.action
