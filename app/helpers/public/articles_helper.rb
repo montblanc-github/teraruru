@@ -6,17 +6,17 @@ module Public::ArticlesHelper
   end
 
   # 投稿カテゴリアイコン表示用
-  def category_icon(val)
-    tag.div(class: ["category-icon", "category-#{val}-icon"]) do
-      if val == "vegetable"
-        icon("fas", "carrot")
-      elsif val == "fruit"
-        icon("fas", "apple-alt")
-      elsif val == "plant"
-        icon("fas", "tree")
-      elsif val == "flower"
-        icon("fas", "hand-holding-heart")
-      end
+  def category_icon(category)
+    if category == "vegetable"
+      image_tag "vegetable-icon.png", class: "category-icon"
+    elsif category == "fruit"
+      image_tag "fruit-icon.png", class: "category-icon"
+    elsif category == "plant"
+     image_tag "plant-icon.png", class: "category-icon"
+    elsif category == "flower"
+      image_tag "flower-icon.png", class: "category-icon"
+    elsif category == "succulen"
+      image_tag "succulent-icon.png", class: "category-icon"
     end
   end
 

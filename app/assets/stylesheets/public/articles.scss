@@ -366,10 +366,10 @@
       height: 25px;
     }
 
-    .level-large-icon{
-      width: 30px;
-      height: 30px;
-      display: inline-block;
+    .category-icon{
+      width: 18px;
+      height: 18px;
+      margin-right: 2px;
     }
   }
 
@@ -385,9 +385,16 @@
       padding-left: 5px;
       position: absolute;
       left: 0;
-      bottom: 1px;
-      text-decoration: none;
-      color: red;
+      bottom: 0;
+
+      a{
+        color: #000;
+        text-decoration: none;
+      }
+
+      i{
+        color: red!important;
+      }
     }
 
     .card-eyes{
