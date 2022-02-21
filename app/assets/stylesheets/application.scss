@@ -226,14 +226,29 @@ footer{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+
+  &:active{
+    -webkit-transform: translate(0,2px);
+    -moz-transform: translate(0,2px);
+    transform: translate(0,2px);
+  }
 }
 
 .btn-green{
   background-color: #003B00;
+
+  &:hover{
+    background-color: #0d590d;
+    cursor: pointer;
+  }
 }
 
 .btn-red{
   background-color: red;
+}
+
+.btn-blue{
+  background-color: blue;
 }
 
 .btn-gray{
