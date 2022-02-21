@@ -537,30 +537,6 @@ footer{
   }
 }
 
-.article_index_flex{
-  display: flex;
-  .article_index_left{
-    width: 32%;
-    padding-top: 10px;
-    font-size: 10px;
-
-    .search-label{
-      width: 50px;
-    }
-
-    .search-sublabel{
-      width: 55px;
-    }
-  }
-
-  .article_index_right{
-    width: 68%;
-    margin-left: 60px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-
 // ユーザ詳細投稿一覧
 .user-articles-flex{
   display: flex;

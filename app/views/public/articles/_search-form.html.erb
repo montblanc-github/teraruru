@@ -4,57 +4,61 @@
   <table class="search-form-table">
     <tbody>
       <!--品種名-->
-      <tr>
-        <th><%= f.label :cultivar_name_cont, "品種名", class: "search-label" %></th>
-        <td><%= f.search_field :cultivar_name_cont, autofocus: true, autocomplete: "cultivar_name", class: "item" %></td>
+      <tr class="search-narrow-content">
+        <th><%= f.label :cultivar_name_cont, "品種名" %></th>
+        <td><%= f.search_field :cultivar_name_cont, autofocus: true, autocomplete: "cultivar_name", class: "search-form" %></td>
       </tr>
 
     <!--都道府県-->
-      <tr>
-        <th><%= f.label :prefecture_id_eq, "都道府県", class: "search-label" %></th>
+      <tr class="search-narrow-content">
+        <th><%= f.label :prefecture_id_eq, "都道府県" %></th>
         <td><%= f.collection_select :prefecture_id_eq, prefectures, :id, :name, include_blank: "指定なし" %></td>
       </tr>
 
     <!--市区町村-->
-      <tr>
-        <th><%= f.label :municipality_id_eq, "市区町村", class: "search-label" %></th>
+      <tr class="search-narrow-content">
+        <th><%= f.label :municipality_id_eq, "市区町村" %></th>
         <td><%= f.collection_select :municipality_id_eq, municipalities, :id, :municipality_name, include_blank: "指定なし" %></td>
       </tr>
 
     <!--難易度-->
-      <tr>
-        <th><%= f.label :level_eq, "難易度", class: "search-label" %></th>
+      <tr class="search-narrow-content">
+        <th><%= f.label :level_eq, "難易度" %></th>
         <td><%= f.select :level_eq, [["とても難しい",1],["難しい",2],["普通",3],["簡単",4],["とても簡単",5]], include_blank: "指定なし" %></td>
       </tr>
 
     <!--カテゴリ-->
       <tr>
-        <th><%= f.label :category_eq, "カテゴリ", class: "search-label" %></th>
+        <th><%= f.label :category_eq, "カテゴリ" %></th>
         <td>
           <%= f.radio_button :category_eq, "", checked: true %>
-          <%= f.label :category_eq, "指定なし", value: "", class: "search-sublabel" %>
+          <%= f.label :category_eq, "指定なし", value: "", class: "search-large-sublabel" %>
           <%= f.radio_button :category_eq, :vegetable %>
           <%= f.label :category_eq, "野菜", value: :vegetable, class: "search-sublabel" %>
           <%= f.radio_button :category_eq, :fruit %>
           <%= f.label :category_eq, "果実", value: :fruit, class: "search-sublabel" %>
           <%= f.radio_button :category_eq, :plant %>
-          <%= f.label :category_eq, "草木", value: :plant, class: "search-sublabel" %></br>
+          <%= f.label :category_eq, "草木", value: :plant, class: "search-large-sublabel" %>
           <%= f.radio_button :category_eq, :flower %>
-          <%= f.label :category_eq, "花", value: :flower, class: "search-small-sublabel" %>
+          <%= f.label :category_eq, "花", value: :flower, class: "search-sublabel" %>
           <%= f.radio_button :category_eq, :succulent %>
           <%= f.label :category_eq, "多肉", value: :succulent, class: "search-sublabel" %>
         </td>
       </tr>
 
     <!--時期-->
-      <tr>
-        <th><%= f.label "時期", class: "search-label" %></th>
-        <td><%= f.collection_check_boxes :seasons_id_eq_any, seasons, :id, :month %></td>
+      <tr class="search-wide-content">
+        <th><%= f.label "時期" %></th>
+        <td>
+          <%= f.collection_check_boxes :seasons_id_eq_any, seasons, :id, :month do |s| %>
+            <%= content_tag(:div, s.check_box + " " + s.text, class: "search-season-check") %>
+          <% end %>
+        </td>
       </tr>
 
     <!--肥料-->
       <tr>
-        <th><%= f.label :fertilizer_existence_eq, "肥料", class: "search-label" %></th>
+        <th><%= f.label :fertilizer_existence_eq, "肥料" %></th>
         <td>
           <%= f.radio_button :fertilizer_existence_eq, "", checked: true %>
           <%= f.label :fertilizer_existence_eq, "指定なし", value: "" %>
@@ -67,7 +71,7 @@
 
     <!--場所-->
       <tr>
-        <th><%= f.label :place_eq, "場所", class: "search-label" %></th>
+        <th><%= f.label :place_eq, "場所" %></th>
         <td>
           <%= f.radio_button :place_eq, "", checked: true %>
           <%= f.label :place_eq, "指定なし", value: "" %>
@@ -82,7 +86,7 @@
 
     <!--条件-->
       <tr>
-        <th><%= f.label :condition_eq, "条件", class: "search-label" %></th>
+        <th><%= f.label :condition_eq, "条件" %></th>
         <td>
           <%= f.radio_button :condition_eq, "", checked: true %>
           <%= f.label :condition_eq, "指定なし", value: "" %>
@@ -97,14 +101,14 @@
 
     <!--開始時-->
       <tr>
-        <th><%= f.label :state_at_start_eq, "開始時", class: "search-label" %></th>
+        <th><%= f.label :state_at_start_eq, "開始時" %></th>
         <td>
           <%= f.radio_button :state_at_start_eq, "", checked: true %>
           <%= f.label :state_at_start_eq, "指定なし", value: "" %>
           <%= f.radio_button :state_at_start_eq, :seed %>
           <%= f.label :state_at_start_eq, "種から", value: :seed %>
           <%= f.radio_button :state_at_start_eq, :seedling %>
-          <%= f.label :state_at_start_eq, "苗から", value: :seedling %></br>
+          <%= f.label :state_at_start_eq, "苗から", value: :seedling %>
           <%= f.radio_button :state_at_start_eq, :bulb %>
           <%= f.label :state_at_start_eq, "球根から", value: :bulb %>
           <%= f.radio_button :state_at_start_eq, :complete %>
@@ -112,9 +116,9 @@
         </td>
       </tr>
 
-      <tr>
+      <tr class="search-narrow-content">
         <th></th>
-        <td><%= f.submit "検索" %></td>
+        <td><%= f.submit "検索", class: "search-btn btn-green" %></td>
       </tr>
     </tbody>
   </table>
