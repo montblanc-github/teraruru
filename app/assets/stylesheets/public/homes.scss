@@ -57,23 +57,28 @@
   height: 110px;
 
   .slide-img1{
-    background-image: url("test1.jpg");
+    background-image: image-url("top1.png");
+    background-position: center;
   }
 
   .slide-img2{
-    background-image: url("test2.jpg");
+    background-image: image-url("top2.png");
+    background-position: center;
   }
 
   .slide-img3{
-    background-image: url("test3.jpg");
+    background-image: image-url("top3.png");
+    background-position: center;
   }
 
   .slide-img4{
-    background-image: url("test4.jpg");
+    background-image: image-url("top4.png");
+    background-position: center;
   }
 
   .slide-img5{
-    background-image: url("test5.jpg");
+    background-image: image-url("top5.png");
+    background-position: center;
   }
 }
 
