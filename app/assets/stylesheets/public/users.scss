@@ -37,3 +37,15 @@
   margin-bottom: 10px;
   margin-right: 25px!important;
 }
+
+// ユーザ詳細投稿一覧
+.user-articles-flex{
+  display: flex;
+  flex-wrap: wrap;
+
+  .no-article{
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-bottom: 50px;
+  }
+}
