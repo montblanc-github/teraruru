@@ -49,6 +49,7 @@
 
   .article_index_left{
     width: 305px;
+    height: 690px;
     padding: 10px;
     margin-left: 10px;
     border: 2px solid #ddd;
@@ -118,7 +119,7 @@
       }
 
       .search-large-sublabel{
-        width: 50px;
+        width: 55px;
         display: inline-block;
       }
 
@@ -166,13 +167,17 @@
 
   .article_index_right{
     width: 600px;
-    margin-left: 60px;
+    margin-left: 30px;
     display: flex;
     flex-wrap: wrap;
 
     .no-article{
       padding-top: 100px;
       padding-left: 145px;
+    }
+
+    .card-wrapper{
+      margin: 5px 13px 18px 13px;
     }
   }
 }

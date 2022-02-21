@@ -4,9 +4,9 @@ class Public::ArticlesController < ApplicationController
 
   def index
     if current_admin
-      @articles = Article.recent.page(params[:page]).per(9)
+      @articles = Article.recent.page(params[:page]).per(12)
     else
-      @articles = Article.public_recent.page(params[:page]).per(9)
+      @articles = Article.public_recent.page(params[:page]).per(12)
     end
     favorite_article_id = Article.extract_favorite_ranking_articles.limit(3).pluck(:article_id)
     @favorite_articles = Article.find(favorite_article_id)
