@@ -1,3 +1,6 @@
+<div class="search-subtitle">
+  <h3><i class="fas fa-search-plus"></i> 絞り込み検索</h3>
+</div>
 <div class="search-wrapper">
   <%= search_form_for q, url: search_articles_path, method: :get do |f| %>
 
@@ -38,11 +41,11 @@
           <%= f.radio_button :category_eq, :fruit %>
           <%= f.label :category_eq, "果実", value: :fruit, class: "search-sublabel" %>
           <%= f.radio_button :category_eq, :plant %>
-          <%= f.label :category_eq, "草木", value: :plant, class: "search-large-sublabel" %>
+          <%= f.label :category_eq, "草木", value: :plant, class: "search-large-sublabel search-label-top" %>
           <%= f.radio_button :category_eq, :flower %>
-          <%= f.label :category_eq, "花", value: :flower, class: "search-sublabel" %>
+          <%= f.label :category_eq, "花", value: :flower, class: "search-sublabel search-label-top" %>
           <%= f.radio_button :category_eq, :succulent %>
-          <%= f.label :category_eq, "多肉", value: :succulent, class: "search-sublabel" %>
+          <%= f.label :category_eq, "多肉", value: :succulent, class: "search-sublabel search-label-top" %>
         </td>
       </tr>
 
@@ -61,11 +64,11 @@
         <th><%= f.label :fertilizer_existence_eq, "肥料" %></th>
         <td>
           <%= f.radio_button :fertilizer_existence_eq, "", checked: true %>
-          <%= f.label :fertilizer_existence_eq, "指定なし", value: "" %>
+          <%= f.label :fertilizer_existence_eq, "指定なし", value: "", class: "search-large-sublabel" %>
           <%= f.radio_button :fertilizer_existence_eq, :spring %>
-          <%= f.label :fertilizer_existence_eq, "あり", value: true %>
+          <%= f.label :fertilizer_existence_eq, "あり", value: true, class: "search-sublabel" %>
           <%= f.radio_button :fertilizer_existence_eq, :summer %>
-          <%= f.label :fertilizer_existence_eq, "なし", value: false %>
+          <%= f.label :fertilizer_existence_eq, "なし", value: false, class: "search-sublabel" %>
         </td>
       </tr>
 
@@ -74,13 +77,13 @@
         <th><%= f.label :place_eq, "場所" %></th>
         <td>
           <%= f.radio_button :place_eq, "", checked: true %>
-          <%= f.label :place_eq, "指定なし", value: "" %>
+          <%= f.label :place_eq, "指定なし", value: "", class: "search-large-sublabel" %>
           <%= f.radio_button :place_eq, :indoor %>
-          <%= f.label :place_eq, "屋内", value: :indoor %>
+          <%= f.label :place_eq, "屋内", value: :indoor, class: "search-sublabel" %>
           <%= f.radio_button :place_eq, :outdoor %>
-          <%= f.label :place_eq, "屋外", value: :outdoor %>
+          <%= f.label :place_eq, "屋外", value: :outdoor, class: "search-sublabel" %>
           <%= f.radio_button :place_eq, :veranda %>
-          <%= f.label :place_eq, "ベランダ", value: :veranda %>
+          <%= f.label :place_eq, "ベランダ", value: :veranda, class: "search-large-sublabel search-label-top" %>
         </td>
       </tr>
 
@@ -89,13 +92,13 @@
         <th><%= f.label :condition_eq, "条件" %></th>
         <td>
           <%= f.radio_button :condition_eq, "", checked: true %>
-          <%= f.label :condition_eq, "指定なし", value: "" %>
+          <%= f.label :condition_eq, "指定なし", value: "", class: "search-large-sublabel" %>
           <%= f.radio_button :condition_eq, :pot %>
-          <%= f.label :condition_eq, "鉢", value: :pot %>
+          <%= f.label :condition_eq, "鉢", value: :pot, class: "search-sublabel" %>
           <%= f.radio_button :condition_eq, :ground %>
-          <%= f.label :condition_eq, "地植え", value: :ground %>
+          <%= f.label :condition_eq, "地植え", value: :ground, class: "search-sublabel"%>
           <%= f.radio_button :condition_eq, :greenhouse %>
-          <%= f.label :condition_eq, "ハウス", value: :greenhouse %>
+          <%= f.label :condition_eq, "ハウス", value: :greenhouse, class: "search-large-sublabel search-label-top" %>
         </td>
       </tr>
 
@@ -104,15 +107,15 @@
         <th><%= f.label :state_at_start_eq, "開始時" %></th>
         <td>
           <%= f.radio_button :state_at_start_eq, "", checked: true %>
-          <%= f.label :state_at_start_eq, "指定なし", value: "" %>
+          <%= f.label :state_at_start_eq, "指定なし", value: "", class: "search-large-sublabel" %>
           <%= f.radio_button :state_at_start_eq, :seed %>
-          <%= f.label :state_at_start_eq, "種から", value: :seed %>
+          <%= f.label :state_at_start_eq, "種から", value: :seed, class: "search-sublabel" %>
           <%= f.radio_button :state_at_start_eq, :seedling %>
-          <%= f.label :state_at_start_eq, "苗から", value: :seedling %>
+          <%= f.label :state_at_start_eq, "苗から", value: :seedling, class: "search-sublabel" %>
           <%= f.radio_button :state_at_start_eq, :bulb %>
-          <%= f.label :state_at_start_eq, "球根から", value: :bulb %>
+          <%= f.label :state_at_start_eq, "球根から", value: :bulb, class: "search-large-sublabel search-label-top" %>
           <%= f.radio_button :state_at_start_eq, :complete %>
-          <%= f.label :state_at_start_eq, "完成形", value: :complete %>
+          <%= f.label :state_at_start_eq, "完成形", value: :complete, class: "search-sublabel search-label-top" %>
         </td>
       </tr>
 

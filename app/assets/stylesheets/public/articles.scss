@@ -94,12 +94,20 @@
       .search-form{
         width: 190px;
         height: 35px;
-        padding: 0 1em;
+        padding: 0 0.6em;
+        font-size: 13px;
+        border: 1px solid #000;
+        border-radius: 6px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
       }
 
       select{
         width: 190px;
-        height: 30px;
+        height: 25px;
+        font-size: 13px;
+        border: 1px solid #000;
+        border-radius: 6px;
       }
 
       .search-season-check{
@@ -110,17 +118,21 @@
       }
 
       .search-sublabel{
-        width: 40px;
+        width: 38px;
         display: inline-block;
       }
 
       .search-large-sublabel{
-        width: 48px;
+        width: 50px;
         display: inline-block;
       }
 
+      .search-label-top{
+        padding-top: 2px;
+      }
+
       .search-btn{
-        width: 120px;
+        width: 125px;
         padding-top: 8px;
         padding-bottom: 8px;
         text-align: center;
@@ -137,6 +149,17 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
+
+        &:hover{
+          background-color: #0d590d;
+          cursor: pointer;
+        }
+
+        &:active{
+          -webkit-transform: translate(0,2px);
+          -moz-transform: translate(0,2px);
+          transform: translate(0,2px);
+        }
       }
 
       input[type="radio"], input[type="checkbox"]{
