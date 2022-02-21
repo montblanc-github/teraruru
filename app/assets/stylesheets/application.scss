@@ -562,6 +562,7 @@ footer{
   }
 }
 
+// コメント
 .comment-form-wrapper{
   max-width: 900px;
   height: 40px;
@@ -571,10 +572,11 @@ footer{
     width: 700px;
     height: 40px;
     padding-right: 30px;
+    padding-left: 0.6em;
     border: 1px solid #ddd;
     border-radius: 6px;
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
@@ -588,7 +590,39 @@ footer{
     border: 0 solid transparent;
     font-size: 18px;
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 110px;
+  }
+}
+
+.comment-table{
+  width: 900px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: left;
+
+  th{
+    width: 100px;
+    height: 35px;
+    padding-left: 1em;
+    border-top: 1px solid #DAE8DB;
+    border-bottom: 1px solid #DAE8DB;
+  }
+
+  td{
+    width: 720px;
+    height: 35px;
+    padding: 5px 8px;
+    border-top: 1px solid #DAE8DB;
+    border-bottom: 1px solid #DAE8DB;
+  }
+
+  .comment-delete-btn{
+    width: 80px!important;
+  }
+
+  .btn-comment-delete{
+    width: 50px;
+    margin: 5px auto;
   }
 }

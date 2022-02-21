@@ -273,6 +273,7 @@
 // 投稿詳細画面
 .article-show-flex{
   display: flex;
+  margin-bottom: 10px;
 
    .article-left{
     width: 50%;
@@ -303,11 +304,26 @@
     }
 
     th{
+      width: 70px;
       text-align: left;
     }
 
     td{
       padding-left: 2em;
+    }
+
+    .article-show-tag-content{
+      height: 30px;
+      padding: 3px 10px;
+      margin-top: 5px;
+      display: inline-block;
+      background-color: #003B00;
+      color: #F4FFF4;
+      line-height: 24px;
+      font-size: 12px;
+      border: 1px solid #003B00;
+      border-radius: 6px;
+      text-decoration: none;
     }
   }
 }
