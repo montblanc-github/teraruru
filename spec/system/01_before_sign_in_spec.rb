@@ -141,7 +141,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
 
       it '正しく新規登録される' do
-        expect{ click_button '新規登録' }.to change { User.count }.by(1)
+        expect { click_button '新規登録' }.to change { User.count }.by(1)
       end
       it '新規登録後のリダイレクト先が、新規登録できたユーザの詳細画面になっている' do
         click_button '新規登録'
@@ -242,12 +242,12 @@ describe '[STEP1] ユーザログイン前のテスト' do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'ログイン'
-      expect(page).to have_link 'ログアウト', href: destroy_user_session_path
-      click_link 'ログアウト', href: destroy_user_session_path
     end
 
     context 'ログアウト機能のテスト' do
       it '正しくログアウトできている: ログアウト後のリダイレクト先においてAbout画面へのリンクが存在する' do
+        expect(page).to have_link 'ログアウト', href: destroy_user_session_path
+        click_link 'ログアウト', href: destroy_user_session_path
         expect(page).to have_link '', href: '/about'
       end
       it 'ログアウト後のリダイレクト先が、トップになっている' do

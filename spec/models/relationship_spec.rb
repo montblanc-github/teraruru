@@ -14,6 +14,7 @@ RSpec.describe 'Relationshipモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
+
     context 'followed_idカラム' do
       it '空欄でないこと' do
         relationship.followed_id = ''
@@ -28,6 +29,7 @@ RSpec.describe 'Relationshipモデルのテスト', type: :model do
         expect(Relationship.reflect_on_association(:follower).macro).to eq :belongs_to
       end
     end
+
     context 'Userモデル(Followed)との関係' do
       it 'N:1となっている' do
         expect(Relationship.reflect_on_association(:followed).macro).to eq :belongs_to

@@ -27,7 +27,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def login_check
-    unless user_signed_in? || admin_signed_in?
+    if !(user_signed_in? || admin_signed_in?)
       redirect_to new_user_session_path
     end
   end

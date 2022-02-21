@@ -19,12 +19,12 @@ Rails.application.routes.draw do
         get "unsubscribe"
       end
 
-    # notifications
-    resources :notifications, only: [:index, :destroy] do
-      collection do
-        delete "destroy_all"
+      # notifications
+      resources :notifications, only: [:index, :destroy] do
+        collection do
+          delete "destroy_all"
+        end
       end
-    end
 
       resource :relationships, only: [:create, :destroy]
       get "followings", to: "relationships#followings", as: "followings"
@@ -48,7 +48,6 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-
   end
 
   # 管理者側ルーティング
