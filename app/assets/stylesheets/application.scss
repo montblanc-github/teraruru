@@ -26,14 +26,27 @@
   box-sizing: border-box;
 }
 
-.field_with_errors input{
-  border: 2px solid red!important;
+.field_with_errors{
+
+  input, select{
+    border: 2px solid red!important;
+  }
 }
 
 .field_with_errors {
   display: contents;
 }
 
+#error_explanation{
+ h2{
+   color: red;
+ }
+
+ li{
+   margin: 5px 0 5px 15px;
+   color: red;
+ }
+}
 
 // ヘッダー
 header{
@@ -152,7 +165,7 @@ footer{
 
 // フォーム
 .form-style {
-  max-width: 750px;
+  width: 750px;
   margin-left: auto;
   margin-right: auto;
 
@@ -164,15 +177,14 @@ footer{
 }
 
 .field {
-  width: 100%;
+  width: 750px;
   padding-top: 10px;
   padding-bottom: 10px;
   display: flex;
   align-items: center;
 
   label {
-    width: 100%;
-    max-width: 200px;
+    width: 200px;
     margin-bottom: 0;
     letter-spacing: 0.05em;
   }
@@ -193,6 +205,17 @@ footer{
     border: 1px solid #ddd;
     border-radius: 6px;
     flex: 1;
+  }
+
+  select{
+    width: 30%;
+    height: 25px;
+    border-radius: 6px;
+  }
+
+  ul.tagit{
+    width: 550px;
+    border-radius: 6px;
   }
 
   .half-item{

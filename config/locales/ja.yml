@@ -40,8 +40,8 @@ ja:
       article:
         artical_image: "画像"
         cultivar_name: "品種名"
-        prefecture: "都道府県"
-        municipality: "市区町村"
+        prefecture_id: "都道府県"
+        municipality_id: "市区町村"
         level: "難易度"
         category: "カテゴリ"
         season_ids: "時期"

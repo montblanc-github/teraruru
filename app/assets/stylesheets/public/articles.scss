@@ -415,8 +415,32 @@
   }
 }
 
+// 投稿非表示時テキスト用
 .is-visible-article-text{
   padding-top: 100px;
   text-align: center;
   font-size: 16px;
+}
+
+// 投稿フォーム用
+.article-form-raddio-label{
+  width: 80px!important;
+}
+
+.article-season-check{
+  width: 80px;
+  display: inline-block;
+}
+
+.season-content{
+  width: 540px;
+}
+
+.fertilizer-info-text{
+  margin-left: 200px!important;
+  font-size: 12px;
+}
+
+.fertilizer-info-form{
+  margin-left: 200px!important;
 }
