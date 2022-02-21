@@ -19,14 +19,10 @@
           <td><%= user.account_name %></td>
           <td><%= user_status(user) %></td>
           <td>
-            <%= link_to edit_admin_user_path(user.id) do%>
-              <i class="fas fa-edit"></i>
-            <% end %>
+            <%= link_to "\uf044", edit_admin_user_path(user.id), class: "fas" %>
           </td>
           <td>
-            <%= link_to admin_user_path(user.id) do%>
-              <i class="fas fa-list-alt"></i>
-            <% end %>
+            <%= link_to "\uf022", admin_user_path(user.id), class: "fas" %>
           </td>
         </tr>
       </tbody>

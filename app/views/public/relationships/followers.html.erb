@@ -3,7 +3,7 @@
     <h2><i class="fas fa-users"></i> フォロワー 一覧</h2>
   </div>
   <div class="item-style">
-    <table class="table">
+    <table class="follow-table">
       <thead>
         <tr>
           <th></th>
@@ -18,23 +18,23 @@
           <td><%= user.account_name %></td>
           <td>
             <% if user_signed_in? && user.following?(current_user) %>
-              <p>フォローしています</p>
+              <p class="follow-text">フォローしています</p>
             <% end %>
           </td>
           <td>
             <% if user_signed_in? && current_user == @user %>
-              <%= link_to "\uf086", chat_path(user), class: "fa" %>
+              <%= link_to icon("fas", "comments"), chat_path(user), class: "fa link-icon" %>
             <% end %>
           </td>
           <td>
-            <%= link_to "\uf022", user_path(user), class: "fa" %>
+            <%= link_to icon("fas", "list-alt"), user_path(user), class: "fa link-icon" %>
           </td>
         </tr>
       </tbody>
       <% end %>
     </table>
     <div class="page-item">
-      <%#= paginate @users %>
+      <%= paginate @users %>
     </div>
   </div>
 </div>
