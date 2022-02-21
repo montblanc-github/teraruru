@@ -7,8 +7,8 @@
       <%= render "public/users/profile-card", user: @user %>
       <% if current_user == @user %>
         <div class="article-link">
-          <%= link_to "投稿内容を編集する", edit_article_path, class: "btn btn-green" %>
-          <%= link_to "投稿を削除する", article_path, method: :delete, class: "btn btn-red" %>
+          <%= link_to "投稿内容を編集する", edit_article_path, class: "btn btn-right btn-edit-article btn-green" %>
+          <%= link_to "投稿を削除する", article_path, method: :delete, class: "btn btn-right btn-edit-article btn-red" %>
         </div>
       <% end %>
       <div class="article-show-flex">
@@ -19,7 +19,9 @@
                 <td><%= attachment_image_tag @article, :article_image, fallback: "no_image.png", class: "article_show_img"%></td>
               </tr>
               <tr>
-                <td><h3><i class="fas fa-volume-up"></i> 投稿者から</h3></td>
+                <% if @article.message.present? %>
+                  <td><h3><i class="fas fa-volume-up"></i> 投稿者から</h3></td>
+                <% end %>
               </tr>
               <tr>
                 <td><p><%= @article.message %></p></td>

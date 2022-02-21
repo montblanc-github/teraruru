@@ -1,9 +1,8 @@
 module Public::ArticlesHelper
   # 投稿難易度アイコン表示用
   def level_icon(val)
-    arr = ["激", "難", "並", "易", "甘"]
-    num = val.to_i - 1
-    tag.div("#{arr[num]}", class: ["level-icon", "level#{num}-icon"])
+    num = val.to_i
+    image_tag "level-#{num}-icon.png", class: "level-icon"
   end
 
   # 投稿カテゴリアイコン表示用

@@ -7,7 +7,7 @@
       <%= render "public/relationships/follow-btn", user: @user %>
     <% end %>
     <% if @user.account_name != "guestuser" && current_user == @user %>
-      <%= link_to "プロフィールを編集する", edit_user_path(@user), class: "btn btn-right btn-green" %>
+      <%= link_to "プロフィールを編集する", edit_user_path(@user), class: "btn btn-right btn-green btn-profile-edit" %>
     <% end %>
   </div>
   <div class="item-style">
