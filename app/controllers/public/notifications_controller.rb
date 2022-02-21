@@ -16,7 +16,8 @@ class Public::NotificationsController < ApplicationController
 
   def destroy_all
     @notifications = current_user.passive_notifications
-    if @notifications.destroy_all && @notifications.present?
+    if @notifications.present?
+      @notifications.destroy_all
       flash[:notice] = "すべての通知を削除しました。"
       redirect_to user_notifications_path
     end
