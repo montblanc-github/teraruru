@@ -4,9 +4,9 @@ class Public::ArticlesController < ApplicationController
 
   def index
     if current_admin
-      @articles = Article.recent.page(params[:page]).per(12)
+      @articles = Article.recent.page(params[:page]).per(15)
     else
-      @articles = Article.public_recent.page(params[:page]).per(12)
+      @articles = Article.public_recent.page(params[:page]).per(15)
     end
     favorite_article_id = Article.extract_favorite_ranking_articles.limit(3).pluck(:article_id)
     @favorite_articles = Article.find(favorite_article_id)
@@ -90,22 +90,22 @@ class Public::ArticlesController < ApplicationController
     is_current_admin = current_admin.present? ? true : false
 
     if params[:keyword].present?
-      @articles = Article.search(is_current_admin, params[:keyword]).page(params[:page]).per(9)
+      @articles = Article.search(is_current_admin, params[:keyword]).page(params[:page]).per(15)
     elsif params[:prefecture].present?
-      @articles = Article.prefecture_search(is_current_admin, params[:prefecture]).page(params[:page]).per(9)
+      @articles = Article.prefecture_search(is_current_admin, params[:prefecture]).page(params[:page]).per(15)
     elsif params[:q].present?
       if current_admin
-        @articles = @q.result.recent.page(params[:page]).per(9)
+        @articles = @q.result.recent.page(params[:page]).per(15)
       else
-        @articles = @q.result.public_recent.page(params[:page]).per(9)
+        @articles = @q.result.public_recent.page(params[:page]).per(15)
       end
       @prefecture_id = params[:q][:prefecture_id_eq]
     elsif params[:tag].present?
       @tag = params[:tag]
       if current_admin
-        @articles = Article.tagged_with(params[:tag]).recent.page(params[:page]).per(9)
+        @articles = Article.tagged_with(params[:tag]).recent.page(params[:page]).per(15)
       else
-        @articles = Article.where(is_visible: true).tagged_with(params[:tag]).recent.page(params[:page]).per(9)
+        @articles = Article.where(is_visible: true).tagged_with(params[:tag]).recent.page(params[:page]).per(15)
       end
     end
   end
