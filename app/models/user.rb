@@ -36,7 +36,7 @@ class User < ApplicationRecord
   before_create :set_uuid
 
   # uuidを用いると、id順の取得が困難になるため、作成日で並ぶよう変更。
-  default_scope -> { order(created_at: :desc) }
+  scope :recent, -> { order(created_at: :desc) }
 
   # フォロー フォロワー機能
   def follow(user_id)

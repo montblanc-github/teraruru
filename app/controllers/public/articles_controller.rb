@@ -4,9 +4,9 @@ class Public::ArticlesController < ApplicationController
 
   def index
     if current_admin
-      @articles = Article.page(params[:page]).per(9)
+      @articles = Article.recent.page(params[:page]).per(9)
     else
-      @articles = Article.where(is_visible: true).page(params[:page]).per(9)
+      @articles = Article.public_recent.page(params[:page]).per(9)
     end
     favorite_article_id = Article.extract_favorite_ranking_articles.limit(3).pluck(:article_id)
     @favorite_articles = Article.find(favorite_article_id)
@@ -95,14 +95,18 @@ class Public::ArticlesController < ApplicationController
       @articles = Article.prefecture_search(is_current_admin, params[:prefecture]).page(params[:page]).per(9)
     elsif params[:q].present?
       if current_admin
-        @articles = @q.result.page(params[:page]).per(9)
+        @articles = @q.result.recent.page(params[:page]).per(9)
       else
-        @articles = @q.result.where(is_visible: true).page(params[:page]).per(9)
+        @articles = @q.result.public_recent.page(params[:page]).per(9)
       end
       @prefecture_id = params[:q][:prefecture_id_eq]
     elsif params[:tag].present?
       @tag = params[:tag]
-      @articles = Article.tagged_with(params[:tag]).page(params[:page]).per(9)
+      if current_admin
+        @articles = Article.tagged_with(params[:tag]).recent.page(params[:page]).per(9)
+      else
+        @articles = Article.where(is_visible: true).tagged_with(params[:tag]).recent.page(params[:page]).per(9)
+      end
     end
   end
 

@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @articles = @user.articles.page(params[:page]).per(15)
+    @articles = @user.articles.public_fixed_recent.page(params[:page]).per(15)
   end
 
   def edit
