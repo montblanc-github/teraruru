@@ -14,7 +14,10 @@
         <%= link_to destroy_user_session_path, method: :delete, class: "header-link-item" do %>
           <p><i class="fas fa-sign-out-alt"></i>ログアウト</p>
         <% end %>
-        <%= link_to "\uf0f3", user_notifications_path(current_user), class: "fas notification-icon" %>
+        <%= link_to icon("fas", "bell"), user_notifications_path(current_user), class: "fas notification-icon"%>
+        <% if unchecked_notifications.any? %>
+          <i class="fas fa-exclamation notice-checked-icon"></i>
+        <% end %>
       </div>
     <% elsif admin_signed_in? %>
       <div class="link-group">
