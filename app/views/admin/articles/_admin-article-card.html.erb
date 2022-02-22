@@ -25,19 +25,15 @@
       </div>
     <% else %>
       <div class="card-wrapper">
-        <%= link_to admin_article_path(article) do %>
+        <%= link_to admin_article_path(article), class: "admin-card-link" do %>
           <div class="card-img">
-            <h3 class="card-index-img" >非表示中</h3>
+            <h3 class="card-index-img visible-card-img" >非表示中</h3>
           </div>
         <% end %>
         <div class="card-title">
           <h5><%= article.cultivar_name %></h5>
         </div>
         <div class="card-footer-wrapper">
-          <div class="card-eyes">
-            <i class="fas fa-eye"></i>
-            <%= article.impressionist_count(:filter=>:session_hash) %>
-          </div>
           <div class="card-footer-text">
             <%= article.user.account_name %>
           </div>
