@@ -23,11 +23,11 @@
           </td>
           <td>
             <% if user_signed_in? && current_user == @user %>
-              <%= link_to icon("fas", "comments"), chat_path(user), class: "fa link-icon" %>
+              <%= link_to icon("fas", "comments"), chat_path(user), class: "link-icon" %>
             <% end %>
           </td>
           <td>
-            <%= link_to icon("fas", "list-alt"), user_path(user), class: "fa link-icon" %>
+            <%= link_to icon("fas", "list-alt"), user_path(user), class: "link-icon" %>
           </td>
         </tr>
       </tbody>

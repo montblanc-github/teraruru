@@ -57,26 +57,6 @@
     }
   }
 
-  .link-icon{
-    line-height: 80px;
-    font-size: 1.8em;
-    color: #003B00;
-    text-decoration: none;
-
-    i{
-      &:hover{
-        opacity: 0.8;
-        cursor: pointer;
-      }
-
-      &:active{
-        -webkit-transform: translate(0,2px);
-        -moz-transform: translate(0,2px);
-        transform: translate(0,2px);
-      }
-    }
-  }
-
   .follow-text{
     font-size: 12px;
   }

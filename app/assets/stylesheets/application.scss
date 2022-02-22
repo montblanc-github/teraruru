@@ -344,12 +344,6 @@ footer{
       vertical-align: middle;
     }
   }
-
-  i{
-    font-size: 1.8em;
-    color: #003B00;
-  }
-
 }
 
 .small-table{
@@ -568,5 +562,26 @@ footer{
   .btn-comment-delete{
     width: 50px;
     margin: 5px auto;
+  }
+}
+
+// リンク付きアイコン用
+.link-icon{
+  line-height: 80px;
+  font-size: 1.8em;
+  color: #003B00;
+  text-decoration: none;
+
+  i{
+    &:hover{
+      opacity: 0.8;
+      cursor: pointer;
+    }
+
+    &:active{
+      -webkit-transform: translate(0,2px);
+      -moz-transform: translate(0,2px);
+      transform: translate(0,2px);
+    }
   }
 }
