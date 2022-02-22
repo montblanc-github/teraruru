@@ -1,12 +1,11 @@
 class Public::HomesController < ApplicationController
   def top
-    articles_array = Article.includes(:favorite_users).sort{ |a, b| b.favorite_users.size <=> a.favorite_users.size }
+    article_array = Article.extract_favorite_ranking_articles
+    @favorite_articles = Kaminari.paginate_array(article_array).page(params[:page]).per(6)
     @tags = ActsAsTaggableOn::Tag.most_used(10)
-    @favorite_articles = Kaminari.paginate_array(articles_array).page(params[:page]).per(6)
     if user_signed_in?
-      user = User.find(current_user.id)
-      following_users = user.followings
-      @following_articles = Article.where(user_id: following_users).order(created_at: :desc).page(params[:top_article_page]).per(6)
+      following_users = User.find(current_user.id).followings
+      @following_articles = Article.where(user_id: following_users, is_visible: true).order(updated_at: :desc).page(params[:top_article_page]).per(6)
     end
   end
 

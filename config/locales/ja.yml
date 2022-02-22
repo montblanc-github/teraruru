@@ -1,0 +1,81 @@
+ja:
+  errors:
+    messages:
+      not_saved:
+        one: "エラーが発生したため、%{resource}情報を保存できません。"
+        other: "%{count} 件のエラーが発生したため、%{resource}情報を保存できません。"
+
+  views:
+    pagination:
+      first: "最初"
+      last: "最後"
+      previous: "≪"
+      next: "≫"
+      truncate: "..."
+
+  activerecord:
+    models:
+      user: "ユーザ"
+      admin: "管理者"
+      article: "投稿"
+      prefecture: "都道府県"
+      municipality: "市区町村"
+
+    attributes:
+      user:
+        last_name: "氏名(姓)"
+        first_name: "氏名(名)"
+        last_name_kana: "フリガナ(セイ)"
+        first_name_kana: "フリガナ(メイ)"
+        email: "メールアドレス"
+        post_code: "郵便番号"
+        address: "住所"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認用)"
+        account_name: "アカウント名"
+        profile_image: "プロフィール画像"
+        introduction: "紹介文"
+      admin:
+        email: "メールアドレス"
+      article:
+        artical_image: "画像"
+        cultivar_name: "品種名"
+        prefecture_id: "都道府県"
+        municipality_id: "市区町村"
+        level: "難易度"
+        category: "カテゴリ"
+        season_ids: "時期"
+        fertilizer_existence: "肥料の使用状況"
+        fertilizer_info: "肥料の詳細情報"
+        place: "場所"
+        condition: "条件"
+        state_at_start: "開始時"
+        tag_list: "タグ"
+        message: "メッセージ"
+
+  devise:
+    failure:
+      user:
+        already_authenticated: "すでにログインしています。"
+        invalid: "%{authentication_keys}またはパスワードが違います。"
+        last_attempt: "もう一回誤るとアカウントがロックされます。"
+        locked: "アカウントは凍結されています。"
+        not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
+        timeout: "セッションがタイムアウトしました。もう一度ログインしてください。"
+        unauthenticated: "アカウント登録もしくはログインしてください。"
+      admin:
+        already_authenticated: "すでにログインしています。"
+        invalid: "%{authentication_keys}またはパスワードが違います。"
+        last_attempt: "もう一回誤るとアカウントがロックされます。"
+        locked: "アカウントは凍結されています。"
+        not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
+        timeout: "セッションがタイムアウトしました。もう一度ログインしてください。"
+        unauthenticated: "アカウント登録もしくはログインしてください。"
+
+    sessions:
+      user:
+        signed_in: "ログインしました。"
+        signed_out: "ログアウトしました。"
+      admin:
+        signed_in: "ログインしました。"
+        signed_out: "ログアウトしました。"

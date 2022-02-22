@@ -1,34 +1,31 @@
 <% if articles.present? %>
   <% articles.each do |article| %>
-    <% if article.is_delete == false %>
-      <div class="card-wrapper">
-        <%= link_to article_path(article) do %>
-          <div class="card-img">
-            <%= attachment_image_tag article, :article_image, fallback: "no_image.png", class: "card-index-img" %>
-          </div>
-        <% end %>
-        <div class="card-title">
-          <h5><%= article.cultivar_name %></h5>
-          <%= level_icon(article.level) %>
-          <%= category_icon(article.category) %>
-          <%= season_icon(article.season)%>
+    <div class="card-wrapper">
+      <%= link_to article_path(article) do %>
+        <div class="card-img">
+          <%= attachment_image_tag article, :article_image, fallback: "no_image.png", class: "card-index-img" %>
         </div>
-        <div class="card-footer-wrapper">
-          <%= favorite_btn(article) %>
-          <div class="card-eyes">
-            <i class="fas fa-eye"></i>
-            <%= article.impressionist_count(:filter=>:session_hash) %>
-          </div>
-          <div class="card-footer-text">
-            <%= article.user.account_name %>
-          </div>
+      <% end %>
+      <div class="card-title">
+        <h5><%= article.cultivar_name %></h5>
+        <%= level_icon(article.level) %>
+        <%= category_icon(article.category) %>
+      </div>
+      <div class="card-footer-wrapper">
+        <%= favorite_btn(article) %>
+        <div class="card-eyes">
+          <i class="fas fa-eye"></i>
+          <%= article.impressionist_count(:filter=>:session_hash) %>
+        </div>
+        <div class="card-footer-text">
+          <%= article.user.account_name %>
         </div>
       </div>
-    <% end %>
+    </div>
   <% end %>
   <div class="page-item">
     <%= paginate articles %>
   </div>
 <% else %>
-  <h3>投稿がありません。ヘッダーの投稿するリンクから投稿しよう！</h3>
+  <h4 class="no-article">表示できる投稿 <i class="fas fa-feather-alt"></i> がありません。</h4>
 <% end %>

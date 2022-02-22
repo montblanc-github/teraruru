@@ -1,6 +1,6 @@
 <% if articles.present? %>
   <% articles.each do |article| %>
-    <% if article.is_delete == false %>
+    <% if article.is_visible == true %>
       <div class="card-wrapper">
         <%= link_to admin_article_path(article) do %>
           <div class="card-img">
@@ -9,39 +9,15 @@
         <% end %>
         <div class="card-title">
           <h5><%= article.cultivar_name %></h5>
-          <% if article.level == "1" %>
-            <div class="level-icon level1-icon">激</div>
-          <% elsif article.level == "2" %>
-            <div class="level-icon level2-icon">難</div>
-          <% elsif article.level == "3" %>
-            <div class="level-icon level3-icon">並</div>
-          <% elsif article.level == "4" %>
-            <div class="level-icon level4-icon">易</div>
-          <% elsif article.level == "5" %>
-            <div class="level-icon level5-icon">甘</div>
-          <% end %>
-
-          <% if article.category == "vegetable" %>
-            <div class="category-icon category-vegetable-icon"><i class="fas fa-carrot"></i></div>
-          <% elsif article.category == "fruit" %>
-            <div class="category-icon category-fruit-icon"><i class="fas fa-apple-alt"></i></div>
-          <% elsif article.category == "plant" %>
-            <div class="category-icon category-plant-icon"><i class="fas fa-tree"></i></div>
-          <% elsif article.category == "flower" %>
-            <div class="category-icon category-flower-icon"><i class="fas fa-hand-holding-heart"></i></div>
-          <% end %>
-
-          <% if article.season == "spring" %>
-            <div class="season-icon season-spring-icon"></div>
-          <% elsif article.season == "summer" %>
-            <div class="season-icon season-summer-icon"></div>
-          <% elsif article.season == "autumn" %>
-            <div class="season-icon season-autumn-icon"></div>
-          <% elsif article.season == "winter" %>
-            <div class="season-icon season-winter-icon"></div>
-          <% end %>
+          <%= level_icon(article.level) %>
+          <%= category_icon(article.category) %>
         </div>
         <div class="card-footer-wrapper">
+          <%= favorite_btn(article) %>
+          <div class="card-eyes">
+            <i class="fas fa-eye"></i>
+            <%= article.impressionist_count(:filter=>:session_hash) %>
+          </div>
           <div class="card-footer-text">
             <%= article.user.account_name %>
           </div>
@@ -49,19 +25,15 @@
       </div>
     <% else %>
       <div class="card-wrapper">
-        <%= link_to admin_article_path(article) do %>
+        <%= link_to admin_article_path(article), class: "admin-card-link" do %>
           <div class="card-img">
-            <h3 class="card-index-img" >非表示中</h3>
+            <h3 class="card-index-img visible-card-img" >非表示中</h3>
           </div>
         <% end %>
         <div class="card-title">
           <h5><%= article.cultivar_name %></h5>
         </div>
         <div class="card-footer-wrapper">
-          <div class="card-eyes">
-            <i class="fas fa-eye"></i>
-            <%= article.impressionist_count(:filter=>:session_hash) %>
-          </div>
           <div class="card-footer-text">
             <%= article.user.account_name %>
           </div>
@@ -73,5 +45,5 @@
     <%= paginate articles %>
   </div>
 <% else %>
-  <h3>投稿がありません。</h3>
+  <h4 class="no-article">表示できる投稿 <i class="fas fa-feather-alt"></i> がありません。</h4>
 <% end %>

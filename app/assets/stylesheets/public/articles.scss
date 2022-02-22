@@ -35,6 +35,154 @@
   }
 }
 
+.ranking-no-article{
+  padding-top: 80px;
+}
+
+.no-tag{
+  padding-top: 200px;
+  padding-left: 5px;
+}
+
+.article_index_flex{
+  display: flex;
+
+  .article_index_left{
+    width: 305px;
+    height: 690px;
+    padding: 10px;
+    margin-left: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+
+    .search-subtitle{
+      padding-top: 10px;
+      padding-bottom: 13px;
+    }
+
+    .search-form-table{
+      width: 100%;
+      margin-left: 5px;
+
+      tr{
+        height: 60px;
+      }
+
+      .search-narrow-content{
+        height: 45px!important;
+      }
+
+      .search-wide-content{
+        height: 65px!important;
+      }
+
+      th{
+        width: 70px;
+        text-align: left;
+        font-size: 13px;
+      }
+
+      td{
+        width: 200px;
+        font-size: 12px;
+      }
+
+      .search-form{
+        width: 190px;
+        height: 35px;
+        padding: 0 0.6em;
+        font-size: 13px;
+        border: 1px solid #000;
+        border-radius: 6px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+
+      select{
+        width: 190px;
+        height: 25px;
+        font-size: 13px;
+        border: 1px solid #000;
+        border-radius: 6px;
+      }
+
+      .search-season-check{
+        width: 45px;
+        height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .search-sublabel{
+        width: 38px;
+        display: inline-block;
+      }
+
+      .search-large-sublabel{
+        width: 55px;
+        display: inline-block;
+      }
+
+      .search-label-top{
+        padding-top: 2px;
+      }
+
+      .search-btn{
+        width: 125px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        text-align: center;
+        border-radius: 6px;
+        display: block;
+        letter-spacing: 0.05em;
+        color: #fff;
+        font-weight: bold;
+        font-size: 13px;
+        text-decoration: none;
+        // inputタグCSSリセット
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &:hover{
+          background-color: #0d590d;
+          cursor: pointer;
+        }
+
+        &:active{
+          -webkit-transform: translate(0,2px);
+          -moz-transform: translate(0,2px);
+          transform: translate(0,2px);
+        }
+      }
+
+      input[type="radio"], input[type="checkbox"]{
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+
+  .article_index_right{
+    width: 600px;
+    margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .no-article{
+      padding-top: 100px;
+      padding-left: 145px;
+    }
+
+    .card-wrapper{
+      margin: 5px 13px 18px 13px;
+    }
+  }
+}
+
+
 .article-index-tags-wrapper{
   width: 305px;
   height: 410px;
@@ -83,6 +231,7 @@
 
 .favorite-ranking-wrapper, .view-ranking-wrapper{
   width: 100%;
+  height: 300px;
   padding-top: 20px;
   border: 2px solid #ddd;
   border-radius: 6px;
@@ -111,7 +260,187 @@
   }
 }
 
-
 .favorite-ranking-wrapper{
   margin-bottom: 10px;
+}
+
+.article-link{
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+// 投稿詳細画面
+.article-show-flex{
+  display: flex;
+  margin-bottom: 10px;
+
+   .article-left{
+    width: 50%;
+
+    .article_show_img{
+      width: 405px;
+      height: 270px;
+      margin-top: 1em;
+      object-fit: cover;
+    }
+
+    h3{
+      margin-top: 1.5em;
+      font-size: 20px;
+    }
+
+    p{
+      padding-left: 1.5em;
+    }
+  }
+
+
+  .article-right{
+    width: 50%;
+
+    tr{
+      height: 50px;
+    }
+
+    th{
+      width: 70px;
+      text-align: left;
+    }
+
+    td{
+      padding-left: 2em;
+    }
+
+    .article-show-tag-content{
+      height: 30px;
+      padding: 3px 10px;
+      margin-top: 5px;
+      display: inline-block;
+      background-color: #003B00;
+      color: #F4FFF4;
+      line-height: 24px;
+      font-size: 12px;
+      border: 1px solid #003B00;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+  }
+}
+
+// カードスタイル
+.card-wrapper{
+  width: 170px;
+  height: 190px;
+  margin: 10px 5px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+
+  .card-img{
+    text-align: center;
+
+    .card-index-img{
+    width: 162px;
+    height: 108px;
+    margin-top: 2px;
+    border-radius: 5px;
+    object-fit: cover;
+    }
+  }
+
+  .card-title{
+    width: 100%;
+    height: 20px;
+    padding-top: 5px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    h5{
+      margin-right: auto;
+    }
+
+    .level-icon{
+      width: 25px;
+      height: 25px;
+    }
+
+    .category-icon{
+      width: 18px;
+      height: 18px;
+      margin-right: 2px;
+    }
+  }
+
+  .card-footer-wrapper{
+    width: 100%;
+    height: 45px;
+    text-align: right;
+    position: relative;
+
+    .card-favorite{
+      height: 24px;
+      line-height: 24px;
+      padding-left: 5px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+      a{
+        color: #000;
+        text-decoration: none;
+      }
+
+      i{
+        color: #C64756!important;
+      }
+    }
+
+    .card-eyes{
+      height: 24px;
+      line-height: 24px;
+      padding-left: 5px;
+      position: absolute;
+      left: 35px;
+      bottom: 0;
+    }
+
+    .card-footer-text{
+      padding-right: 5px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+// 投稿非表示時テキスト用
+.is-visible-article-text{
+  padding-top: 100px;
+  text-align: center;
+  font-size: 16px;
+}
+
+// 投稿フォーム用
+.article-form-raddio-label{
+  width: 80px!important;
+}
+
+.article-season-check{
+  width: 80px;
+  display: inline-block;
+}
+
+.season-content{
+  width: 540px;
+}
+
+.fertilizer-info-text{
+  margin-left: 200px!important;
+  font-size: 12px;
+}
+
+.fertilizer-info-form{
+  margin-left: 200px!important;
 }

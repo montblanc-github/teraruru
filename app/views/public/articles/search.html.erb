@@ -2,9 +2,9 @@
   <div class="title">
     <h2><i class="fas fa-feather-alt"></i> みんなの投稿</h2>
   </div>
-  <div class="item-style article_index_flex">
+  <div class="article-index-style article_index_flex">
     <div class="article_index_left">
-      <%= render "search-form", q: @q, prefectures: @prefectures, municipalities: @municipalities %>
+      <%= render "search-form", q: @q, prefectures: @prefectures, municipalities: @municipalities, seasons: @seasons %>
     </div>
     <div class="article_index_right">
       <% if current_admin %>

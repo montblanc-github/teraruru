@@ -7,9 +7,9 @@
       上記事項に同意した上で、退会をご希望の場合は、</br>
       「退会する」ボタンを押してください。
     </p>
-    <div class="btn-group">
-      <%= link_to "退会しない", user_path(current_user), class: "btn btn-green" %>
-      <%= link_to "退会する", user_path(current_user), method: :delete, class: "btn btn-red"%>
+    <div class="btn-flex">
+      <%= link_to "退会しない", user_path(current_user), class: "btn btn-green user-unsubscribe-btn" %>
+      <%= link_to "退会する", user_path(current_user), method: :delete, class: "btn btn-red user-unsubscribe-btn"%>
     </div>
   </div>
 </div>

@@ -19,11 +19,40 @@
 @import "jquery.tagit";
 @import "tagit.ui-zendesk";
 
+@font-face {
+  font-family: "uzura";
+  src: asset-url('uzura.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 // リセットCSS
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.field_with_errors{
+
+  input, select{
+    border: 2px solid #C64756!important;
+  }
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+#error_explanation{
+ h2{
+   color: #C64756;
+ }
+
+ li{
+   margin: 5px 0 5px 15px;
+   color: #C64756;
+ }
 }
 
 // ヘッダー
@@ -68,8 +97,23 @@ header{
     }
   }
 
+  .notification-icon{
+    padding-left: 5px;
+    color: #fff;
+    font-size: 20px;
+  }
+
+  .notice-checked-icon{
+    position: absolute;
+    top: 25px;
+    right: 512px;
+    font-size: 10px;
+    color: #EC3515;
+  }
+
   .search-wrapper{
     width: 200px;
+    position: relative;
 
     .search-box{
       width: 180px;
@@ -80,6 +124,12 @@ header{
       line-height: 30px;
       border-radius: 6px;
       background-color: #F4FFF4;
+    }
+
+    .search-icon{
+      position: absolute;
+      top: 33px;
+      left: 38px;
     }
   }
 }
@@ -130,7 +180,7 @@ footer{
 
 // フォーム
 .form-style {
-  max-width: 650px;
+  width: 750px;
   margin-left: auto;
   margin-right: auto;
 
@@ -142,15 +192,14 @@ footer{
 }
 
 .field {
-  width: 100%;
+  width: 750px;
   padding-top: 10px;
   padding-bottom: 10px;
   display: flex;
   align-items: center;
 
   label {
-    width: 100%;
-    max-width: 185px;
+    width: 200px;
     margin-bottom: 0;
     letter-spacing: 0.05em;
   }
@@ -173,12 +222,24 @@ footer{
     flex: 1;
   }
 
+  select{
+    width: 30%;
+    height: 25px;
+    border-radius: 6px;
+  }
+
+  ul.tagit{
+    width: 550px;
+    border-radius: 6px;
+  }
+
   .half-item{
     width: 30%;
   }
 
   .area{
     height: 105px;
+    padding-top: 10px;
   }
 }
 
@@ -204,14 +265,34 @@ footer{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+
+  &:active{
+    -webkit-transform: translate(0,2px);
+    -moz-transform: translate(0,2px);
+    transform: translate(0,2px);
+  }
+}
+
+.btn-flex{
+  display: flex;
+  justify-content: center;
 }
 
 .btn-green{
   background-color: #003B00;
+
+  &:hover{
+    background-color: #0d590d;
+    cursor: pointer;
+  }
 }
 
 .btn-red{
-  background-color: red;
+  background-color: #C64756;
+}
+
+.btn-blue{
+  background-color: #084177;
 }
 
 .btn-gray{
@@ -270,12 +351,6 @@ footer{
       vertical-align: middle;
     }
   }
-
-  i{
-    font-size: 1.8em;
-    color: #003B00;
-  }
-
 }
 
 .small-table{
@@ -303,6 +378,7 @@ footer{
 
 // ページネーション
 .page-item{
+  width: 100%;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -324,6 +400,17 @@ footer{
     background-color: #003B00;
     border: 2px solid #003B00;
     border-radius: 4px;
+
+    &:hover{
+      background-color: #0d590d;
+      cursor: pointer;
+    }
+
+    &:active{
+      -webkit-transform: translate(0,2px);
+      -moz-transform: translate(0,2px);
+      transform: translate(0,2px);
+    }
   }
 
   .page, .first, .last, .prev, .next, .trancate{
@@ -356,16 +443,11 @@ footer{
 
 // ステータス
 .text-green{
-  color: green;
+  color: #357C3C;
 }
 
 .text-red{
-  color: red;
-}
-
-// 退会確認画面
-.unsubscribe-style{
-  text-align: center;
+  color: #C64756;
 }
 
 // プロフィール画像
@@ -379,165 +461,6 @@ footer{
   width: 55px;
   height: 55px;
   border-radius: 100%;
-}
-
-// 投稿詳細画面
-.article-show-flex{
- display: flex;
-
-   .article-left{
-    width: 50%;
-
-    .article_show_img{
-      width: 315px;
-      height: 210px;
-      margin-top: 1em;
-      object-fit: cover;
-    }
-
-    h3{
-      margin-top: 1.5em;
-      font-size: 20px;
-    }
-
-    p{
-      padding-left: 1.5em;
-    }
-  }
-
-
-  .article-right{
-    width: 50%;
-
-    tr{
-      height: 50px;
-    }
-
-    th{
-      text-align: left;
-    }
-
-    td{
-      padding-left: 2em;
-    }
-  }
-}
-
-// カードスタイル
-.card-wrapper{
-  width: 170px;
-  height: 190px;
-  margin: 10px 5px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-
-  .card-img{
-    text-align: center;
-
-    .card-index-img{
-    width: 162px;
-    height: 108px;
-    margin-top: 5px;
-    border-radius: 5px;
-    object-fit: cover;
-    }
-  }
-
-  .card-title{
-    width: 100%;
-    height: 20px;
-    padding-top: 5px;
-    padding-left: 5px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    h5{
-      margin-right: auto;
-    }
-
-    .season-icon{
-      width: 1em;
-      height: 1em;
-      margin-right: 8px;
-      border-radius: 100%;
-    }
-
-    .season-spring-icon{
-      background-color: pink;
-    }
-
-    .season-summer-icon{
-      background-color: skyblue;
-    }
-
-    .season-autumn-icon{
-      background-color: orange;
-    }
-
-    .season-winter-icon{
-      background-color: blue;
-    }
-  }
-
-  .card-footer-wrapper{
-    width: 100%;
-    height: 45px;
-    text-align: right;
-    position: relative;
-
-    .card-favorite{
-      height: 24px;
-      line-height: 24px;
-      padding-left: 5px;
-      position: absolute;
-      left: 0;
-      bottom: 1px;
-      text-decoration: none;
-      color: red;
-    }
-
-    .card-eyes{
-      height: 24px;
-      line-height: 24px;
-      padding-left: 5px;
-      position: absolute;
-      left: 35px;
-      bottom: 0;
-    }
-
-    .card-footer-text{
-      padding-right: 5px;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
-  }
-}
-
-.article_index_flex{
-  display: flex;
-  .article_index_left{
-    width: 29%;
-    font-size: 10px;
-
-    label{
-      width: 10%;
-    }
-  }
-
-  .article_index_right{
-    width: 71%;
-    margin-left: 5px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-
-// ユーザ詳細投稿一覧
-.user-articles-flex{
-  display: flex;
-  flex-wrap: wrap;
 }
 
 // プロフィールカードスタイル
@@ -584,94 +507,7 @@ footer{
   }
 }
 
-// チャット
-.chat-wrapper{
-  height: 500px;
-  position: relative;
-  .chat-content-wrapper{
-    width: 80%;
-    height: 420px;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    overflow-y: scroll;
-
-    .chat-left, .chat-right{
-      width: 50%;
-    }
-
-    .chat-left{
-      margin-right: 50%;
-      display: flex;
-
-      img{
-        margin-right: 10px;
-      }
-
-      .chat-content{
-        display: flex;
-        align-items: center;
-      }
-
-    }
-
-    .chat-right{
-      margin-left: 50%;
-      display: flex;
-      .chat-content{
-        margin-left: auto;
-      }
-    }
-
-    .chat-time{
-      font-size: 8px;
-      display: flex;
-      align-items: flex-end;
-      margin-right: 5px;
-    }
-
-    .chat-content{
-      max-width: 90%;
-      padding: 0.5em 0.8em;
-      display: inline-block;
-      background-color: #ddd;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      word-break: break-word;
-    }
-
-  }
-
-  .chat-form-wrapper{
-    max-width: 900px;
-    height: 40px;
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-
-    .form-box{
-      width: 600px;
-      height: 40px;
-      padding-right: 30px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-    }
-
-    .form-submit{
-      width: 40px;
-      height: 40px;
-      background-color: rgba(0,0,0,0);
-      border: 0 solid transparent;
-      font-size: 18px;
-      position: absolute;
-      right: 10px;
-    }
-  }
-}
-
+// コメント
 .comment-form-wrapper{
   max-width: 900px;
   height: 40px;
@@ -681,10 +517,11 @@ footer{
     width: 700px;
     height: 40px;
     padding-right: 30px;
+    padding-left: 0.6em;
     border: 1px solid #ddd;
     border-radius: 6px;
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
@@ -698,7 +535,60 @@ footer{
     border: 0 solid transparent;
     font-size: 18px;
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 110px;
+  }
+}
+
+.comment-table{
+  width: 900px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: left;
+
+  th{
+    width: 100px;
+    height: 35px;
+    padding-left: 1em;
+    border-top: 1px solid #DAE8DB;
+    border-bottom: 1px solid #DAE8DB;
+  }
+
+  td{
+    width: 720px;
+    height: 35px;
+    padding: 5px 8px;
+    border-top: 1px solid #DAE8DB;
+    border-bottom: 1px solid #DAE8DB;
+  }
+
+  .comment-delete-btn{
+    width: 80px!important;
+  }
+
+  .btn-comment-delete{
+    width: 50px;
+    margin: 5px auto;
+  }
+}
+
+// リンク付きアイコン用
+.link-icon{
+  line-height: 80px;
+  font-size: 1.8em;
+  color: #003B00;
+  text-decoration: none;
+
+  i{
+    &:hover{
+      opacity: 0.8;
+      cursor: pointer;
+    }
+
+    &:active{
+      -webkit-transform: translate(0,2px);
+      -moz-transform: translate(0,2px);
+      transform: translate(0,2px);
+    }
   }
 }

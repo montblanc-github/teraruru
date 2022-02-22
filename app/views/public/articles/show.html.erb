@@ -1,14 +1,14 @@
 <div class="content">
   <div class="item-style">
-    <% if @article.is_delete == false %>
+    <% if @article.is_visible == true %>
       <% if user_signed_in? && current_user != @user %>
         <%= render "public/relationships/follow-btn", user: @user %>
       <% end %>
       <%= render "public/users/profile-card", user: @user %>
       <% if current_user == @user %>
         <div class="article-link">
-          <%= link_to "投稿内容を編集する", edit_article_path, class: "btn btn-green" %>
-          <%= link_to "投稿を削除する", article_path, method: :delete, class: "btn btn-red" %>
+          <%= link_to "投稿内容を編集する", edit_article_path, class: "btn btn-right btn-edit-article btn-green" %>
+          <%= link_to "投稿を削除する", article_path, method: :delete, class: "btn btn-right btn-edit-article btn-red" %>
         </div>
       <% end %>
       <div class="article-show-flex">
@@ -19,7 +19,9 @@
                 <td><%= attachment_image_tag @article, :article_image, fallback: "no_image.png", class: "article_show_img"%></td>
               </tr>
               <tr>
-                <td><h3><i class="fas fa-volume-up"></i> 投稿者から</h3></td>
+                <% if @article.message.present? %>
+                  <td><h3><i class="fas fa-volume-up"></i> 投稿者から</h3></td>
+                <% end %>
               </tr>
               <tr>
                 <td><p><%= @article.message %></p></td>
@@ -36,49 +38,49 @@
               </tr>
               <tr>
                 <th>都道府県</th>
-                <td><%= @article.prefecture.name %></td>
+                <td><%= extract_article_prefecture_name(@article) %></td>
               </tr>
               <tr>
                 <th>市区町村</th>
-                <td><%= @article.municipality.municipality_name %></td>
+                <td><%= extract_article_municipality_name(@article) %></td>
               </tr>
               <tr>
                 <th>難易度</th>
-                <td><%= @article.level %></td>
+                <td><%= level_content(@article) %></td>
               </tr>
               <tr>
                 <th>カテゴリ</th>
-                <td><%= @article.category %></td>
+                <td><%= category_content(@article) %></td>
               </tr>
               <tr>
                 <th>時期</th>
-                <td><%= @article.season %></td>
+                <td><%= season_content(@article) %></td>
               </tr>
               <tr>
                 <th>肥料</th>
-                <td><%= @article.fertilizer_existence %></td>
+                <td><%= fertilizer_existence_content(@article) %></td>
               </tr>      <tr>
                 <th></th>
                 <td><%= @article.fertilizer_info %></td>
               </tr>
               <tr>
                 <th>場所</th>
-                <td><%= @article.place %></td>
+                <td><%= place_content(@article) %></td>
               </tr>
               <tr>
                 <th>条件</th>
-                <td><%= @article.condition %></td>
+                <td><%= condition_content(@article) %></td>
               </tr>
               <tr>
                 <th>開始時</th>
-                <td><%= @article.state_at_start %></td>
+                <td><%= state_at_start_content(@article) %></td>
               </tr>
               <tr>
                 <th>タグ</th>
                 <td>
                   <% if @tags.present? %>
                     <% @tags.each do |tag| %>
-                      <%= link_to "#{tag.name}(#{tag.taggings_count})", search_articles_path(tag: tag.name) %>
+                      <%= link_to "#{tag.name}(#{tag.taggings_count})", search_articles_path(tag: tag.name), class: "article-show-tag-content" %>
                     <% end %>
                   <% else %>
                     登録されているタグはありません。
@@ -89,14 +91,17 @@
           </table>
         </div>
       </div>
+      <div class="title">
+        <h2><i class="fas fa-comment-dots"></i> コメント</h2>
+      </div>
       <div class="comments-wrap">
         <%= render "public/comments/comment-content", comments: @comments %>
         <% if user_signed_in? %>
-        <%= render "public/comments/comment-form", article: @article,comment: @comment %>
+          <%= render "public/comments/comment-form", article: @article,comment: @comment %>
         <% end %>
       </div>
     <% else %>
-      <h5>管理者によって投稿が非表示にされています。</h5>
+      <p class="is-visible-article-text">管理者によって投稿が非表示にされています。</p>
     <% end %>
   </div>
 </div>

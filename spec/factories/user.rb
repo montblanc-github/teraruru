@@ -2,10 +2,11 @@ require "refile/file_double"
 
 FactoryBot.define do
   factory :user do
-    last_name { Faker::Lorem.characters(number: 5) }
-    first_name { Faker::Lorem.characters(number: 5) }
-    last_name_kana { Faker::Lorem.characters(number: 5) }
-    first_name_kana { Faker::Lorem.characters(number: 5) }
+    test_user = Gimei.name
+    last_name { test_user.last.kanji }
+    first_name { test_user.first.kanji }
+    last_name_kana { test_user.last.katakana }
+    first_name_kana { test_user.first.katakana }
     email { Faker::Internet.email }
     post_code { Faker::Number.number(digits: 7) }
     address { Faker::Address.full_address }
