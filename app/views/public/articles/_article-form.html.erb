@@ -50,7 +50,7 @@
     <%= f.label "時期" %>
     <div class="season-content">
       <%= f.collection_check_boxes :season_ids, seasons, :id, :month do |s| %>
-        <%= content_tag(:div, s.check_box + " " + s.text, class: "article-season-check") %>
+        <%= content_tag(:div, s.check_box + " " + s.label, class: "article-season-check") %>
       <% end %>
     </div>
   </div>
