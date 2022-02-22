@@ -20,6 +20,7 @@ RSpec.describe 'seasonモデルのテスト', type: :model do
         expect(Season.reflect_on_association(:article_seasons).macro).to eq :has_many
       end
     end
+
     context 'Articleモデルとの関係' do
       it 'N:Nとなっている' do
         expect(Season.reflect_on_association(:articles).macro).to eq :has_many

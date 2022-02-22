@@ -4,6 +4,5 @@ class Chat < ApplicationRecord
   belongs_to :user
 
   # バリデーション追加
-  validates :content, presence: true, length: {maximum: 150}
-
+  validates :content, presence: true, length: { maximum: 150 }
 end

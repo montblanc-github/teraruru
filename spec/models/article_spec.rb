@@ -21,38 +21,37 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
         article.cultivar_name = Faker::Lorem.characters(number: 22)
         is_expected.to eq false
       end
-
     end
 
-    context 'levelカラム'do
+    context 'levelカラム' do
       it '空欄でないこと' do
         article.level = ''
         is_expected.to eq false
       end
     end
 
-    context 'categoryカラム'do
+    context 'categoryカラム' do
       it '空欄でないこと' do
         article.category = ''
         is_expected.to eq false
       end
     end
 
-    context 'season_idsカラム'do
+    context 'season_idsカラム' do
       it '空欄でないこと' do
         article.season_ids = ''
         is_expected.to eq false
       end
     end
 
-    context 'fertilizer_existenceカラム'do
+    context 'fertilizer_existenceカラム' do
       it '空欄でないこと' do
         article.fertilizer_existence = ''
         is_expected.to eq false
       end
     end
 
-    context 'fertilizer_infoカラム'do
+    context 'fertilizer_infoカラム' do
       it 'fertilizer_existenceがtrueの時、空欄でないこと' do
         article.fertilizer_existence = 'true'
         article.fertilizer_info = ''
@@ -75,21 +74,21 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
       end
     end
 
-    context 'placeカラム'do
+    context 'placeカラム' do
       it '空欄でないこと' do
         article.place = ''
         is_expected.to eq false
       end
     end
 
-    context 'conditionカラム'do
+    context 'conditionカラム' do
       it '空欄でないこと' do
         article.condition = ''
         is_expected.to eq false
       end
     end
 
-    context 'state_at_startカラム'do
+    context 'state_at_startカラム' do
       it '空欄でないこと' do
         article.state_at_start = ''
         is_expected.to eq false
@@ -107,7 +106,7 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
       end
     end
 
-    context 'tag_listカラム'do
+    context 'tag_listカラム' do
       it '10個以下であること: 10個は〇' do
         article.tag_list = Faker::Lorem.words(number: 10)
         is_expected.to eq true
@@ -133,31 +132,37 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
         expect(Article.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
+
     context 'Favoriteモデルとの関係' do
       it 'N:1となっている' do
         expect(Article.reflect_on_association(:favorites).macro).to eq :has_many
       end
     end
+
     context 'Favoriteモデル(FavoriteUser)との関係' do
       it 'N:1となっている' do
         expect(Article.reflect_on_association(:favorite_users).macro).to eq :has_many
       end
     end
+
     context 'Commentモデルとの関係' do
       it 'N:1となっている' do
         expect(Article.reflect_on_association(:comments).macro).to eq :has_many
       end
     end
+
     context 'Notificationモデルとの関係' do
       it 'N:1となっている' do
         expect(Article.reflect_on_association(:notifications).macro).to eq :has_many
       end
     end
+
     context 'ArticleSeasonモデルとの関係' do
       it 'N:1となっている' do
         expect(Article.reflect_on_association(:article_seasons).macro).to eq :has_many
       end
     end
+
     context 'Seasonモデルとの関係' do
       it 'N:Nとなっている' do
         expect(Article.reflect_on_association(:seasons).macro).to eq :has_many

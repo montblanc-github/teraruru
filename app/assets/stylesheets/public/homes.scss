@@ -20,14 +20,22 @@
   display: flex;
 
   .top-left{
-    width: 395px;
+    width: 385px;
+
+    .no-tag{
+      padding-left: 25px;
+      padding-top: 50px;
+    }
   }
 
   .top-right{
-    width: 540px;
+    width: 550px;
     margin-left: 5px;
-    display: flex;
-    flex-wrap: wrap;
+
+    .no-article{
+      padding-top: 50px;
+      padding-left: 20px;
+    }
   }
 }
 
@@ -41,27 +49,36 @@
   padding-left: 5px;
 }
 
+.top-title-second{
+  margin-top: 20px;
+}
+
 .slide-img-wrapper{
   height: 110px;
 
   .slide-img1{
-    background-image: url("test1.jpg");
+    background-image: image-url("top1.png");
+    background-position: center;
   }
 
   .slide-img2{
-    background-image: url("test2.jpg");
+    background-image: image-url("top2.png");
+    background-position: center;
   }
 
   .slide-img3{
-    background-image: url("test3.jpg");
+    background-image: image-url("top3.png");
+    background-position: center;
   }
 
   .slide-img4{
-    background-image: url("test4.jpg");
+    background-image: image-url("top4.png");
+    background-position: center;
   }
 
   .slide-img5{
-    background-image: url("test5.jpg");
+    background-image: image-url("top5.png");
+    background-position: center;
   }
 }
 
@@ -90,6 +107,15 @@
   padding-left: 10px;
 }
 
+.top-right-article{
+  min-height: 250px;
+  margin-left: 10px;
+  display: table;
+  display: flex;
+  flex-wrap: wrap;
+  vertical-align: top;
+}
+
 // アバウトページ
 .about-logo{
     width: 40px;
@@ -103,4 +129,53 @@
   h2{
   line-height: 40px;
   }
+}
+
+.about-teraruru-dear{
+  margin-bottom: 15px;
+  font-family: "uzura";
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.about-teraruru-content{
+  padding-left: 30px;
+  font-family: "uzura";
+  font-size: 20px;
+  line-height: 50px;
+  font-weight: bold;
+}
+
+.about-teraruru-ps{
+  margin-top: 15px;
+  padding-left: 30px;
+  font-family: "uzura";
+  font-size: 18px;
+}
+
+.about-usage-flex{
+  display: flex;
+  justify-content: center;
+}
+
+.about-usage-text{
+  padding-top: 25px;
+  font-family: "uzura";
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.about-teraruru-support-img{
+  width: 400px;
+  height: 377px;
+  background-image: image-url("teraruru-support.png");
+  background-position: center;
+}
+
+.about-article-info-img{
+  width: 900px;
+  height: 506px;
+  text-align: center;
+  background-image: image-url("article-info.png");
+  background-position: center;
 }

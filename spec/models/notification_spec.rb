@@ -32,16 +32,19 @@ RSpec.describe 'Notificationモデルのテスト', type: :model do
         expect(Notification.reflect_on_association(:article).macro).to eq :belongs_to
       end
     end
+
     context 'Commentモデルとの関係' do
       it 'N:1となっている' do
         expect(Notification.reflect_on_association(:comment).macro).to eq :belongs_to
       end
     end
+
     context 'Userモデル(Visiter)との関係' do
       it 'N:1となっている' do
         expect(Notification.reflect_on_association(:visiter).macro).to eq :belongs_to
       end
     end
+
     context 'Userモデル(Visited)との関係' do
       it 'N:1となっている' do
         expect(Notification.reflect_on_association(:visited).macro).to eq :belongs_to

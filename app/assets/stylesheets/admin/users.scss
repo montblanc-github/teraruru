@@ -1,3 +1,20 @@
 // Place all the styles related to the admin/Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ユーザ詳細画面
+.title-btn-group-flex{
+  display: flex;
+  flex-wrap: nowrap!important;
+}
+
+.user-show-link-group{
+  margin: 0!important;
+  display: flex;
+}
+
+.admin-visible-btn{
+  width: 250px!important;
+  margin-right: 20px!important;
+  margin-bottom: 20px!important;
+}

@@ -18,22 +18,34 @@ class Article < ApplicationRecord
   has_many :seasons, through: :article_seasons
 
   # バリデーション
-    # 品種名の文字数制限は、アマモの名称「リュウグウノオトヒメノモトユイノキリハズシ」から決定。
-  validates :cultivar_name, presence: true, length: {maximum: 21}
+  # 品種名の文字数制限は、アマモの名称「リュウグウノオトヒメノモトユイノキリハズシ」から決定。
+  validates :cultivar_name, presence: true, length: { maximum: 21 }
   validates :prefecture_id, presence: true
   validates :municipality_id, presence: true
-  validates :level , presence: true
+  validates :level, presence: true
   validates :category, presence: true
   validates :season_ids, presence: true
-    # boolean型は、falseの時にエラーが返る状態にならないよう、presenceは使わない。
-  validates :fertilizer_existence, inclusion: {in: [true, false]}
-  validates :fertilizer_info, length: {maximum: 100}
+  # boolean型は、falseの時にエラーが返る状態にならないよう、presenceは使わない。
+  validates :fertilizer_existence, inclusion: { in: [true, false] }
+  validates :fertilizer_info, length: { maximum: 100 }
   validates :fertilizer_info, presence: true, if: :fertilizer_existence?
   validates :place, presence: true
   validates :condition, presence: true
   validates :state_at_start, presence: true
-  validates :message, length: {maximum: 150}
+  validates :message, length: { maximum: 150 }
   validate :validate_tag
+
+  # 非表示を反映した更新順スコープ
+  scope :public_recent, -> { where(is_visible: true).order(updated_at: :desc) }
+
+  # 更新順スコープ
+  scope :recent, -> { order(updated_at: :desc) }
+
+  # 非表示を反映した作成順スコープ
+  scope :public_fixed_recent, -> { where(is_visible: true).order(created_at: :desc) }
+
+  # 作成順スコープ
+  scope :fixed_recent, -> { order(created_at: :desc) }
 
   # いいねランキング
   def self.extract_favorite_ranking_articles
@@ -43,17 +55,17 @@ class Article < ApplicationRecord
   # 検索
   def self.search(is_current_admin, keyword)
     if is_current_admin
-      Article.where( "(cultivar_name LIKE?)", "%#{keyword}%")
+      Article.where("(cultivar_name LIKE?)", "%#{keyword}%").recent
     else
-      Article.where(is_visible: true).where( "(cultivar_name LIKE?)", "%#{keyword}%")
+      Article.where(is_visible: true).where("(cultivar_name LIKE?)", "%#{keyword}%").recent
     end
   end
 
   def self.prefecture_search(is_current_admin, prefecture)
     if is_current_admin
-      Article.where( "(prefecture_id = ?)", "#{prefecture}")
+      Article.where("(prefecture_id = ?)", "#{prefecture}").recent
     else
-      Article.where(is_visible: true).where( "(prefecture_id = ?)", "#{prefecture}")
+      Article.where(is_visible: true).where("(prefecture_id = ?)", "#{prefecture}").recent
     end
   end
 
@@ -113,5 +125,4 @@ class Article < ApplicationRecord
       tag.errors.messages[:name].each { |message| errors.add(:tag_list, message) }
     end
   end
-
 end

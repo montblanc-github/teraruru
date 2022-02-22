@@ -60,14 +60,11 @@
         <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "item area" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "変更を保存する", class: "btn btn-green" %>
+      <div class="btn-flex">
+        <%= f.submit "変更を保存する", class: "btn btn-green user-edit-btn" %>
+        <%= link_to "キャンセル", user_path(current_user), class: "btn btn-gray back-btn user-edit-btn" %>
       </div>
     <% end %>
-
-      <div class="actios">
-        <%= link_to "キャンセル", user_path(current_user), class: "btn btn-red" %>
-      </div>
   </div>
-    <p>※ 退会をご希望の場合は、<%= link_to "こちら", unsubscribe_user_path(current_user) %> から退会手続きを行ってください。</p>
+    <p class="unsubscribe-link">※ 退会をご希望の場合は、<%= link_to "こちら", unsubscribe_user_path(current_user) %> から退会手続きを行ってください。</p>
 </div>

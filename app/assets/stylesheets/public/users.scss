@@ -1,3 +1,93 @@
 // Place all the styles related to the public/Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ユーザ詳細ページ
+.title-btn-flex{
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+
+  #follow-btn{
+    margin-right: 25px;
+  }
+}
+
+#follow-btn{
+  width: 200px;
+  margin-left: auto;
+}
+
+.with-btn-title{
+  width: 500px;
+  margin-top: 0!important;
+  margin-left: 0!important;
+  margin-right: 0!important;
+  display: inline-block;
+  text-align: left;
+}
+
+.btn-right{
+  width: 200px!important;
+  height: 45px;
+  margin-top: 0!important;
+  margin-bottom: 10px;
+  margin-right: 0px!important;
+}
+
+.btn-edit-article{
+  margin-left: 10px!important;
+}
+
+.btn-profile-edit{
+  margin-right: 25px!important;
+}
+
+// ユーザ詳細投稿一覧
+.user-articles-flex{
+  display: flex;
+  flex-wrap: wrap;
+
+  .no-article{
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-bottom: 50px;
+  }
+}
+
+// ユーザ編集画面
+.back-btn{
+  width: 110px!important;
+}
+
+.user-edit-btn{
+  margin-left: 0!important;
+  margin-right: 20px!important;
+}
+
+.unsubscribe-link{
+  padding-top: 50px;
+  text-align: center;
+}
+
+// 退会確認画面
+.unsubscribe-style{
+  text-align: center;
+
+  h2{
+    margin-top: 200px;
+  }
+
+  p{
+    margin-top: 10px;
+  }
+
+  .user-unsubscribe-btn{
+    width: 150px;
+    margin-left: 0!important;
+    margin-right: 20px!important;
+  }
+}

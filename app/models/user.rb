@@ -22,21 +22,21 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   # バリデーション
-  validates :last_name, presence: true, format: { with: VALID_NAME_REGEX }, length: {maximum: 10}
-  validates :first_name, presence: true, format: { with: VALID_NAME_REGEX }, length: {maximum: 10}
-  validates :last_name_kana, presence: true, format: { with: VALID_KANA_REGEX }, length: {maximum: 10}
-  validates :first_name_kana, presence: true, format: { with: VALID_KANA_REGEX }, length: {maximum: 10}
-  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }, length: {maximum: 254}
-  validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }, length: {is: 7}
-  validates :address, presence: true, length: {maximum: 70}
-  validates :account_name, presence: true, length: {maximum: 15}
-  validates :introduction, length: {maximum: 150}
+  validates :last_name, presence: true, format: { with: VALID_NAME_REGEX }, length: { maximum: 10 }
+  validates :first_name, presence: true, format: { with: VALID_NAME_REGEX }, length: { maximum: 10 }
+  validates :last_name_kana, presence: true, format: { with: VALID_KANA_REGEX }, length: { maximum: 10 }
+  validates :first_name_kana, presence: true, format: { with: VALID_KANA_REGEX }, length: { maximum: 10 }
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }, length: { maximum: 254 }
+  validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }, length: { is: 7 }
+  validates :address, presence: true, length: { maximum: 70 }
+  validates :account_name, presence: true, length: { maximum: 15 }
+  validates :introduction, length: { maximum: 150 }
 
   # idを生成する前にset_uuidを呼び出す。
   before_create :set_uuid
 
   # uuidを用いると、id順の取得が困難になるため、作成日で並ぶよう変更。
-  default_scope -> { order(created_at: :desc) }
+  scope :recent, -> { order(created_at: :desc) }
 
   # フォロー フォロワー機能
   def follow(user_id)
@@ -80,7 +80,7 @@ class User < ApplicationRecord
 
   # 通知
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
@@ -92,11 +92,11 @@ class User < ApplicationRecord
 
   # ゲストログイン機能
   def self.guest
-    find_or_create_by!(account_name: 'guestuser' ,email: 'guest@example.com') do |user|
-      user.last_name = "竜宮の乙姫の"
-      user.first_name = "元結の切外し"
-      user.last_name_kana = "リュウグウノオトヒメノ"
-      user.first_name_kana = "モトユイノキリハズシ"
+    find_or_create_by!(account_name: 'guestuser', email: 'guest@example.com') do |user|
+      user.last_name = "竜宮"
+      user.first_name = "乙姫"
+      user.last_name_kana = "リュウグウ"
+      user.first_name_kana = "オトヒメ"
       user.password = SecureRandom.urlsafe_base64
       user.post_code = "1234567"
       user.address = "東京都中央区てらるるビル10階-1"

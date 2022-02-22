@@ -4,6 +4,5 @@ class Comment < ApplicationRecord
   belongs_to :article
 
   # バリデーション
-  validates :content, presence: true, length: {maximum: 150}
-
+  validates :content, presence: true, length: { maximum: 150 }
 end

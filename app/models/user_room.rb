@@ -1,5 +1,4 @@
 class UserRoom < ApplicationRecord
-
   # アソシエーション
   belongs_to :user
   belongs_to :room
@@ -7,5 +6,4 @@ class UserRoom < ApplicationRecord
   # バリデーション
   validates :user_id, presence: true
   validates :room_id, presence: true
-
 end

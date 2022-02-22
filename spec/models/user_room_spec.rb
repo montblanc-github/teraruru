@@ -14,6 +14,7 @@ RSpec.describe 'UserRoomモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
+
     context 'user_idカラム' do
       it '空欄でないこと' do
         user_room.user_id = ''
@@ -28,6 +29,7 @@ RSpec.describe 'UserRoomモデルのテスト', type: :model do
         expect(UserRoom.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
+
     context 'Roomモデルとの関係' do
       it 'N:1となっている' do
         expect(UserRoom.reflect_on_association(:room).macro).to eq :belongs_to

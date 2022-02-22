@@ -30,6 +30,7 @@ RSpec.describe 'Chatモデルのテスト', type: :model do
         expect(Chat.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
+
     context 'Roomモデルとの関係' do
       it 'N:1となっている' do
         expect(Chat.reflect_on_association(:room).macro).to eq :belongs_to

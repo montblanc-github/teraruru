@@ -4,9 +4,9 @@ class Public::ArticlesController < ApplicationController
 
   def index
     if current_admin
-      @articles = Article.page(params[:page]).per(9)
+      @articles = Article.recent.page(params[:page]).per(15)
     else
-      @articles = Article.where(is_visible: true).page(params[:page]).per(9)
+      @articles = Article.public_recent.page(params[:page]).per(15)
     end
     favorite_article_id = Article.extract_favorite_ranking_articles.limit(3).pluck(:article_id)
     @favorite_articles = Article.find(favorite_article_id)
@@ -15,6 +15,7 @@ class Public::ArticlesController < ApplicationController
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
+    @seasons = Season.all
   end
 
   def show
@@ -89,18 +90,23 @@ class Public::ArticlesController < ApplicationController
     is_current_admin = current_admin.present? ? true : false
 
     if params[:keyword].present?
-      @articles = Article.search(is_current_admin, params[:keyword]).page(params[:page]).per(9)
+      @articles = Article.search(is_current_admin, params[:keyword]).page(params[:page]).per(15)
     elsif params[:prefecture].present?
-      @articles = Article.prefecture_search(is_current_admin, params[:prefecture]).page(params[:page]).per(9)
+      @articles = Article.prefecture_search(is_current_admin, params[:prefecture]).page(params[:page]).per(15)
     elsif params[:q].present?
       if current_admin
-        @articles = @q.result.page(params[:page]).per(9)
+        @articles = @q.result.recent.page(params[:page]).per(15)
       else
-        @articles = @q.result.where(is_visible: true).page(params[:page]).per(9)
+        @articles = @q.result.public_recent.page(params[:page]).per(15)
       end
       @prefecture_id = params[:q][:prefecture_id_eq]
-    elsif @tag = params[:tag]
-      @articles = Article.tagged_with(params[:tag]).page(params[:page]).per(9)
+    elsif params[:tag].present?
+      @tag = params[:tag]
+      if current_admin
+        @articles = Article.tagged_with(params[:tag]).recent.page(params[:page]).per(15)
+      else
+        @articles = Article.where(is_visible: true).tagged_with(params[:tag]).recent.page(params[:page]).per(15)
+      end
     end
   end
 
@@ -117,5 +123,4 @@ class Public::ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:user_id, :artical_image_id, :cultivar_name, :prefecture_id, :municipality_id, :level, :category, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :tag_list, :message, season_ids: [])
   end
-
 end

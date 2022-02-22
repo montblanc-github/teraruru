@@ -10,7 +10,9 @@ class Admin::ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update(article_params)
-      @article.create_notification_hidden!
+      unless @article.is_visible
+        @article.create_notification_hidden!
+      end
       flash[:notice] = "投稿の表示状態を変更しました。"
       redirect_to admin_article_path(@article.id)
     else
@@ -48,6 +50,6 @@ class Admin::ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:user_id, :artical_image_id, :cultivar_name, :prefecture_id, :municipality_id, :level, :category, :season, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :tag_list, :message, :is_visible)
+    params.require(:article).permit(:is_visible)
   end
 end
