@@ -19,6 +19,13 @@
 @import "jquery.tagit";
 @import "tagit.ui-zendesk";
 
+@font-face {
+  font-family: "uzura";
+  src: asset-url('uzura.ttf') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 // リセットCSS
 *{
   margin: 0;

@@ -130,3 +130,52 @@
   line-height: 40px;
   }
 }
+
+.about-teraruru-dear{
+  margin-bottom: 15px;
+  font-family: "uzura";
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.about-teraruru-content{
+  padding-left: 30px;
+  font-family: "uzura";
+  font-size: 20px;
+  line-height: 50px;
+  font-weight: bold;
+}
+
+.about-teraruru-ps{
+  margin-top: 15px;
+  padding-left: 30px;
+  font-family: "uzura";
+  font-size: 18px;
+}
+
+.about-usage-flex{
+  display: flex;
+  justify-content: center;
+}
+
+.about-usage-text{
+  padding-top: 25px;
+  font-family: "uzura";
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.about-teraruru-support-img{
+  width: 400px;
+  height: 377px;
+  background-image: image-url("teraruru-support.png");
+  background-position: center;
+}
+
+.about-article-info-img{
+  width: 900px;
+  height: 506px;
+  text-align: center;
+  background-image: image-url("article-info.png");
+  background-position: center;
+}
