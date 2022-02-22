@@ -10,11 +10,19 @@
             <div class="chat-left">
               <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png", class: "profile_small_icon" %>
               <div class="chat-content"><%= chat.content %></div>
-              <div class="chat-time"><%= chat.created_at %></div>
+              <div class="chat-time">
+                <%= chat.created_at.to_s(:date_jp) %>
+                </br>
+                <%= chat.created_at.to_s(:time_jp) %>
+              </div>
             </div>
           <% else %>
             <div class="chat-right">
-              <div class="chat-time"><%= chat.created_at %></div>
+              <div class="chat-time">
+                <%= chat.created_at.to_s(:date_jp) %>
+                </br>
+                <%= chat.created_at.to_s(:time_jp) %>
+              </div>
               <div class="chat-content"><%= chat.content %></div>
             </div>
           <% end %>
