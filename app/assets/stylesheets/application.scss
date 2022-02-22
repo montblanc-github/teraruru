@@ -29,7 +29,7 @@
 .field_with_errors{
 
   input, select{
-    border: 2px solid red!important;
+    border: 2px solid #C64756!important;
   }
 }
 
@@ -39,12 +39,12 @@
 
 #error_explanation{
  h2{
-   color: red;
+   color: #C64756;
  }
 
  li{
    margin: 5px 0 5px 15px;
-   color: red;
+   color: #C64756;
  }
 }
 
@@ -281,11 +281,11 @@ footer{
 }
 
 .btn-red{
-  background-color: red;
+  background-color: #C64756;
 }
 
 .btn-blue{
-  background-color: blue;
+  background-color: #084177;
 }
 
 .btn-gray{
@@ -436,11 +436,11 @@ footer{
 
 // ステータス
 .text-green{
-  color: green;
+  color: #357C3C;
 }
 
 .text-red{
-  color: red;
+  color: #C64756;
 }
 
 // プロフィール画像
