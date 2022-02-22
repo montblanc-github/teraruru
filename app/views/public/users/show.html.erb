@@ -1,15 +1,16 @@
 <div class="content">
-  <div class="title">
-    <h2><i class="fas fa-user"></i> プロフィール</h2>
+  <div class="title-btn-flex">
+    <div class="title with-btn-title">
+      <h2><i class="fas fa-user"></i> プロフィール</h2>
+    </div>
+    <% if user_signed_in? && current_user != @user %>
+      <%= render "public/relationships/follow-btn", user: @user %>
+    <% end %>
+    <% if @user.account_name != "guestuser" && current_user == @user %>
+      <%= link_to "プロフィールを編集する", edit_user_path(@user), class: "btn btn-right btn-green btn-profile-edit" %>
+    <% end %>
   </div>
   <div class="item-style">
-    <% if user_signed_in? && current_user != @user %>
-      <% if current_user.following?(@user) %>
-        <%= link_to "フォロー解除", user_relationships_path(@user), method: :delete %>
-      <% else %>
-        <%= link_to "フォローする", user_relationships_path(@user), method: :post %>
-      <% end %>
-    <% end %>
     <%= render "public/users/profile-card", user: @user %>
     <% if user_signed_in? && current_user == @user %>
       <table class="small-table" >
@@ -44,11 +45,7 @@
     <% end %>
   </div>
   <div class="item-style user-articles-flex">
-    <% if current_admin %>
-      <%= render "admin/articles/admin-article-card", articles: @articles %>
-    <% else %>
-      <%= render "public/articles/public-article-card", articles: @articles %>
-    <% end %>
+    <%= render "public/articles/public-article-card", articles: @articles %>
   </div>
 </div>
 

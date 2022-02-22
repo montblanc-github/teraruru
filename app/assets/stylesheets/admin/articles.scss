@@ -1,3 +1,16 @@
 // Place all the styles related to the admin/articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 投稿カードスタイル用
+.visible-card-img{
+  margin-left: 2px;
+  margin-bottom: 7px;
+  line-height: 108px;
+  background-color: #C64756;
+  color: #fff;
+}
+
+.admin-card-link{
+  text-decoration: none;
+}

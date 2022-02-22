@@ -1,3 +1,43 @@
 // Place all the styles related to the public/notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 通知一覧画面
+.notice-table{
+  margin: 20px auto;
+
+  td{
+    height: 90px;
+
+    &:nth-of-type(1){
+      width: 60px;
+    }
+
+    &:nth-of-type(2){
+      width: 700px;
+    }
+
+    &:nth-of-type(3){
+      width: 70px;
+    }
+
+  }
+}
+
+.notice-delete-btn{
+  width: 50px!important;
+  margin: 0!important;
+  display: inline-block!important;
+}
+
+.notice-destroy_all_btn{
+  width: 80px!important;
+  height: 42px!important;
+  margin: 0 0 0 auto!important;
+}
+
+.notice-comment{
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 12px;
+}

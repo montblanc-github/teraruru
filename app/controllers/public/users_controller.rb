@@ -1,7 +1,10 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+  before_action :ensure_guest_user, only: [:edit]
+
   def show
     @user = User.find(params[:id])
-    @articles = @user.articles.page(params[:page]).per(15)
+    @articles = @user.articles.public_fixed_recent.page(params[:page]).per(15)
   end
 
   def edit
@@ -14,7 +17,6 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "ユーザ情報を変更しました。"
       redirect_to user_path
     else
-      flash[:notice] = "ユーザ情報の変更に失敗しました。"
       render :edit
     end
   end
@@ -37,5 +39,13 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :post_code, :address, :account_name, :profile_image, :introduction)
+  end
+
+  # ゲストログイン機能では、編集できないようにする。
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.account_name == "guestuser"
+      redirect_to user_path(current_user), notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
   end
 end

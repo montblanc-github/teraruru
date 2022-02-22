@@ -11,8 +11,12 @@
         <h3><i class="fas fa-tag"></i> 人気のタグ</h3>
       </div>
       <div class="top-tags-wrapper">
-        <% @tags.each do |tag| %>
-          <%= link_to "#{tag.name} (#{tag.taggings_count})", search_articles_path(tag: tag.name), class: "top-tag-content" %>
+        <% if @tags.present? %>
+          <% @tags.each do |tag| %>
+            <%= link_to "#{tag.name} (#{tag.taggings_count})", search_articles_path(tag: tag.name), class: "top-tag-content" %>
+          <% end %>
+        <% else %>
+          <h4 class="no-tag">表示できるタグ <i class="fas fa-tag"></i> がありません。</h4>
         <% end %>
       </div>
     </div>
@@ -21,15 +25,21 @@
         <h3><i class="fab fa-gratipay"></i> みんなが「いいね」した記事</h3>
       </div>
       <% if current_admin %>
-        <%= render "admin/articles/admin-article-card", articles: @favorite_articles %>
+        <div class="top-right-article">
+          <%= render "admin/articles/admin-article-card", articles: @favorite_articles %>
+        </div>
       <% else %>
-        <%= render "public/articles/public-article-card", articles: @favorite_articles %>
+        <div class="top-right-article">
+          <%= render "public/articles/public-article-card", articles: @favorite_articles %>
+        </div>
       <% end %>
       <% if user_signed_in? %>
-        <div class="subtitle">
+        <div class="top-title top-right-title top-title-second">
           <h3><i class="fab fa-gratipay"></i> フォロ－しているユーザの記事一覧</h3>
         </div>
-        <%= render "public/articles/top-article-card", articles: @following_articles %>
+        <div class="top-right-article">
+          <%= render "public/articles/top-article-card", articles: @following_articles %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -108,7 +118,7 @@ $(document).ready(function() {
         {code : 47, name: "沖縄" }
         ],
         onSelect: function(e, data) {
-          window.location.href = "./articles/search?keyword=%d".replace("%d", data.option.code) ;
+          window.location.href = "./articles/search?prefecture=%d".replace("%d", data.option.code) ;
         }
     });
 });
