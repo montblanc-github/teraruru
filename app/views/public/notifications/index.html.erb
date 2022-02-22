@@ -1,11 +1,15 @@
 <div class="content">
-  <div class="title">
-    <h2>通知</h2>
+  <div class="title-btn-flex">
+    <div class="title with-btn-title">
+      <h2><i class="fas fa-bell"></i> 通知</h2>
+    </div>
+    <%= link_to "全削除", destroy_all_user_notifications_path(current_user), method: :delete, class: "btn btn-red notice-destroy_all_btn" %>
   </div>
   <div class="item-style">
-    <%= link_to "全削除", destroy_all_user_notifications_path(current_user), method: :delete %>
     <% if @notifications.present? %>
-      <%= render @notifications %>
+      <table class="notice-table">
+        <%= render @notifications %>
+      </table>
     <% else %>
       <h5>通知はありません。</h5>
     <% end %>
