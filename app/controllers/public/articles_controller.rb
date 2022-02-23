@@ -11,7 +11,8 @@ class Public::ArticlesController < ApplicationController
     favorite_article_id = Article.extract_favorite_ranking_articles.limit(3).pluck(:article_id)
     @favorite_articles = Article.find(favorite_article_id)
     @most_view_articles = Article.where(is_visible: true).order('impressions_count DESC').first(3)
-    @tags = ActsAsTaggableOn::Tag.most_used(10)
+    most_tags_articles = Article.where(is_visible: true)
+    @tags = most_tags_articles.tag_counts_on(:tags).order('tags_count desc').limit(10)
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
