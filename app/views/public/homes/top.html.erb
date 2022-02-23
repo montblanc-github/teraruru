@@ -13,7 +13,7 @@
       <div class="top-tags-wrapper">
         <% if @tags.present? %>
           <% @tags.each do |tag| %>
-            <%= link_to "#{tag.name} (#{tag.taggings_count})", search_articles_path(tag: tag.name), class: "top-tag-content" %>
+            <%= link_to "#{tag.name} (#{tag.count})", search_articles_path(tag: tag.name), class: "top-tag-content" %>
           <% end %>
         <% else %>
           <h4 class="no-tag">表示できるタグ <i class="fas fa-tag"></i> がありません。</h4>
