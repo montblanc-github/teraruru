@@ -11,23 +11,23 @@
     test_user = Gimei.name
     address = Gimei.address
     User.create!(
-      last_name: test_user.last.kanji,
-      first_name: test_user.first.kanji,
-      last_name_kana: test_user.last.katakana,
-      first_name_kana: test_user.first.katakana,
-      email: "#{n+1}tanaka@test.test",
-      password: "123456",
-      post_code: "1234567",
-      address: address.kanji,
-      account_name: "t.t#{n+1}"
+      "last_name": test_user.last.kanji,
+      "first_name": test_user.first.kanji,
+      "last_name_kana": test_user.last.katakana,
+      "first_name_kana": test_user.first.katakana,
+      "email": "#{n+1}tanaka@test.test",
+      "password": "123456",
+      "post_code": "1234567",
+      "address": address.kanji,
+      "account_name": "t.t#{n+1}"
     )
   end
 
 
 # 管理者側seed
   Admin.create!(
-    email: "test@test.test",
-    password: "123456"
+    "email": "test@test.test",
+    "password": "123456"
     )
 
 
@@ -35,18 +35,18 @@
   require "csv"
 
   CSV.foreach('lib/都道府県リスト.csv') do |row|
-    Prefecture.create!(name: row[0])
+    Prefecture.create!("name": row[0])
   end
 
   CSV.foreach('lib/市区町村リスト.csv') do |row|
-    Municipality.create!(prefecture_id: row[0], municipality_name: row[1])
+    Municipality.create!("prefecture_id": row[0], "municipality_name": row[1])
   end
 
 
 # 時期seed
   12.times do |n|
     Season.create!(
-      month: "#{n+1}月"
+      "month": "#{n+1}月"
     )
   end
 
