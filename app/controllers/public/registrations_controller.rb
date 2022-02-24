@@ -54,7 +54,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     user_path(resource.id)
   end
-  # alias_method_chain :after_sign_up_path_for, :https
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
