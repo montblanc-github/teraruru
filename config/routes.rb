@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   # ユーザ側ルーティング
-  devise_for :users, skip: [:registrations], controllers: {
+  devise_for :users, skip: [:registrations, :passwords], controllers: {
     sessions: "public/sessions",
-    passwords: "public/passwords",
   }
 
   devise_scope :user do
