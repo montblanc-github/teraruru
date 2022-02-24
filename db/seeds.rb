@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # ユーザ側seed
-  12.times do |n|
+  20.times do |n|
     test_user = Gimei.name
     address = Gimei.address
     User.create!(
@@ -19,15 +19,15 @@
       password: "123456",
       post_code: "1234567",
       address: address.kanji,
-      account_name: "てらるる.#{n+1}"
+      account_name: "t.t#{n+1}"
     )
   end
 
 
 # 管理者側seed
   Admin.create!(
-    email: "admin@pf.pf",
-    password: "testpf"
+    email: "test@test.test",
+    password: "123456"
     )
 
 
@@ -51,61 +51,23 @@
   end
 
 # 投稿seed
-  User.limit(3).each do |user|
-    CSV.foreach('lib/article_db_ver1.csv') do |row|
+  User.all.each do |user|
+    20.times do |num|
+      test_category = ["vegetable", "fruit", "plant", "flower"]
+      test_place = ["indoor", "outdoor", "veranda"]
+      test_condition = ["pot", "ground", "greenhouse"]
+      test_state = ["seed", "seedling", "bulb"]
       user.articles.create!(
-        cultivar_name: row[0],
-        prefecture_id: row[1],
-        municipality_id: row[2],
-        level: row[3],
-        category: row[4],
-        season_ids: row[5],
-        fertilizer_existence: row[6],
-        fertilizer_info: row[7],
-        place: row[8],
-        condition: row[9],
-        state_at_start: row[10],
-        tag_list: row[11],
-        is_visible: [true, false].sample
-      )
-    end
-  end
-
-  User.limit(3).offset(3).each do |user|
-    CSV.foreach('lib/article_db_ver2.csv') do |row|
-      user.articles.create!(
-        cultivar_name: row[0],
-        prefecture_id: row[1],
-        municipality_id: row[2],
-        level: row[3],
-        category: row[4],
-        season_ids: row[5],
-        fertilizer_existence: row[6],
-        fertilizer_info: row[7],
-        place: row[8],
-        condition: row[9],
-        state_at_start: row[10],
-        tag_list: row[11],
-        is_visible: [true, false].sample
-      )
-    end
-  end
-
-  User.limit(3).offset(6).each do |user|
-    CSV.foreach('lib/article_db_ver3.csv') do |row|
-      user.articles.create!(
-        cultivar_name: row[0],
-        prefecture_id: row[1],
-        municipality_id: row[2],
-        level: row[3],
-        category: row[4],
-        season_ids: row[5],
-        fertilizer_existence: row[6],
-        fertilizer_info: row[7],
-        place: row[8],
-        condition: row[9],
-        state_at_start: row[10],
-        tag_list: row[11],
+        cultivar_name: "test#{num}",
+        prefecture_id: 1,
+        municipality_id: rand(1..10),
+        level: rand(1..5),
+        category: test_category.sample,
+        season_ids: "1",
+        fertilizer_existence: false,
+        place: test_place.sample,
+        condition: test_condition.sample,
+        state_at_start: test_state.sample,
         is_visible: [true, false].sample
       )
     end
