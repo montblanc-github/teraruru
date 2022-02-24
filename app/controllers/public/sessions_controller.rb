@@ -35,7 +35,7 @@ class Public::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email])
     return if !@user
     if @user.valid_password?(params[:user][:password]) && @user.is_active == false
-      flash[:notice] = "このアカウントは、利用停止中です。詳細は、Aboutページをご覧ください。"
+      flash[:notice] = "このアカウントは、利用停止中です。"
       redirect_to root_path
     end
   end
