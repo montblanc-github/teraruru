@@ -1,5 +1,4 @@
 class Public::UsersController < ApplicationController
-  protect_from_forgery
   before_action :authenticate_user!, except: [:show]
   before_action :ensure_guest_user, only: [:edit]
 
