@@ -16,7 +16,7 @@
           <% end %>
         <% end %>
         <div class="card-title">
-          <%= content_tag(:h5, article.cultivar_name) %>
+          <%= content_tag(:h5, article.cultivar_name.truncate(18)) %>
           <%= level_icon(article.level) %>
           <%= category_icon(article.category) %>
         </div>
@@ -27,7 +27,7 @@
             <%= article.impressionist_count(:filter=>:session_hash) %>
           </div>
           <div class="card-footer-text">
-            <%= article.user.account_name %>
+            <%= article.user.account_name.truncate(14) %>
           </div>
         </div>
       </div>
