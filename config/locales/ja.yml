@@ -79,3 +79,7 @@ ja:
       admin:
         signed_in: "ログインしました。"
         signed_out: "ログアウトしました。"
+
+    registrations:
+      user:
+        signed_up: "ユーザを新規作成しました。"

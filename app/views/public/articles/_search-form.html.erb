@@ -65,9 +65,9 @@
         <td>
           <%= f.radio_button :fertilizer_existence_eq, "", checked: true %>
           <%= f.label :fertilizer_existence_eq, "指定なし", value: "", class: "search-large-sublabel" %>
-          <%= f.radio_button :fertilizer_existence_eq, :spring %>
+          <%= f.radio_button :fertilizer_existence_eq, :true%>
           <%= f.label :fertilizer_existence_eq, "あり", value: true, class: "search-sublabel" %>
-          <%= f.radio_button :fertilizer_existence_eq, :summer %>
+          <%= f.radio_button :fertilizer_existence_eq, :false %>
           <%= f.label :fertilizer_existence_eq, "なし", value: false, class: "search-sublabel" %>
         </td>
       </tr>
