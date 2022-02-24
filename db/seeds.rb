@@ -26,7 +26,7 @@
 
 # 管理者側seed
   Admin.create!(
-    "email": "test@test.test",
+    "email": "admin@test.test",
     "password": "123456"
     )
 
