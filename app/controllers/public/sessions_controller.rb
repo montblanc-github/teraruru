@@ -29,6 +29,7 @@ class Public::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     root_path
   end
+  # alias_method_chain :after_sign_in_path_for, :https
 
   def user_state
     @user = User.find_by(email: params[:user][:email])
