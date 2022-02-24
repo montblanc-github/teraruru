@@ -22,10 +22,10 @@ module Public::ArticlesHelper
 
   # いいねアイコン表示用
   def favorite_btn(val)
-    if user_signed_in? && current_user != val.user
-      tag.div(class: ["favorite-#{val.id}", "card-favorite"]) do
+    tag.div(class: ["favorite-#{val.id}", "card-favorite"]) do
+      if user_signed_in?
         if current_user.favorite?(val)
-          link_to  article_favorites_path(val), method: :delete, remote: true do
+          link_to article_favorites_path(val), method: :delete, remote: true do
             icon("fas", "heart", val.favorites.count)
           end
         else
@@ -33,6 +33,8 @@ module Public::ArticlesHelper
             icon("far", "heart", val.favorites.count)
           end
         end
+      else
+        icon("fas", "heart", val.favorites.count)
       end
     end
   end

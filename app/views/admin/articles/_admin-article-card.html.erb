@@ -8,7 +8,7 @@
           </div>
         <% end %>
         <div class="card-title">
-          <h5><%= article.cultivar_name %></h5>
+          <h5><%= article.cultivar_name.truncate(18) %></h5>
           <%= level_icon(article.level) %>
           <%= category_icon(article.category) %>
         </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="card-footer-wrapper">
           <div class="card-footer-text">
-            <%= article.user.account_name %>
+            <%= article.user.account_name.truncate(14) %>
           </div>
         </div>
       </div>

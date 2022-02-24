@@ -380,12 +380,13 @@
     position: relative;
 
     .card-favorite{
-      height: 24px;
-      line-height: 24px;
+      height: 16px;
+      line-height: 16px;
       padding-left: 5px;
       position: absolute;
       left: 0;
       bottom: 0;
+      font-size: 13px;
 
       a{
         color: #000;
@@ -398,19 +399,22 @@
     }
 
     .card-eyes{
-      height: 24px;
-      line-height: 24px;
+      height: 16px;
+      line-height: 16px;
       padding-left: 5px;
       position: absolute;
-      left: 35px;
+      left: 40px;
       bottom: 0;
+      font-size: 13px;
     }
 
     .card-footer-text{
+      width: 85px;
       padding-right: 5px;
       position: absolute;
       bottom: 0;
       right: 0;
+      font-size: 12px;
     }
   }
 }

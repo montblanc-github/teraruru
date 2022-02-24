@@ -13,7 +13,7 @@
             <% @tags.each.with_index(1) do |tag, i| %>
               <div class="tag-flex">
                 <div class="tag-ranking-num"><p><%= "No.#{i}" %></p></div>
-                <%= link_to "#{tag.name} (#{tag.taggings_count})", search_articles_path(tag: tag.name), class: "article-index-tag-content" %>
+                <%= link_to "#{tag.name} (#{tag.count})", search_articles_path(tag: tag.name), class: "article-index-tag-content" %>
               </div>
             <% end %>
           <% else %>
