@@ -80,3 +80,9 @@
   followers = users.limit(15).offset(2)
   following.each { |val| user.follow(val.id) }
   followers.each { |f| f.follow(user.id) }
+
+# いいねseed
+  Article.limit(10).each do |article|
+  　users = User.limit(10)
+  　users.each {|user| user.favorite(article)}
+  end
