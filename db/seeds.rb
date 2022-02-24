@@ -51,23 +51,61 @@
   end
 
 # 投稿seed
-  User.all.each do |user|
-    20.times do |num|
-      test_category = ["vegetable", "fruit", "plant", "flower"]
-      test_place = ["indoor", "outdoor", "veranda"]
-      test_condition = ["pot", "ground", "greenhouse"]
-      test_state = ["seed", "seedling", "bulb"]
+  User.limit(3).each do |user|
+    CSV.foreach('lib/article_db_ver1.csv') do |row|
       user.articles.create!(
-        cultivar_name: "test#{num}",
-        prefecture_id: 1,
-        municipality_id: rand(1..10),
-        level: rand(1..5),
-        category: test_category.sample,
-        season_ids: "1",
-        fertilizer_existence: false,
-        place: test_place.sample,
-        condition: test_condition.sample,
-        state_at_start: test_state.sample,
+        cultivar_name: row[0],
+        prefecture_id: row[1],
+        municipality_id: row[2],
+        level: row[3],
+        category: row[4],
+        season_ids: row[5],
+        fertilizer_existence: row[6],
+        fertilizer_info: row[7],
+        place: row[8],
+        condition: row[9],
+        state_at_start: row[10],
+        tag_list: row[11],
+        is_visible: [true, false].sample
+      )
+    end
+  end
+
+  User.limit(3).offset(3).each do |user|
+    CSV.foreach('lib/article_db_ver2.csv') do |row|
+      user.articles.create!(
+        cultivar_name: row[0],
+        prefecture_id: row[1],
+        municipality_id: row[2],
+        level: row[3],
+        category: row[4],
+        season_ids: row[5],
+        fertilizer_existence: row[6],
+        fertilizer_info: row[7],
+        place: row[8],
+        condition: row[9],
+        state_at_start: row[10],
+        tag_list: row[11],
+        is_visible: [true, false].sample
+      )
+    end
+  end
+
+  User.limit(3).offset(6).each do |user|
+    CSV.foreach('lib/article_db_ver3.csv') do |row|
+      user.articles.create!(
+        cultivar_name: row[0],
+        prefecture_id: row[1],
+        municipality_id: row[2],
+        level: row[3],
+        category: row[4],
+        season_ids: row[5],
+        fertilizer_existence: row[6],
+        fertilizer_info: row[7],
+        place: row[8],
+        condition: row[9],
+        state_at_start: row[10],
+        tag_list: row[11],
         is_visible: [true, false].sample
       )
     end
