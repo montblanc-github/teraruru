@@ -7,6 +7,9 @@
 閲覧だけじゃ物足りないという方は、会員登録することで、コメントやDMから直接ご自身の疑問を投げかけたりすることができます。<br />
 あなたのガーデニング歴に応じて、お好みの投稿を探してみてください！<br />
 
+## トップ画面イメージ
+![トップ画面](https://user-images.githubusercontent.com/86041660/155675639-5acc90f3-162e-4e0d-b187-14f6964460d4.png)
+
 ### サイトテーマ
 育てられる地質や使用している肥料など、植物や作物に関する情報収集ができるSNSサイト。
 
@@ -48,7 +51,30 @@
 - 種苗会社などが、新しい品種を育ててくれるモニターを探している時。
 
 ## 設計書
-　<https://docs.google.com/spreadsheets/d/15kjHKCy5HQHVWhJIQ6dywi-C2qZw0EWZH-0c6Ql2PUA>
+#### ER図
+![てらるる_ER図 ](https://user-images.githubusercontent.com/86041660/155676090-17d526da-851c-4662-afe1-956867ddf17e.png)
+
+#### テーブル定義書
+<https://docs.google.com/spreadsheets/d/1ENs_q4LnRMZt6JzAIhS5hMIUpy1KoGe5i8XJ0dfQOx0/edit?usp=sharing>
+
+#### アプリケーション詳細設計
+<https://docs.google.com/spreadsheets/d/15OB-KRIIRJLabU62576Skq21NnMVmxl6na5X17PIlpI/edit?usp=sharing>
+
+#### UIflow図(ユーザ)
+<https://drive.google.com/file/d/1AmhJddlpNubXxTM0DNbwEa8p0hMHQKyh/view?usp=sharing>
+
+#### UIflow図(管理者)
+<https://drive.google.com/file/d/1t45XeAEYbCLsQiDbHM2GZ8urgImtYvh3/view?usp=sharing>
+
+#### ワイヤーフレーム(ユーザ)
+<https://drive.google.com/file/d/137E2_PE8T6uQ7uhDIClXwm5t3Ds6FtmD/view?usp=sharing>
+
+#### ワイヤーフレーム(管理者)
+<https://drive.google.com/file/d/1X824HRluKoTCpQuZvoLvD2c2Kp50i56G/view?usp=sharing>
+
+## テスト
+#### テスト仕様書
+<https://docs.google.com/spreadsheets/d/1B5VPqz5OV3sndPqHfQx_l4D62821OtYZW6MQghJbdak/edit?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1S2PjauAo_yO5lvPQQv5RV9nwq7ety_h-GPRGoc7J8kE>
