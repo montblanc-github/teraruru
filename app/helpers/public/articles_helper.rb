@@ -123,4 +123,9 @@ module Public::ArticlesHelper
   def extract_article_municipality_name(article)
     Municipality.find(article.municipality_id).municipality_name
   end
+
+  # 投稿詳細画面タグカウント用
+  def show_tag_count(tag)
+    Article.where(is_visible: true).joins(:taggings).where(taggings: {tag_id: tag.id}).count
+  end
 end

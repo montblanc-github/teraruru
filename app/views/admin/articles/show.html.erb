@@ -86,7 +86,7 @@
               <td>
                 <% if @tags.present? %>
                   <% @tags.each do |tag| %>
-                      <%= link_to "#{tag.name}(#{tag.count})", search_articles_path(tag: tag.name), class: "article-show-tag-content" %>
+                      <%= link_to "#{tag.name}(#{show_tag_count(tag)})", search_articles_path(tag: tag.name), class: "article-show-tag-content" %>
                   <% end %>
                 <% else %>
                   登録されているタグはありません。
