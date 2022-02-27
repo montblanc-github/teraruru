@@ -15,7 +15,7 @@ module Public::ArticlesHelper
       image_tag "plant-icon.png", class: "category-icon"
     elsif category == "flower"
       image_tag "flower-icon.png", class: "category-icon"
-    elsif category == "succulen"
+    elsif category == "succulent"
       image_tag "succulent-icon.png", class: "category-icon"
     end
   end
