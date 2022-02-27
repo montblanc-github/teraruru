@@ -29,7 +29,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }, length: { maximum: 254 }
   validates :post_code, presence: true, format: { with: VALID_POST_CODE_REGEX }, length: { is: 7 }
   validates :address, presence: true, length: { maximum: 70 }
-  validates :account_name, presence: true, length: { maximum: 15 }
+  validates :account_name, presence: true, uniqueness: true, length: { maximum: 15 }
   validates :introduction, length: { maximum: 150 }
 
   # idを生成する前にset_uuidを呼び出す。
