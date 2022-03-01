@@ -52,7 +52,7 @@ class Public::UsersController < ApplicationController
 
   def user_profile_autority
     if User.find(params[:id]) != current_user
-      redirect_to request.referer
+      redirect_to root_path
     end
   end
 end
