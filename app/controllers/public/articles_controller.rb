@@ -1,5 +1,6 @@
 class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search, :get_municipalities, :get_municipalities_search]
+  before_action :article_user_authority, only: [:edit, :update, :destroy]
   impressionist :actions => [:show], :unique => [:session_hash.to_s]
 
   def index
@@ -123,5 +124,11 @@ class Public::ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:user_id, :article_image, :cultivar_name, :prefecture_id, :municipality_id, :level, :category, :fertilizer_existence, :fertilizer_info, :place, :condition, :state_at_start, :tag_list, :message, season_ids: [])
+  end
+
+  def article_user_authority
+    if Article.find(params[:id]).user_id != current_user.id
+      redirect_to request.referer
+    end
   end
 end
