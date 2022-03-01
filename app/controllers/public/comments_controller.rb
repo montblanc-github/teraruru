@@ -35,7 +35,7 @@ class Public::CommentsController < ApplicationController
 
   def comment_user_authority
     if Comment.find_by(id: params[:id], article_id: params[:article_id]).user_id != current_user.id
-      redirect_to request.referer
+      redirect_to root_path
     end
   end
 end
