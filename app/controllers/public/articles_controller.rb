@@ -128,7 +128,7 @@ class Public::ArticlesController < ApplicationController
 
   def article_user_authority
     if Article.find(params[:id]).user_id != current_user.id
-      redirect_to root_path
+      redirect_to request.referer
     end
   end
 end
