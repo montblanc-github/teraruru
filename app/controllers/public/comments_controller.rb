@@ -1,5 +1,6 @@
 class Public::CommentsController < ApplicationController
   before_action :login_check
+  before_action :comment_user_authority, only: [:destroy]
 
   def create
     article = Article.find(params[:article_id])
@@ -29,6 +30,12 @@ class Public::CommentsController < ApplicationController
   def login_check
     if !(user_signed_in? || admin_signed_in?)
       redirect_to new_user_session_path
+    end
+  end
+
+  def comment_user_authority
+    if Comment.find_by(id: params[:id], article_id: params[:article_id]).user_id != current_user.id
+      redirect_to request.referer
     end
   end
 end
