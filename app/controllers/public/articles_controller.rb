@@ -89,19 +89,18 @@ class Public::ArticlesController < ApplicationController
     @seasons = Season.all
     is_current_admin = current_admin.present? ? true : false
 
-    if params[:keyword].present?
+    if @keyword = params[:keyword]
       @articles = Article.search(is_current_admin, params[:keyword]).page(params[:page]).per(15)
-    elsif params[:prefecture].present?
+    elsif @prefecture_search_keyword = params[:prefecture]
       @articles = Article.prefecture_search(is_current_admin, params[:prefecture]).page(params[:page]).per(15)
-    elsif params[:q].present?
+    elsif @result = params[:q]
       if current_admin
         @articles = @q.result.recent.page(params[:page]).per(15)
       else
         @articles = @q.result.public_recent.page(params[:page]).per(15)
       end
       @prefecture_id = params[:q][:prefecture_id_eq]
-    elsif params[:tag].present?
-      @tag = params[:tag]
+    elsif @tag = params[:tag]
       if current_admin
         @articles = Article.tagged_with(params[:tag]).recent.page(params[:page]).per(15)
       else
