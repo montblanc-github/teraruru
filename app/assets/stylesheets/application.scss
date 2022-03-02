@@ -572,11 +572,19 @@ footer{
   }
 
   td{
-    width: 720px;
     height: 35px;
     padding: 5px 8px;
     border-top: 1px solid #DAE8DB;
     border-bottom: 1px solid #DAE8DB;
+
+    &:nth-of-type(1){
+      width: 625px;
+    }
+
+    &:nth-of-type(2){
+      width: 95px;
+      font-size: 10px;
+    }
   }
 
   .comment-delete-btn{
