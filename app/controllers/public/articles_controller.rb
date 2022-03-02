@@ -9,11 +9,9 @@ class Public::ArticlesController < ApplicationController
     else
       @articles = Article.public_recent.page(params[:page]).per(15)
     end
-    favorite_article_id = Article.extract_favorite_ranking_articles.limit(3).pluck(:article_id)
-    @favorite_articles = Article.find(favorite_article_id)
+    @favorite_articles = Article.extract_favorite_ranking_articles.limit(3)
     @most_view_articles = Article.where(is_visible: true).order('impressions_count DESC').first(3)
-    most_tags_articles = Article.where(is_visible: true)
-    @tags = most_tags_articles.tag_counts_on(:tags).order('tags_count desc').limit(10)
+    @tags = Article.where(is_visible: true).tag_counts_on(:tags).order('tags_count desc').limit(10)
     @q = Article.ransack(params[:q])
     @prefectures = Prefecture.all
     @municipalities = Municipality.all
