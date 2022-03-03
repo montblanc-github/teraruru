@@ -1,4 +1,17 @@
 module Public::ArticlesHelper
+  # 投稿検索用
+  def search_keyword
+    if @keyword
+      content_tag(:span, "「品種名：#{@keyword}」の")
+    elsif @prefecture_search_keyword
+      content_tag(:span, "「都道府県：#{Prefecture.find(@prefecture_search_keyword).name}」の")
+    elsif @result
+      content_tag(:span, "「絞り込みキーワード」による")
+    elsif @tag
+      content_tag(:span, "「タグ：#{@tag}」の")
+    end
+  end
+
   # 投稿難易度アイコン表示用
   def level_icon(val)
     num = val.to_i

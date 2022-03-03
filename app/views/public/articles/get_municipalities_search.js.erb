@@ -1,7 +1,9 @@
 $('#q_municipality_id_eq').html('');
 var options = '';
+var option_blank = '';
+option_blank = '<option value="">指定なし</option>';
 <% @municipalities.each do | m | %>
   options = options + '<option value="<%= m.id %>"><%= m.municipality_name %></option>';
 <% end %>
 
-$('#q_municipality_id_eq').html(options);
+$('#q_municipality_id_eq').html(option_blank + options);

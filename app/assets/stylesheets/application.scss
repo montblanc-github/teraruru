@@ -260,6 +260,27 @@ footer{
   }
 }
 
+//必須バッジ・任意バッジ
+.badge{
+  width: 33px;
+  height: 20px;
+  margin-right: 8px;
+  font-size: 11px;
+  text-align: center;
+  line-height: 20px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.red-required{
+  background-color: #C64756;
+}
+
+.gray-optional{
+  background-color: #696969;
+}
+
 // ボタン
 .btn {
   width: 280px;
@@ -572,11 +593,19 @@ footer{
   }
 
   td{
-    width: 720px;
     height: 35px;
     padding: 5px 8px;
     border-top: 1px solid #DAE8DB;
     border-bottom: 1px solid #DAE8DB;
+
+    &:nth-of-type(1){
+      width: 625px;
+    }
+
+    &:nth-of-type(2){
+      width: 95px;
+      font-size: 10px;
+    }
   }
 
   .comment-delete-btn{

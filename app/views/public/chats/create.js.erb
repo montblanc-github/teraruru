@@ -2,7 +2,7 @@ $("#chat-content-area").append(
 '<div class="chat-right">\
   <div class="chat-time">\
     <%= @chat.created_at.to_s(:date_jp) %>\
-    </br>\
+    <br>\
     <%= @chat.created_at.to_s(:time_jp) %>\
   </div>\
   <div class="chat-content"><%= @chat.content %></div>\

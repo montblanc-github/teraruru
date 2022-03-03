@@ -4,6 +4,7 @@
       <tr>
         <th><%= comment.user.account_name %></th>
         <td><%= comment.content %></td>
+        <td><%= comment.created_at.to_s(:date_time_jp)%></td>
         <td class="comment-delete-btn">
           <% if comment.user == current_user || current_admin %>
             <%= link_to "削除", article_comment_path(comment.article, comment), method: :delete, remote: true, class: "btn btn-comment-delete btn-red" %>
