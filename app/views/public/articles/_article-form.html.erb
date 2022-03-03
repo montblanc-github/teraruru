@@ -2,36 +2,42 @@
 
   <!--画像-->
   <div class="field">
+    <span class="badge gray-optional">任意</span>
     <%= f.label :article_image, "画像" %>
     <%= f.attachment_field :article_image, autofocus: true, autocomplete: "article_image" %>
   </div>
 
   <!--品種名-->
   <div class="field">
+    <span class="badge red-required">必須</span>
     <%= f.label :cultivar_name, "品種名" %>
     <%= f.text_field :cultivar_name, autofocus: true, autocomplete: "cultivar_name", class: "item" %>
   </div>
 
   <!--都道府県-->
   <div class="field">
+    <span class="badge red-required">必須</span>
     <%= f.label :prefecture_id, "都道府県" %>
     <%= f.collection_select :prefecture_id, prefectures, :id, :name, prompt: "選択してください" %>
   </div>
 
   <!--市区町村-->
   <div class="field">
+    <span class="badge red-required">必須</span>
     <%= f.label :municipality_id, "市区町村" %>
     <%= f.collection_select :municipality_id, municipalities, :id, :municipality_name, prompt: "選択してください" %>
   </div>
 
   <!--難易度-->
   <div class="field">
+    <span class="badge red-required">必須</span>
     <%= f.label :level, "難易度" %>
     <%= f.select :level, [["とても難しい",1],["難しい",2],["普通",3],["簡単",4],["とても簡単",5]], prompt: "選択してください", selected: 3 %>
   </div>
 
   <!--カテゴリ-->
   <div class="field">
+    <span class="badge red-required">必須</span>
     <%= f.label :category, "カテゴリ" %>
     <%= f.radio_button :category, :vegetable, checked: true %>
     <%= f.label :category, "野菜", value: :vegetable, class: "article-form-raddio-label" %>
@@ -47,6 +53,7 @@
 
   <!--時期-->
   <div class="field">
+    <span class="badge red-required">必須</span>
     <%= f.label "時期" %>
     <div class="season-content">
       <%= f.collection_check_boxes :season_ids, seasons, :id, :month do |s| %>
@@ -57,6 +64,7 @@
 
   <!--肥料-->
   <div class="field">
+    <span class="badge red-required">必須</span>
     <%= f.label :fertilizer_existence, "肥料" %>
     <%= f.radio_button :fertilizer_existence, :true, checked: true %>
     <%= f.label :fertilizer_existence, "あり", value: true, class: "article-form-raddio-label" %>
@@ -72,6 +80,7 @@
 
   <!--場所-->
   <div class="field">
+    <span class="badge red-required">必須</span>
     <%= f.label :place, "場所" %>
     <%= f.radio_button :place, :indoor, checked: true %>
     <%= f.label :place, "屋内", value: :indoor, class: "article-form-raddio-label" %>
@@ -83,6 +92,7 @@
 
   <!--条件-->
   <div class="field">
+    <span class="badge red-required">必須</span>
     <%= f.label :condition, "条件" %>
     <%= f.radio_button :condition, :pot, checked: true %>
     <%= f.label :condition, "鉢", value: :pot, class: "article-form-raddio-label" %>
@@ -94,6 +104,7 @@
 
   <!--開始時-->
   <div class="field">
+    <span class="badge red-required">必須</span>
     <%= f.label :state_at_start, "開始時" %>
     <%= f.radio_button :state_at_start, :seed, checked: true %>
     <%= f.label :state_at_start, "種から", value: :seed, class: "article-form-raddio-label" %>
@@ -107,12 +118,14 @@
 
   <!--タグ-->
   <div class="field">
+    <span class="badge gray-optional">任意</span>
     <%= f.label :tag_list, "タグ"%>
     <%= f.text_field :tag_list, value: article.tag_list.join(","), class: "tag_form tagit-hidden-field", name: "article[tag_list]", id: "article_tag_list" %>
   </div>
 
   <!--メッセージ-->
   <div class="field">
+    <span class="badge gray-optional">任意</span>
     <%= f.label :message, "あなたからのメッセージ" %>
     <%= f.text_area :message, autofocus: true, autocomplete: "message", class: "item area" %>
   </div>
