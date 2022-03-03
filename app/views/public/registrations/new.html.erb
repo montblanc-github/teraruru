@@ -4,12 +4,13 @@
     <p>※ 会員登録がお済みの方は、<%= link_to "こちら", new_session_path(resource_name) %> からログインしてください。</p>
   </div>
   <div class="form-style">
+    <%= render "public/shared/error_messages", resource: resource %>
     <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-      <%= render "public/shared/error_messages", resource: resource %>
 
       <!--氏名-->
       <div class="field">
-        <%= f.label :氏名 %>
+        <span class="badge red-required">必須</span>
+        <%= f.label "氏名" %>
         <%= f.label :last_name, "(姓)", class: "small-label" %>
         <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "item half-item" %>
         <%= f.label :first_name, "(名)", class: "small-label" %>
@@ -18,7 +19,8 @@
 
       <!--フリガナ-->
       <div class="field">
-        <%= f.label :フリガナ %>
+        <span class="badge red-required">必須</span>
+        <%= f.label "フリガナ" %>
         <%= f.label :last_name_kana, "(セイ)", class: "small-label" %>
         <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kananame", class: "item half-item" %>
         <%= f.label :first_name_kana, "(メイ)", class: "small-label" %>
@@ -27,48 +29,56 @@
 
       <!--メールアドレス-->
       <div class="field">
+        <span class="badge red-required">必須</span>
         <%= f.label :email, "メールアドレス" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "item" %>
       </div>
 
       <!--郵便番号-->
       <div class="field">
+        <span class="badge red-required">必須</span>
         <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
         <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", class: "item half-item" %>
       </div>
 
       <!--住所-->
       <div class="field">
+        <span class="badge red-required">必須</span>
         <%= f.label :address, "住所" %>
         <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "item" %>
       </div>
 
       <!--パスワード-->
       <div class="field">
+        <span class="badge red-required">必須</span>
         <%= f.label :password, "パスワード(6文字以上)" %>
         <%= f.password_field :password, autocomplete: "new-password", class: "item half-item" %>
       </div>
 
       <!--パスワード(確認用)-->
       <div class="field">
+        <span class="badge red-required">必須</span>
         <%= f.label :password_confirmation, "パスワード(確認用)" %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "item half-item" %>
       </div>
 
       <!--アカウント名-->
       <div class="field">
+        <span class="badge red-required">必須</span>
         <%= f.label :account_name, "アカウント名" %>
         <%= f.text_field :account_name, autofocus: true, autocomplete: "account_name", class: "item" %>
       </div>
 
       <!--プロフィール画像-->
       <div class="field">
+        <span class="badge gray-optional">任意</span>
         <%= f.label :profile_image, "プロフィール画像" %>
         <%= f.attachment_field :profile_image, autofocus: true, autocomplete: "profile_image" %>
       </div>
 
       <!--紹介文-->
       <div class="field">
+        <span class="badge gray-optional">任意</span>
         <%= f.label :introduction, "紹介文" %>
         <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "item area" %>
       </div>
