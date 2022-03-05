@@ -140,19 +140,23 @@
 
 <script>
 // 品種名バリデーション
-  $('#article_cultivar_name').blur(function() {
+  $('#article_cultivar_name').keyup(function() {
     const cultivar_name = document.querySelector('#article_cultivar_name');
     const err_cultivar_name_msg = document.querySelector('.error-msg-cultivar_name');
+    const btn = document.querySelector('.btn-green');
     if(!cultivar_name.value){
       err_cultivar_name_msg.textContent = '品種名は入力必須項目です。';
       cultivar_name.classList.add('error-form');
+      btn.disabled = true
     } else {
       if(cultivar_name.value.length > 21){
         err_cultivar_name_msg.textContent = '品種名は21文字以内で入力してください。';
         cultivar_name.classList.add('error-form');
+        btn.disabled = true
       }else{
       err_cultivar_name_msg.textContent = '';
       cultivar_name.classList.remove('error-form');
+      btn.disabled = false
       }
     }
   });
