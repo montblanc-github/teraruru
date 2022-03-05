@@ -13,6 +13,7 @@
     <%= f.label :cultivar_name, "品種名" %>
     <%= f.text_field :cultivar_name, autofocus: true, autocomplete: "cultivar_name", class: "item" %>
   </div>
+  <div class="error-msg error-msg-cultivar_name"></div>
 
   <!--都道府県-->
   <div class="field">
@@ -136,4 +137,24 @@
   </div>
 
 <% end %>
+
+<script>
+// 品種名バリデーション
+  $('#article_cultivar_name').blur(function() {
+    const cultivar_name = document.querySelector('#article_cultivar_name');
+    const err_cultivar_name_msg = document.querySelector('.error-msg-cultivar_name');
+    if(!cultivar_name.value){
+      err_cultivar_name_msg.textContent = '品種名は入力必須項目です。';
+      cultivar_name.classList.add('error-form');
+    } else {
+      if(cultivar_name.value.length > 21){
+        err_cultivar_name_msg.textContent = '品種名は21文字以内で入力してください。';
+        cultivar_name.classList.add('error-form');
+      }else{
+      err_cultivar_name_msg.textContent = '';
+      cultivar_name.classList.remove('error-form');
+      }
+    }
+  });
+</script>
 

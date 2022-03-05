@@ -56,6 +56,17 @@
  }
 }
 
+.error-msg{
+  width: 100%;
+  margin-left: 241px;
+  font-size: 80%;
+  color: #C64756;
+}
+
+.error-form{
+  border: 2px solid #C64756!important;
+}
+
 // フラッシュメッセージ
 .alert-notice{
   width: 100%;
