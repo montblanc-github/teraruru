@@ -13,7 +13,7 @@
     <%= f.label :cultivar_name, "品種名" %>
     <%= f.text_field :cultivar_name, autofocus: true, autocomplete: "cultivar_name", class: "item" %>
   </div>
-  <div class="error-msg error-msg-cultivar_name"></div>
+  <div class="err-msg err-msg-cultivar_name"></div>
 
   <!--都道府県-->
   <div class="field">
@@ -21,6 +21,7 @@
     <%= f.label :prefecture_id, "都道府県" %>
     <%= f.collection_select :prefecture_id, prefectures, :id, :name, prompt: "選択してください" %>
   </div>
+  <div class="err-msg err-msg-prefecture_id"></div>
 
   <!--市区町村-->
   <div class="field">
@@ -28,6 +29,7 @@
     <%= f.label :municipality_id, "市区町村" %>
     <%= f.collection_select :municipality_id, municipalities, :id, :municipality_name, prompt: "選択してください" %>
   </div>
+  <div class="err-msg err-msg-municipality_id"></div>
 
   <!--難易度-->
   <div class="field">
@@ -35,6 +37,7 @@
     <%= f.label :level, "難易度" %>
     <%= f.select :level, [["とても難しい",1],["難しい",2],["普通",3],["簡単",4],["とても簡単",5]], prompt: "選択してください", selected: 3 %>
   </div>
+  <div class="err-msg err-msg-level"></div>
 
   <!--カテゴリ-->
   <div class="field">
@@ -51,6 +54,7 @@
     <%= f.radio_button :category, :succulent %>
     <%= f.label :category, "多肉", value: :succulent, class: "article-form-raddio-label" %>
   </div>
+  <div class="err-msg err-msg-category"></div>
 
   <!--時期-->
   <div class="field">
@@ -62,6 +66,7 @@
       <% end %>
     </div>
   </div>
+  <div class="err-msg err-msg-season"></div>
 
   <!--肥料-->
   <div class="field">
@@ -72,6 +77,7 @@
     <%= f.radio_button :fertilizer_existence, :false %>
     <%= f.label :fertilizer_existence, "なし", value: false, class: "article-form-raddio-label" %>
   </div>
+  <div class="err-msg err-msg-fertilizer_existence"></div>
 
   <p class="fertilizer-info-text">※「あり」を選択された方は、肥料の詳細を記入してください。</p>
 
@@ -90,6 +96,7 @@
     <%= f.radio_button :place, :veranda %>
     <%= f.label :place, "ベランダ", value: :veranda, class: "article-form-raddio-label" %>
   </div>
+  <div class="err-msg err-msg-place"></div>
 
   <!--条件-->
   <div class="field">
@@ -102,6 +109,7 @@
     <%= f.radio_button :condition, :greenhouse %>
     <%= f.label :condition, "ハウス", value: :greenhouse, class: "article-form-raddio-label" %>
   </div>
+  <div class="err-msg err-msg-condition"></div>
 
   <!--開始時-->
   <div class="field">
@@ -116,6 +124,7 @@
     <%= f.radio_button :state_at_start, :complete %>
     <%= f.label :state_at_start, "完成形", value: :complete, class: "article-form-raddio-label" %>
   </div>
+  <div class="err-msg err-msg-state_at_start"></div>
 
   <!--タグ-->
   <div class="field">
@@ -141,23 +150,243 @@
 <script>
 // 品種名バリデーション
   $('#article_cultivar_name').keyup(function() {
-    const cultivar_name = document.querySelector('#article_cultivar_name');
-    const err_cultivar_name_msg = document.querySelector('.error-msg-cultivar_name');
-    const btn = document.querySelector('.btn-green');
-    if(!cultivar_name.value){
-      err_cultivar_name_msg.textContent = '品種名は入力必須項目です。';
-      cultivar_name.classList.add('error-form');
-      btn.disabled = true
+    const cultivarName = document.querySelector('#article_cultivar_name');
+    const errCultivarNameMsg = document.querySelector('.err-msg-cultivar_name');
+    if(!cultivarName.value){
+      errCultivarNameMsg.textContent = '品種名は入力必須項目です。';
+      cultivarName.classList.add('error-form');
     } else {
-      if(cultivar_name.value.length > 21){
-        err_cultivar_name_msg.textContent = '品種名は21文字以内で入力してください。';
-        cultivar_name.classList.add('error-form');
-        btn.disabled = true
+      if(cultivarName.value.length > 21){
+        errCultivarNameMsg.textContent = '品種名は21文字以内で入力してください。';
+        cultivarName.classList.add('error-form');
       }else{
-      err_cultivar_name_msg.textContent = '';
-      cultivar_name.classList.remove('error-form');
-      btn.disabled = false
+      errCultivarNameMsg.textContent = '';
+      cultivarName.classList.remove('error-form');
       }
+    }
+  });
+
+// 都道府県バリデーション(セレクトボックスはTabキー選択時でも表示されるよう、clickではなく、blurを採用)
+  $('#article_prefecture_id').blur(function() {
+    const prefectureId = document.querySelector('#article_prefecture_id');
+    const errPrefectureIdMsg = document.querySelector('.err-msg-prefecture_id');
+    if(!prefectureId.value){
+      errPrefectureIdMsg.textContent = '都道府県は選択必須項目です。';
+      prefectureId.classList.add('error-form');
+    } else {
+      errPrefectureIdMsg.textContent = '';
+      prefectureId.classList.remove('error-form');
+    }
+  });
+
+// 市区町村バリデーション
+  $('#article_municipality_id').blur(function() {
+    const municipalityId = document.querySelector('#article_municipality_id');
+    const errMunicipalityIdMsg = document.querySelector('.err-msg-municipality_id');
+    if(!municipalityId.value){
+      errMunicipalityIdMsg.textContent = '市区町村は選択必須項目です。';
+      municipalityId.classList.add('error-form');
+    } else {
+      errMunicipalityIdMsg.textContent = '';
+      municipalityId.classList.remove('error-form');
+    }
+  });
+
+// 難易度バリデーション
+  $('#article_level').blur(function() {
+    const level = document.querySelector('#article_level');
+    const errLevelMsg = document.querySelector('.err-msg-level');
+    if(!level.value){
+      errLevelMsg.textContent = '難易度は選択必須項目です。';
+      level.classList.add('error-form');
+    } else {
+      errLevelMsg.textContent = '';
+      level.classList.remove('error-form');
+    }
+  });
+
+// カテゴリバリデーション
+  $('input[name="article[category]"]').blur(function() {
+    const categoryItems = document.querySelectorAll('input[name="article[category]"]');
+    // *=で部分一致での指定が可能になる。
+    const categoryLabels = document.querySelectorAll('label[for*="article_category_"]');
+    const errCategoryMsg = document.querySelector('.err-msg-category');
+    var flag = 0;
+    for(let i = 0; i < categoryItems.length; i++){
+      if(categoryItems.item(i).checked){
+        flag = true;
+      }
+    }
+    if(!flag){
+      errCategoryMsg.textContent = 'カテゴリは選択必須項目です。';
+      categoryLabels.forEach(function(categoryLabels){
+        categoryLabels.classList.add('error-raddio');
+      });
+    } else {
+      errCategoryMsg.textContent = '';
+      categoryLabels.forEach(function(categoryLabels){
+        categoryLabels.classList.remove('error-raddio');
+      });
+    }
+  });
+
+// 時期バリデーション
+  $('input[name="article[season_ids][]"]').blur(function() {
+    const seasonItems = document.querySelectorAll('input[name="article[season_ids][]"]');
+    const seasonLabels = document.querySelectorAll('label[for*="article_season_ids_"]');
+    const errSeasonMsg = document.querySelector('.err-msg-season');
+    var flag = 0;
+    for(let i = 0; i < seasonItems.length; i++){
+      if(seasonItems.item(i).checked){
+        flag = true;
+      }
+    }
+    if(!flag){
+      errSeasonMsg.textContent = '時期は選択必須項目です。';
+      seasonLabels.forEach(function(seasonLabels){
+        seasonLabels.classList.add('error-check');
+      });
+    } else {
+      errSeasonMsg.textContent = '';
+      seasonLabels.forEach(function(seasonLabels){
+        seasonLabels.classList.remove('error-check');
+      });
+    }
+  });
+
+// 肥料のバリデーション
+  $('input[name="article[fertilizer_existence]"]').blur(function() {
+    const fertilizerItems = document.querySelectorAll('input[name="article[fertilizer_existence]"]');
+    const fertilizerLabels = document.querySelectorAll('label[for*="article_fertilizer_existence_"]');
+    const fertilizerInfo = document.querySelector('#article_fertilizer_info');
+    const errFertilizerExistenceMsg = document.querySelector('.err-msg-fertilizer_existence');
+    const errFertilizerInfoMsg = document.querySelector('.fertilizer-info-text');
+    var flag = 0;
+    for(let i = 0; i < fertilizerItems.length; i++){
+      if(fertilizerItems.item(i).checked){
+        flag = true;
+      }
+    }
+    if(!flag){
+      errFertilizerExistenceMsg.textContent = '肥料は選択必須項目です。';
+      fertilizerLabels.forEach(function(fertilizerLabels){
+        fertilizerLabels.classList.add('error-raddio');
+      });
+    } else {
+      errFertilizerExistenceMsg.textContent = '';
+      fertilizerLabels.forEach(function(fertilizerLabels){
+        fertilizerLabels.classList.remove('error-raddio');
+      });
+      if(fertilizerItems.item(1).checked){
+        errFertilizerInfoMsg.classList.remove('err-msg');
+        fertilizerInfo.classList.remove('error-form');
+      }
+    }
+  });
+
+
+  $('#article_fertilizer_info').keyup(function() {
+    const fertilizerItems = document.querySelectorAll('input[name="article[fertilizer_existence]"]');
+    const fertilizerInfo = document.querySelector('#article_fertilizer_info');
+    const errFertilizerInfoMsg = document.querySelector('.fertilizer-info-text');
+    if(fertilizerItems.item(0).checked && !fertilizerInfo.value){
+      errFertilizerInfoMsg.classList.add('err-msg');
+      errFertilizerInfoMsg.textContent = '※「あり」を選択された方は、肥料の詳細を記入してください。';
+      fertilizerInfo.classList.add('error-form');
+    } else {
+      if(fertilizerInfo.value.length > 100){
+        errFertilizerInfoMsg.classList.add('err-msg');
+        errFertilizerInfoMsg.textContent = '肥料の詳細は100文字以内で入力してください。';
+        fertilizerInfo.classList.add('error-form');
+      } else {
+        errFertilizerInfoMsg.classList.remove('err-msg');
+        errFertilizerInfoMsg.textContent = '';
+        fertilizerInfo.classList.remove('error-form');
+      }
+    }
+  });
+
+// 場所バリデーション
+  $('input[name="article[place]"]').blur(function() {
+    const placeItems = document.querySelectorAll('input[name="article[place]"]');
+    const placeLabels = document.querySelectorAll('label[for*="article_place_"]');
+    const errPlaceMsg = document.querySelector('.err-msg-place');
+    var flag = 0;
+    for(let i = 0; i < placeItems.length; i++){
+      if(placeItems.item(i).checked){
+        flag = true;
+      }
+    }
+    if(!flag){
+      errPlaceMsg.textContent = '場所は選択必須項目です。';
+      placeLabels.forEach(function(placeLabels){
+        placeLabels.classList.add('error-raddio');
+      });
+    } else {
+      errPlaceMsg.textContent = '';
+      placeLabels.forEach(function(placeLabels){
+        placeLabels.classList.remove('error-raddio');
+      });
+    }
+  });
+
+// 条件バリデーション
+  $('input[name="article[condition]"]').blur(function() {
+    const conditionItems = document.querySelectorAll('input[name="article[condition]"]');
+    const conditionLabels = document.querySelectorAll('label[for*="article_condition_"]');
+    const errConditionMsg = document.querySelector('.err-msg-condition');
+    var flag = 0;
+    for(let i = 0; i < conditionItems.length; i++){
+      if(conditionItems.item(i).checked){
+        flag = true;
+      }
+    }
+    if(!flag){
+      errConditionMsg.textContent = '条件は選択必須項目です。';
+      conditionLabels.forEach(function(conditionLabels){
+        conditionLabels.classList.add('error-raddio');
+      });
+    } else {
+      errConditionMsg.textContent = '';
+      conditionLabels.forEach(function(conditionLabels){
+        conditionLabels.classList.remove('error-raddio');
+      });
+    }
+  });
+
+// 開始時バリデーション
+  $('input[name="article[state_at_start]"]').blur(function() {
+    const stateAtStartItems = document.querySelectorAll('input[name="article[state_at_start]"]');
+    const stateAtStartLabels = document.querySelectorAll('label[for*="article_state_at_start_"]');
+    const errStateAtStartMsg = document.querySelector('.err-msg-state_at_start');
+    var flag = 0;
+    for(let i = 0; i < stateAtStartItems.length; i++){
+      if(stateAtStartItems.item(i).checked){
+        flag = true;
+      }
+    }
+    if(!flag){
+      errStateAtStartMsg.textContent = '開始時は選択必須項目です。';
+      stateAtStartLabels.forEach(function(stateAtStartLabels){
+        stateAtStartLabels.classList.add('error-raddio');
+      });
+    } else {
+      errStateAtStartMsg.textContent = '';
+      stateAtStartLabels.forEach(function(stateAtStartLabels){
+        stateAtStartLabels.classList.remove('error-raddio');
+      });
+    }
+  });
+
+// errorクラスがある場合は、ボタンが押せないようにする
+  $('[name*="article[').focusout(function() {
+    const btn = document.querySelector('.btn');
+    if($('input').hasClass('error-form') || $('select').hasClass('error-form') || $('label').hasClass('error-raddio') || $('label').hasClass('error-check')){
+      btn.disabled = true;
+      btn.classList.add('btn-disabled');
+    } else {
+      btn.disabled = false;
+      btn.classList.remove('btn-disabled');
     }
   });
 </script>
