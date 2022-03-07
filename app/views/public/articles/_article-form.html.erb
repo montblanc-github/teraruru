@@ -11,7 +11,7 @@
   <div class="field">
     <span class="badge red-required">必須</span>
     <%= f.label :cultivar_name, "品種名" %>
-    <%= f.text_field :cultivar_name, autofocus: true, autocomplete: "cultivar_name", class: "item" %>
+    <%= f.text_field :cultivar_name, autofocus: true, autocomplete: "cultivar_name", placeholder: "(例) チューリップ", class: "item" %>
   </div>
   <div class="err-msg err-msg-cultivar_name"></div>
 
@@ -82,7 +82,7 @@
   <p class="fertilizer-info-text">※「あり」を選択された方は、肥料の詳細を記入してください。</p>
 
   <div class="field">
-    <%= f.text_field :fertilizer_info, autofocus: true, autocomplete: "fertilizer_info", class: "item fertilizer-info-form" %>
+    <%= f.text_field :fertilizer_info, autofocus: true, autocomplete: "fertilizer_info", placeholder: "(例) 液体肥料(N:P:K = 6:10:5)と緩効性肥料(マグァンプ)", class: "item fertilizer-info-form" %>
   </div>
 
   <!--場所-->
