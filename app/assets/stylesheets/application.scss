@@ -56,6 +56,25 @@
  }
 }
 
+.err-msg{
+  width: 100%;
+  margin-left: 241px;
+  font-size: 80%;
+  color: #C64756;
+}
+
+.error-form{
+  border: 2px solid #C64756!important;
+}
+
+.error-raddio, .error-check{
+  border-bottom: 2px solid #C64756;
+}
+
+.btn-disabled{
+  background-color: #ddd!important;
+}
+
 // フラッシュメッセージ
 .alert-notice{
   width: 100%;
@@ -246,7 +265,7 @@ footer{
   }
 
   ul.tagit{
-    width: 550px;
+    width: 509px;
     border-radius: 6px;
   }
 
