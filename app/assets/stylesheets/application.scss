@@ -63,6 +63,20 @@
   color: #C64756;
 }
 
+.err-msg-flex{
+  display: flex;
+}
+
+.err-msg-last_name, .err-msg-last_name_kana{
+  width: 190.5px;
+  margin-left: 305px;
+}
+
+.err-msg-first_name, .err-msg-first_name_kana{
+  width: 190.5px;
+  margin-left: auto;
+}
+
 .error-form{
   border: 2px solid #C64756!important;
 }
