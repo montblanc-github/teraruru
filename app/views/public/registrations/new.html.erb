@@ -12,9 +12,13 @@
         <span class="badge red-required">必須</span>
         <%= f.label "氏名" %>
         <%= f.label :last_name, "(姓)", class: "small-label" %>
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "item half-item" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "(例)田中", class: "item half-item" %>
         <%= f.label :first_name, "(名)", class: "small-label" %>
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "item half-item" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "(例)太郎", class: "item half-item" %>
+      </div>
+      <div class="err-msg-flex">
+        <div class="err-msg err-msg-last_name"></div>
+        <div class="err-msg err-msg-first_name"></div>
       </div>
 
       <!--フリガナ-->
@@ -22,31 +26,38 @@
         <span class="badge red-required">必須</span>
         <%= f.label "フリガナ" %>
         <%= f.label :last_name_kana, "(セイ)", class: "small-label" %>
-        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kananame", class: "item half-item" %>
+        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kananame", placeholder: "(例)タナカ", class: "item half-item" %>
         <%= f.label :first_name_kana, "(メイ)", class: "small-label" %>
-        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kananame", class: "item half-item" %>
+        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kananame", placeholder: "(例)タロウ", class: "item half-item" %>
+      </div>
+      <div class="err-msg-flex">
+        <div class="err-msg err-msg-last_name_kana"></div>
+        <div class="err-msg err-msg-first_name_kana"></div>
       </div>
 
       <!--メールアドレス-->
       <div class="field">
         <span class="badge red-required">必須</span>
         <%= f.label :email, "メールアドレス" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "item" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "(例)sample@sample.sample", class: "item" %>
       </div>
+      <div class="err-msg err-msg-email"></div>
 
       <!--郵便番号-->
       <div class="field">
         <span class="badge red-required">必須</span>
         <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
-        <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", class: "item half-item" %>
+        <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", placeholder: "(例)1234567", class: "item half-item" %>
       </div>
+      <div class="err-msg err-msg-post_code"></div>
 
       <!--住所-->
       <div class="field">
         <span class="badge red-required">必須</span>
         <%= f.label :address, "住所" %>
-        <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "item" %>
+        <%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "(例)東京都千代田区testビル1-1", class: "item" %>
       </div>
+      <div class="err-msg err-msg-address"></div>
 
       <!--パスワード-->
       <div class="field">
@@ -54,6 +65,7 @@
         <%= f.label :password, "パスワード(6文字以上)" %>
         <%= f.password_field :password, autocomplete: "new-password", class: "item half-item" %>
       </div>
+      <div class="err-msg err-msg-password"></div>
 
       <!--パスワード(確認用)-->
       <div class="field">
@@ -61,13 +73,15 @@
         <%= f.label :password_confirmation, "パスワード(確認用)" %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "item half-item" %>
       </div>
+      <div class="err-msg err-msg-password_confirmation"></div>
 
       <!--アカウント名-->
       <div class="field">
         <span class="badge red-required">必須</span>
         <%= f.label :account_name, "アカウント名" %>
-        <%= f.text_field :account_name, autofocus: true, autocomplete: "account_name", class: "item" %>
+        <%= f.text_field :account_name, autofocus: true, autocomplete: "account_name", placeholder: "(例)t.t", class: "item" %>
       </div>
+      <div class="err-msg err-msg-account_name"></div>
 
       <!--プロフィール画像-->
       <div class="field">
@@ -82,6 +96,7 @@
         <%= f.label :introduction, "紹介文" %>
         <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", class: "item area" %>
       </div>
+      <div class="err-msg err-msg-introduction"></div>
 
       <div class="actions">
         <%= f.submit "新規登録", class: "btn btn-green" %>
@@ -89,3 +104,246 @@
     <% end %>
   </div>
 </div>
+
+<script>
+// 氏名(姓)バリデーション
+  $('#user_last_name').keyup(function() {
+    const lastName = document.querySelector('#user_last_name');
+    const errLastNameMsg = document.querySelector('.err-msg-last_name');
+    var namePattern = /^[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]+$/;
+    if(!lastName.value){
+      errLastNameMsg.textContent = '(姓)は入力必須項目です。';
+      errLastNameMsg.style.display = 'inline';
+      lastName.classList.add('error-form');
+    } else {
+      if(lastName.value.length > 10){
+        errLastNameMsg.textContent = '(姓)は10文字以内で入力してください。';
+        errLastNameMsg.style.display = 'inline';
+        lastName.classList.add('error-form');
+      } else if(!namePattern.test(lastName.value)){
+        errLastNameMsg.textContent = '(姓)は平仮名・カタカナ・漢字・記号(ー)で入力してください。';
+        errLastNameMsg.style.display = 'inline';
+        lastName.classList.add('error-form');
+      } else {
+      errLastNameMsg.textContent = '';
+      lastName.classList.remove('error-form');
+      }
+    }
+  });
+
+// 氏名(名)バリデーション
+  $('#user_first_name').keyup(function() {
+    const firstName = document.querySelector('#user_first_name');
+    const errFirstNameMsg = document.querySelector('.err-msg-first_name');
+    var namePattern = /^[\u30a0-\u30ff\u3040-\u309f\u3005-\u3006\u30e0-\u9fcf]+$/;
+    if(!firstName.value){
+      errFirstNameMsg.textContent = '(名)は入力必須項目です。';
+      errFirstNameMsg.style.display = 'inline';
+      firstName.classList.add('error-form');
+    } else {
+      if(firstName.value.length > 10){
+        errFirstNameMsg.textContent = '(名)は10文字以内で入力してください。';
+        errFirstNameMsg.style.display = 'inline';
+        firstName.classList.add('error-form');
+      } else if(!namePattern.test(firstName.value)){
+        errFirstNameMsg.textContent = '(名)は平仮名・カタカナ・漢字・記号(ー)で入力してください。';
+        errFirstNameMsg.style.display = 'inline';
+        firstName.classList.add('error-form');
+      } else {
+      errFirstNameMsg.textContent = '';
+      firstName.classList.remove('error-form');
+      }
+    }
+  });
+
+// フリガナ(セイ)バリデーション
+  $('#user_last_name_kana').keyup(function() {
+    const lastNameKana = document.querySelector('#user_last_name_kana');
+    const errLastNameKanaMsg = document.querySelector('.err-msg-last_name_kana');
+    var kanaPattern = /^[\u30a0-\u30ff]+$/;
+    if(!lastNameKana.value){
+      errLastNameKanaMsg.textContent = '(セイ)は入力必須項目です。';
+      errLastNameKanaMsg.style.display = 'inline';
+      lastNameKana.classList.add('error-form');
+    } else {
+      if(lastNameKana.value.length > 10){
+        errLastNameKanaMsg.textContent = '(セイ)は10文字以内で入力してください。';
+        errLastNameKanaMsg.style.display = 'inline';
+        lastNameKana.classList.add('error-form');
+      } else if(!kanaPattern.test(lastNameKana.value)){
+        errLastNameKanaMsg.textContent = '(セイ)はカタカナ・記号(ー)で入力してください。';
+        errLastNameKanaMsg.style.display = 'inline';
+        lastNameKana.classList.add('error-form');
+      } else {
+      errLastNameKanaMsg.textContent = '';
+      lastNameKana.classList.remove('error-form');
+      }
+    }
+  });
+
+// フリガナ(メイ)バリデーション
+  $('#user_first_name_kana').keyup(function() {
+    const firstNameKana = document.querySelector('#user_first_name_kana');
+    const errFirstNameKanaMsg = document.querySelector('.err-msg-first_name_kana');
+    var kanaPattern = /^[\u30a0-\u30ff]+$/;
+    if(!firstNameKana.value){
+      errFirstNameKanaMsg.textContent = '(メイ)は入力必須項目です。';
+      errFirstNameKanaMsg.style.display = 'inline';
+      firstNameKana.classList.add('error-form');
+    } else {
+      if(firstNameKana.value.length > 10){
+        errFirstNameKanaMsg.textContent = '(メイ)は10文字以内で入力してください。';
+        errFirstNameKanaMsg.style.display = 'inline';
+        firstNameKana.classList.add('error-form');
+      } else if(!kanaPattern.test(firstNameKana.value)){
+        errFirstNameKanaMsg.textContent = '(メイ)はカタカナ・記号(ー)で入力してください。';
+        errFirstNameKanaMsg.style.display = 'inline';
+        firstNameKana.classList.add('error-form');
+      } else {
+      errFirstNameKanaMsg.textContent = '';
+      firstNameKana.classList.remove('error-form');
+      }
+    }
+  });
+
+// メールアドレスバリデーション
+  $('#user_email').keyup(function() {
+    const email = document.querySelector('#user_email');
+    const errEmailMsg = document.querySelector('.err-msg-email');
+    var emailPattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/;
+    if(!email.value){
+      errEmailMsg.textContent = 'メールアドレスは入力必須項目です。';
+      email.classList.add('error-form');
+    } else {
+      if(email.value.length > 254){
+        errEmailMsg.textContent = 'メールアドレスは254文字以内で入力してください。';
+        email.classList.add('error-form');
+      } else if(!emailPattern.test(email.value)) {
+        errEmailMsg.textContent = 'メールアドレスは~@~.~の形式で入力してください。';
+        email.classList.add('error-form');
+      } else {
+      errEmailMsg.textContent = '';
+      email.classList.remove('error-form');
+      }
+    }
+  });
+
+// 郵便番号バリデーション
+  $('#user_post_code').keyup(function() {
+    const postCode = document.querySelector('#user_post_code');
+    const errPostCodeMsg = document.querySelector('.err-msg-post_code');
+    var postCodePattern = /^[0-9]{7}$/;
+    if(!postCode.value){
+      errPostCodeMsg.textContent = '郵便番号は入力必須項目です。';
+      postCode.classList.add('error-form');
+    } else {
+      if(postCode.value.length != 7){
+        errPostCodeMsg.textContent = '郵便番号は7文字で入力してください。';
+        postCode.classList.add('error-form');
+      } else if(!postCodePattern.test(postCode.value)) {
+        errPostCodeMsg.textContent = '郵便番号は数字で入力してください。';
+        postCode.classList.add('error-form');
+      } else {
+      errPostCodeMsg.textContent = '';
+      postCode.classList.remove('error-form');
+      }
+    }
+  });
+
+// 住所バリデーション
+  $('#user_address').keyup(function() {
+    const address = document.querySelector('#user_address');
+    const errAddressMsg = document.querySelector('.err-msg-address');
+    if(!address.value){
+      errAddressMsg.textContent = '住所は入力必須項目です。';
+      address.classList.add('error-form');
+    } else {
+      if(address.value.length > 70){
+        errAddressMsg.textContent = '住所は70文字以内で入力してください。';
+        address.classList.add('error-form');
+      } else {
+      errAddressMsg.textContent = '';
+      address.classList.remove('error-form');
+      }
+    }
+  });
+
+// パスワードバリデーション
+  $('#user_password').keyup(function() {
+    const password = document.querySelector('#user_password');
+    const errPasswordMsg = document.querySelector('.err-msg-password');
+    if(!password.value){
+      errPasswordMsg.textContent = 'パスワードは入力必須項目です。';
+      password.classList.add('error-form');
+    } else {
+      if(password.value.length < 6){
+        errPasswordMsg.textContent = 'パスワードは6文字以上で入力してください。';
+        password.classList.add('error-form');
+      } else {
+      errPasswordMsg.textContent = '';
+      password.classList.remove('error-form');
+      }
+    }
+  });
+
+// パスワード(確認用)バリデーション
+  $('#user_password_confirmation').keyup(function() {
+    const passwordConfirmation = document.querySelector('#user_password_confirmation');
+    const errPasswordConfirmationMsg = document.querySelector('.err-msg-password_confirmation');
+    if(!passwordConfirmation.value){
+      errPasswordConfirmationMsg.textContent = 'パスワード(確認用)は入力必須項目です。';
+      passwordConfirmation.classList.add('error-form');
+    } else {
+      if(passwordConfirmation.value.length < 6){
+        errPasswordConfirmationMsg.textContent = 'パスワード(確認用)は6文字以上で入力してください。';
+        passwordConfirmation.classList.add('error-form');
+      } else {
+      errPasswordConfirmationMsg.textContent = '';
+      passwordConfirmation.classList.remove('error-form');
+      }
+    }
+  });
+
+// アカウント名バリデーション
+  $('#user_account_name').keyup(function() {
+    const accountName = document.querySelector('#user_account_name');
+    const errAccountNameMsg = document.querySelector('.err-msg-account_name');
+    if(!accountName.value){
+      errAccountNameMsg.textContent = 'アカウント名は入力必須項目です。';
+      accountName.classList.add('error-form');
+    } else {
+      if(accountName.value.length > 15){
+        errAccountNameMsg.textContent = 'アカウント名は15文字以内で入力してください。';
+        accountName.classList.add('error-form');
+      } else {
+      errAccountNameMsg.textContent = '';
+      accountName.classList.remove('error-form');
+      }
+    }
+  });
+
+// 紹介文バリデーション
+  $('#user_introduction').keyup(function() {
+    const introduction = document.querySelector('#user_introduction');
+    const errIntroductionMsg = document.querySelector('.err-msg-introduction');
+    if(introduction.value.length > 150){
+      errIntroductionMsg.textContent = '紹介文は150文字以内で入力してください。';
+      introduction.classList.add('error-form');
+    } else {
+      errIntroductionMsg.textContent = '';
+      introduction.classList.remove('error-form');
+    }
+  });
+
+// errorクラスがある場合は、ボタンが押せないようにする
+  $('[name*="user[').focusout(function() {
+    const btn = document.querySelector('.btn');
+    if($('input').hasClass('error-form')){
+      btn.disabled = true;
+      btn.classList.add('btn-disabled');
+    } else {
+      btn.disabled = false;
+      btn.classList.remove('btn-disabled');
+    }
+  });
+</script>
