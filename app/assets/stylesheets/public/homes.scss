@@ -179,3 +179,28 @@
   background-image: image-url("article-info.png");
   background-position: center;
 }
+
+// 以下、レスポンシブ対応
+@media screen and (max-width: 480px){
+  .skippr-nav-element-block{
+    width: 30px!important;
+  }
+
+  .top-left{
+    width: 95%!important;
+    margin: 0 auto;
+  }
+
+  .top-right{
+    width: 95%!important;
+    margin: 0 auto;
+  }
+
+  .top-flex{
+    display: block;
+  }
+
+  .top-right-article{
+    display: block;
+  }
+}
