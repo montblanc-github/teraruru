@@ -1,49 +1,67 @@
 <header>
-  <%= link_to image_tag("teraruru_logo.png"), root_path, class: "header-logo" %>
+  <div class="logo">
+    <%= link_to image_tag("teraruru_logo.png"), root_path, class: "header-logo" %>
+  </div>
 
   <div class="header-link-wrapper">
     <% if user_signed_in? %>
-      <div class="link-group">
-        <%= render "layouts/common-link" %>
-        <%= link_to new_article_path, class: "header-link-item" do %>
-          <p><i class="fas fa-feather-alt"></i>投稿する</p>
+      <nav class="header-nav">
+        <ul class="link-group">
+          <%= render "layouts/common-link" %>
+          <li>
+            <%= link_to new_article_path, class: "header-link-item" do %>
+              <i class="fas fa-feather-alt"></i>投稿する
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_path(current_user), class: "header-link-item" do %>
+              <i class="fas fa-user-cog"></i>マイページ
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: "header-link-item" do %>
+              <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+      <div class="notice-wrapper">
+        <%= link_to icon("fas", "bell"), user_notifications_path(current_user), class: "notification-icon"%>
+        <% if unchecked_notifications.any? %>
+          <i class="fas fa-exclamation notice-checked-icon"></i>
         <% end %>
-        <%= link_to user_path(current_user), class: "header-link-item" do %>
-          <p><i class="fas fa-user-cog"></i>マイページ</p>
-        <% end %>
-        <%= link_to destroy_user_session_path, method: :delete, class: "header-link-item" do %>
-          <p><i class="fas fa-sign-out-alt"></i>ログアウト</p>
-        <% end %>
-        <div class="notice-wrapper">
-          <%= link_to icon("fas", "bell"), user_notifications_path(current_user), class: "fas notification-icon"%>
-          <% if unchecked_notifications.any? %>
-            <i class="fas fa-exclamation notice-checked-icon"></i>
-          <% end %>
-        </div>
       </div>
+
     <% elsif admin_signed_in? %>
-      <div class="link-group">
-        <%= render "layouts/common-link" %>
-        <%= link_to admin_users_path, class: "header-link-item" do %>
-          <p><i class="fas fa-info-circle"></i>会員一覧</p>
-        <% end %>
-        <%= link_to destroy_admin_session_path, method: :delete, class: "header-link-item" do %>
-          <p><i class="fas fa-sign-out-alt"></i>ログアウト</p>
-        <% end %>
-      </div>
+
+      <nav class="header-nav four-items-header">
+        <ul class="link-group">
+          <%= render "layouts/common-link" %>
+          <%= link_to admin_users_path, class: "header-link-item" do %>
+            <i class="fas fa-info-circle"></i>会員一覧
+          <% end %>
+          <%= link_to destroy_admin_session_path, method: :delete, class: "header-link-item" do %>
+            <i class="fas fa-sign-out-alt"></i>ログアウト
+          <% end %>
+        </ul>
+      </nav>
 
     <% else %>
-      <div class="link-group">
-        <%= render "layouts/common-link" %>
-        <%= link_to new_user_registration_path, class: "header-link-item" do %>
-          <p><i class="fas fa-user-plus"></i>新規登録</p>
-        <% end %>
-        <%= link_to new_user_session_path, class: "header-link-item" do %>
-          <p><i class="fas fa-sign-in-alt"></i>ログイン</p>
-        <% end %>
-      </div>
+
+      <nav class="header-nav four-items-header">
+        <ul class="link-group">
+          <%= render "layouts/common-link" %>
+          <%= link_to new_user_registration_path, class: "header-link-item" do %>
+            <i class="fas fa-user-plus"></i>新規登録
+          <% end %>
+          <%= link_to new_user_session_path, class: "header-link-item" do %>
+            <i class="fas fa-sign-in-alt"></i>ログイン
+          <% end %>
+        </ul>
+      </nav>
 
     <% end %>
+
   </div>
 
   <div class="search-wrapper">

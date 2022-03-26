@@ -1,6 +1,10 @@
-<%= link_to about_path, class: "header-link-item" do %>
-  <p><i class="fas fa-info-circle"></i>About</p>
-<% end %>
-<%= link_to articles_path, class: "header-link-item" do %>
-  <p><i class="fas fa-list-alt"></i>投稿一覧</p>
-<% end %>
+<li>
+  <%= link_to about_path, class: "header-link-item" do %>
+    <i class="fas fa-info-circle"></i>About
+  <% end %>
+</li>
+<li>
+  <%= link_to articles_path, class: "header-link-item" do %>
+    <i class="fas fa-list-alt"></i>投稿一覧
+  <% end %>
+</li>
