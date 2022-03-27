@@ -690,6 +690,131 @@ footer{
 }
 
 // 以下、レスポンシブ対応
+@media screen and (max-width: 868px){
+
+  // ハンバーガーメニュー
+  .hamburger{
+    width: 50px;
+    height: 80px;
+    float: right;
+    padding: 10px;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+
+    span{
+      display : block;
+      position: absolute;
+      width   : 30px;
+      height  : 4px ;
+      background : #fff;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition   : 0.3s ease-in-out;
+      transition        : 0.3s ease-in-out;
+
+      &:nth-child(1){
+        top: 29px;
+      }
+
+      &:nth-child(2){
+        top: 39px;
+      }
+
+      &:nth-child(3){
+        top: 49px;
+      }
+    }
+  }
+
+  .header-nav{
+    display: none;
+  }
+
+  .link-group .open{
+    flex-direction: column;
+  }
+
+  // ヘッダー位置関係調整
+  header{
+    display: block!important;
+  }
+
+  .logo{
+    float: left;
+  }
+
+  .header-link-wrapper{
+    float: right;
+  }
+
+  // 伸縮する検索フォーム
+  .search-wrapper{
+    margin-right: 25px;
+    float: right;
+    color: #fff;
+    font-size: 23px;
+
+    .search-box{
+      -webkit-appearance: none;
+      width: 30px!important;
+      background-color: transparent!important;
+      transition: all 0.5s;
+      cursor: pointer;
+    }
+
+    input::-webkit-input-placeholder {
+	    color: transparent;
+    }
+
+    input::-moz-placeholder {
+    	color: transparent;
+    }
+
+    input::-ms-input-placeholder {
+    	color: transparent;
+    }
+
+    input::placeholder {
+    	color: transparent;
+    }
+
+    .search-icon{
+      top: 30px!important;
+    }
+
+    &:hover{
+      color: #000;
+      font-size: 18px;
+
+      .search-box{
+        width: 180px!important;
+        background-color: #F4FFF4!important;
+      }
+
+      .search-icon{
+        top: 33px!important;
+      }
+
+      input::-webkit-input-placeholder {
+  	    color: #757575;
+      }
+
+      input::-moz-placeholder {
+  	    color: #757575;
+      }
+
+      input::-ms-input-placeholder {
+  	    color: #757575;
+      }
+
+      input::placeholder {
+  	    color: #757575;
+      }
+    }
+  }
+
+}
+
 @media screen and (max-width: 480px){
   .search-wrapper{
     display: none;

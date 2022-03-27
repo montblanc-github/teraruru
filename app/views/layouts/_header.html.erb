@@ -3,6 +3,12 @@
     <%= link_to image_tag("teraruru_logo.png"), root_path, class: "header-logo" %>
   </div>
 
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <div class="header-link-wrapper">
     <% if user_signed_in? %>
       <nav class="header-nav">
